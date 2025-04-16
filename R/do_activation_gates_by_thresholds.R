@@ -1,6 +1,6 @@
-# do.activation.gates.r
+# do_activation_gates_by_thresholds.r
 
-#' @title do.activation.gates
+#' @title do.activation.gates.by.thresholds
 #'
 #' @description
 #' A function to calculate and execute gating for activation markers in the panel.
@@ -17,7 +17,7 @@
 #'
 #'
 
-do.activation.gates <- function( fcs.expr.data, fcs.population.gates,
+do.activation.gates.by.thresholds <- function( fcs.expr.data, fcs.population.gates,
                                  fcs.figure.dir, fcs.activation.thresholds, fcs.activation.gates,
                                  fcs.activation.gates.calculate, fcs.activation.gates.param )
 {

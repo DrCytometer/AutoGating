@@ -10,32 +10,26 @@
 #'
 #'
 
-# move these to agp
-# "_popgate_all"
-# "%s_popgate_%s"
-# "all"
-# "_actgate_all"
-#  "%s_actgate_%s"
 
 # move this so it gets called automatically within something else
 
-create.directories <- function( agp ) {
+create.directories <- function( agp, fcs.experiment ) {
 
-  fcs.figure.popgate.all.dir <- paste0( agp$fcs.figure.dir.basename, "_popgate_all" )
-  fcs.figure.popgate.sample.dir <- sprintf( "%s_popgate_%s",
-                                            agp$fcs.figure.dir.basename, fcs.sample )
+  fcs.figure.popgate.all.dir <- paste0( agp$fcs.figure.dir.basename, agp$pop.gate.all.label )
+  fcs.figure.popgate.sample.dir <- sprintf( agp$pop.gate.label,
+                                            agp$fcs.figure.dir.basename, fcs.experiment$sample )
 
   fcs.figure.popgate.dir <- c( fcs.figure.popgate.all.dir,
                                fcs.figure.popgate.sample.dir )
-  names( fcs.figure.popgate.dir ) <- c( "all", fcs.sample )
+  names( fcs.figure.popgate.dir ) <- c( "all", fcs.experiment$sample )
 
-  fcs.figure.actgate.all.dir <- paste0( fcs.figure.dir.basename, "_actgate_all" )
-  fcs.figure.actgate.sample.dir <- sprintf( "%s_actgate_%s",
-                                            fcs.figure.dir.basename, fcs.sample )
+  fcs.figure.actgate.all.dir <- paste0( agp$fcs.figure.dir.basename, agp$act.gate.all.label )
+  fcs.figure.actgate.sample.dir <- sprintf( agp$act.gate.label,
+                                            agp$fcs.figure.dir.basename, fcs.experiment$sample )
 
   fcs.figure.actgate.dir <- c( fcs.figure.actgate.all.dir,
                                fcs.figure.actgate.sample.dir )
-  names( fcs.figure.actgate.dir ) <- c( "all", fcs.sample )
+  names( fcs.figure.actgate.dir ) <- c( "all", fcs.experiment$sample )
 
   for ( fig.dir in c( fcs.figure.popgate.dir, fcs.figure.actgate.dir ) ){
     #full.path <- file.path( output.dir, fig.dir )

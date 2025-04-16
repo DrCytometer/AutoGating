@@ -1,6 +1,6 @@
-# do_activation_gates_main.r
+# do_activation_gates_from_definition.r
 
-#' @title do.activation.gates.main
+#' @title do.activation.gates.from.definition
 #'
 #' @description
 #' A function to calculate and execute gating for activation markers in the panel.
@@ -14,7 +14,7 @@
 #' @export
 #'
 
-do.activation.gates.main <- function( fcs.gates, fcs.gates.data,
+do.activation.gates.from.definition <- function( fcs.gates, fcs.gates.data,
                                  fcs.activ.gates.definition, calculate.gates,
                                  figure.actgate.dir )
 {
