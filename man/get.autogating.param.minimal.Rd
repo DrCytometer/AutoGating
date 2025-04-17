@@ -6,13 +6,14 @@
 \usage{
 get.autogating.param.minimal()
 }
-\arguments{
-\item{cytometer}{The cytometer used for acquiring the data. Supported options
-are "Aurora" and "ID7000".}
-}
 \value{
-description
+The AutoGating parameter list.
 }
 \description{
 Get a list of parameter essential for performing autogating.
+To be called via get.autogating.param().
+}
+\examples{
+agp <- get.autogating.param( cytometer = "Aurora" )
+
 }

@@ -4,17 +4,21 @@
 #'
 #' @description
 #' Get a list of parameter essential for performing autogating.
-#'
-#' @param cytometer The cytometer used for acquiring the data. Supported options
-#' are "Aurora" and "ID7000".
-#' @return description
+#' To be called via get.autogating.param().
+#' @return The AutoGating parameter list.
 #' @export
+#'
+#' @examples
+#' agp <- get.autogating.param( cytometer = "Aurora" )
+#'
 
 
 get.autogating.param.minimal <- function() {
 
   list(
+
     # inputs
+
     param.dir = "./Parameter",
     fcs.data.dir = "./Data",
 
@@ -29,7 +33,8 @@ get.autogating.param.minimal <- function() {
     # output directories
 
     fcs.figure.dir.basename = "figure",
-
+    fcs.figure.popgate.dir = NULL,
+    fcs.figure.actgate.dir = NULL,
     fcs.statistics.dir = "statistics",
     fcs.population.statistics.filename = "population_statistics.csv",
     fcs.activation.statistics.filename = "activation_statistics.csv",
@@ -92,6 +97,7 @@ get.autogating.param.minimal <- function() {
 
     # parallel processing parameters
 
+    parallel = TRUE,
     fcs.seed.base = 42,
     worker.process.n = parallelly::availableCores() - 1,
     max.memory.n = 4 * 1024^3,

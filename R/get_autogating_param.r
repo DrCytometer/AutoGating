@@ -1,6 +1,6 @@
 # get_autogating_param.r
 
-get.autogating.param <- function( cytometer )
+get.autogating.param <- function( cytometer, fcs.experiment )
 {
   autogating.param <- get.autogating.param.minimal()
 
@@ -15,7 +15,12 @@ get.autogating.param <- function( cytometer )
 
   autogating.param <- get.param.function( autogating.param )
 
-  autogating.param
+  directories <- create.directories( autogating.param, fcs.experiment )
+
+  autogating.param$fcs.figure.popgate.dir <- directories$pop.dir
+  autogating.param$fcs.figure.actgate.dir <- directories$act.dir
+
+  return( autogating.param )
 
 }
 

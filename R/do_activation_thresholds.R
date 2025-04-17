@@ -1,4 +1,4 @@
-# do.activation.thresholds.r
+# do_activation_thresholds.r
 
 #' @title do.activation.thresholds
 #'

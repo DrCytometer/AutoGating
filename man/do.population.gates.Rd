@@ -25,7 +25,7 @@ gate parameter table.}
 \item{figure.popgate.dir}{The directory where the figures will be generated.}
 }
 \value{
-description
+fcs.gates
 }
 \description{
 A function to calculate and execute gating for population (cell type) gates

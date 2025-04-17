@@ -12,7 +12,7 @@
 #' gate parameter table.
 #' @param calculate.gates Logical?
 #' @param figure.popgate.dir The directory where the figures will be generated.
-#' @return description
+#' @return fcs.gates
 #' @export
 #'
 

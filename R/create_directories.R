@@ -6,6 +6,7 @@
 #' Creates the output folders for the pipeline.
 #'
 #' @param agp The AutoGating parameter list.
+#' @return List of the output figure directories
 #' @export
 #'
 #'
@@ -32,7 +33,6 @@ create.directories <- function( agp, fcs.experiment ) {
   names( fcs.figure.actgate.dir ) <- c( "all", fcs.experiment$sample )
 
   for ( fig.dir in c( fcs.figure.popgate.dir, fcs.figure.actgate.dir ) ){
-    #full.path <- file.path( output.dir, fig.dir )
     if ( !file.exists( fig.dir ) ) {
       dir.create( fig.dir, recursive = TRUE )
     }
@@ -41,9 +41,12 @@ create.directories <- function( agp, fcs.experiment ) {
 
   # create statistics directory
 
-  if ( ! file.exists( agp$fcs.statistics.dir ) ){
-    #full.path <- file.path( output.dir, fcs.statistics.dir )
+  if ( ! file.exists( agp$fcs.statistics.dir ) )
     dir.create( agp$fcs.statistics.dir, recursive = TRUE )
-  }
 
+  # return directories to AutoGating parameter list
+
+  return( list(
+    pop.dir = fcs.figure.popgate.dir,
+    act.dir = fcs.figure.actgate.dir ) )
 }

@@ -1,24 +1,24 @@
-# do_activation_gates_from_definition.r
+# do_activation_gates_def.r
 
-#' @title do.activation.gates.from.definition
+#' @title do.activation.gates.def
 #'
 #' @description
 #' A function to calculate and execute gating for activation markers in the panel.
 #'
 #' @param fcs.gates The gates for flow cytometry data.
 #' @param fcs.gates.data Data used for generating? gates.
-#' @param fcs.activ.gates.definition Definitions of the activation marker gates.
-#' @param calculate.gates Logical?
+#' @param fcs.activ.gates.def Definitions of the activation marker gates.
+#' @param calculate.gates Logical
 #' @param figure.actgate.dir Directory for output?
 #' @return fcs.gates
 #' @export
 #'
 
-do.activation.gates.from.definition <- function( fcs.gates, fcs.gates.data,
-                                 fcs.activ.gates.definition, calculate.gates,
+do.activation.gates.def <- function( fcs.gates, fcs.gates.data,
+                                 fcs.activ.gates.def, calculate.gates,
                                  figure.actgate.dir )
 {
-  for ( activ.gate.def in fcs.activ.gates.definition )
+  for ( activ.gate.def in fcs.activ.gates.def )
   {
     marker.activation <- fcs.marker.activation[
       ! is.na( activ.gate.def[ fcs.marker.activation ] ) &

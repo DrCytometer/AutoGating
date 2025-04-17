@@ -4,14 +4,14 @@
 \alias{get.autogating.param.aurora}
 \title{get.autogating.param.aurora}
 \usage{
-get.autogating.param.aurora()
+get.autogating.param.aurora(autogating.param)
 }
 \arguments{
 \item{autogating.param}{The initial general parameter list provided by calling
 get.autogating.param.minimal.}
 }
 \value{
-description
+autogating.param Returns updated autogating parameters
 }
 \description{
 Get cytometer-specific parameters for Aurora files in order to perform autogating.

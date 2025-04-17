@@ -6,7 +6,7 @@
 #' Read in the fcs files for autogating.
 #'
 #' @importFrom flowCore read.flowSet compensate compensation transformList exprs
-#' @importFrom flowCore read.FCS
+#' @importFrom flowCore read.FCS fsApply
 #'
 #' @param param.dir File path to the transformation and compensation files.
 #' @param data.dir File path to the fcs files.
@@ -21,8 +21,10 @@
 #' file must be provided to compensation.filename.
 #' @param compensation.filename A csv file providing the compensation matrix to
 #' be applied. Required if compensate is set to TRUE.
+#' @param setup Logical. If TRUE, uses only the files selected for defining
+#' (calculating) the gates. If FALSE, processes all files.
 #'
-#' @return The expression (time, scatter and marker) data from the fcs files.
+#' @return fcs.data The expression (time, scatter and marker) data from the fcs files.
 #'
 #' @export
 #'
@@ -79,7 +81,7 @@ read.fcs.data <- function( param.dir, data.dir, transform.filename,
                                           flowCore::compensation( fcs.compensation ) )
 
   # transform
-  transformed.list <- fsApply( fcs.flow.set, function( ff ) {
+  transformed.list <- flowCore::fsApply( fcs.flow.set, function( ff ) {
     flowCore::transform( ff, flowCore::transformList( names( fcs.transform ), fcs.transform ) )
   }, simplify = FALSE)
 
@@ -148,7 +150,7 @@ read.fcs.data <- function( param.dir, data.dir, transform.filename,
     event.sample = fcs.event.sample
   )
 
-  cat( "\033[34m", "Done!", "\033[0m\n" )
+  cat( "\033[34m", "Flow data extracted.", "\033[0m\n" )
 
   return( fcs.data )
 }

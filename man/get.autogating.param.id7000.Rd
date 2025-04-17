@@ -4,7 +4,7 @@
 \alias{get.autogating.param.id7000}
 \title{get.autogating.param.id7000}
 \usage{
-get.autogating.param.id7000()
+get.autogating.param.id7000(autogating.param)
 }
 \arguments{
 \item{autogating.param}{The initial general parameter list provided by calling
