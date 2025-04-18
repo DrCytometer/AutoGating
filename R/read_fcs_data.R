@@ -10,8 +10,8 @@
 #'
 #' @param param.dir File path to the transformation and compensation files.
 #' @param data.dir File path to the fcs files.
-#' @param transform.filename The csv file defining the parameters of the
-#' biexponential transformation to be applied.
+#' @param fcs.transform.both The biexponential and inverse transformation
+#' to be applied.
 #' @param fcs.experiment Description of the cytometry experiment. Produced by
 #' read.experiment().
 #' @param fcs.panel Description of the cytometry panel. Produced by
@@ -30,7 +30,7 @@
 #'
 
 
-read.fcs.data <- function( param.dir, data.dir, transform.filename,
+read.fcs.data <- function( param.dir, data.dir, fcs.transform.both,
                            fcs.experiment, fcs.panel, agp,
                            compensate = FALSE, compensation.filename,
                            setup = TRUE ) {
@@ -39,9 +39,11 @@ read.fcs.data <- function( param.dir, data.dir, transform.filename,
 
   if ( setup ) {
     fcs.sample <- fcs.experiment$sample.gate.calc.filename
+    sample.name <- fcs.experiment$sample.gate.calculation
     sample.n <- fcs.experiment$sample.gate.calculation.n
   } else {
     fcs.sample <- fcs.experiment$sample.filename
+    sample.name <- fcs.experiment$sample
     sample.n <- fcs.experiment$sample.n
   }
 
@@ -52,21 +54,18 @@ read.fcs.data <- function( param.dir, data.dir, transform.filename,
                                                           compensation.filename ),
                                                fcs.panel )
 
-  fcs.transform.both <- read.transformation( file.path( param.dir,
-                                                        transform.filename ),
-                                             fcs.panel )
-
   fcs.transform <- fcs.transform.both[[ 1 ]]
   fcs.transform.inv <- fcs.transform.both[[ 2 ]]
-
 
   # read fcs files and apply compensation and transformation
 
   cat( "\033[34m", "Reading fcs files...", "\033[0m\n" )
 
-  fcs.flow.set <- read.flowSet( files = fcs.sample,
+  # suppressWarnings to shut down truncate_max_range warnings
+
+  fcs.flow.set <- suppressWarnings( read.flowSet( files = fcs.sample,
                                 path = data.dir, transformation = FALSE,
-                                truncate_max_range = FALSE )
+                                truncate_max_range = TRUE ) )
 
 
   fs.colnames <- colnames( exprs( fcs.flow.set[[ 1 ]] ) )
@@ -102,6 +101,7 @@ read.fcs.data <- function( param.dir, data.dir, transform.filename,
   }
 
   fcs.event.number.width <- floor( log10( fcs.sample.event.number.max ) ) + 1
+
   fcs.event.regexp <- sprintf( "\\.[0-9]{%d}$", fcs.event.number.width )
 
   cat( "\033[34m", "Extracting marker expression data...", "\033[0m\n" )
@@ -112,7 +112,7 @@ read.fcs.data <- function( param.dir, data.dir, transform.filename,
     expr.data <- expr.data[ , fcs.panel$panel$dye ]
     colnames( expr.data ) <- fcs.panel$panel$antigen
 
-    fcs.the.sample <- fcs.experiment$sample[ flow.idx ]
+    fcs.the.sample <- sample.name[ flow.idx ]
 
     fcs.the.event <- sprintf( "%s.%0*d", fcs.the.sample,
                               fcs.event.number.width, 1 : nrow( expr.data ) )
@@ -141,7 +141,7 @@ read.fcs.data <- function( param.dir, data.dir, transform.filename,
   fcs.event.n <- length( fcs.event )
 
   fcs.event.sample <- sub( fcs.event.regexp, "", fcs.event )
-  fcs.event.sample <- factor( fcs.event.sample, levels = fcs.sample )
+  fcs.event.sample <- factor( fcs.event.sample, levels = sample.name )
 
   fcs.data <- list(
     expr.data = fcs.expr.data,

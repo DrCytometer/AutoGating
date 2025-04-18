@@ -1,11 +1,11 @@
 # calculate_threshold_tail.r
 
-calculate.threshold.tail <- function( marker.data, threshold.param )
+calculate.threshold.tail <- function( marker.data, threshold.param, agp )
 {
     x <- marker.data
 
     if ( is.null( threshold.param ) )
-        tail.prob <- fcs.default.tail.probability
+        tail.prob <- agp$fcs.default.tail.probability
     else
         tail.prob <- as.numeric( threshold.param )
 

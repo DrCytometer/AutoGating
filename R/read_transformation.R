@@ -18,14 +18,14 @@
 #'
 
 read.transformation <- function( transformation.filepath, fcs.panel ) {
+
   fcs.transform.param <- read.csv( transformation.filepath,
                                    stringsAsFactors = FALSE )
-
-  fcs.transform.dye <- fcs.panel$dye[ c( fcs.panel$lineage.idx,
+  fcs.transform.dye <- fcs.panel$panel$dye[ c( fcs.panel$lineage.idx,
                                          fcs.panel$activation.idx ) ]
 
-  fcs.transform.antigen <- fcs.panel$antigen[ c( fcs.panel$lineage.idx,
-                                                 fcs.panel$activation.idx ) ]
+  fcs.transform.antigen <- fcs.panel$panel$antigen[ c( fcs.panel$lineage.idx,
+                                                       fcs.panel$activation.idx ) ]
 
   stopifnot( sort( fcs.transform.param$dye ) == sort( fcs.transform.dye ) )
 
@@ -54,8 +54,10 @@ read.transformation <- function( transformation.filepath, fcs.panel ) {
   fcs.transform <- fcs.transform[ fcs.transform.reorder ]
   fcs.transform.inv <- fcs.transform.inv[ fcs.transform.reorder ]
 
-  names( fcs.transform ) <- fcs.transform.antigen
-  names( fcs.transform.inv ) <- fcs.transform.antigen
+  # names( fcs.transform ) <- fcs.transform.antigen
+  # names( fcs.transform.inv ) <- fcs.transform.antigen
+  names( fcs.transform ) <- fcs.transform.dye
+  names( fcs.transform.inv ) <- fcs.transform.dye
 
   for ( fms in fcs.panel$scatter )
   {

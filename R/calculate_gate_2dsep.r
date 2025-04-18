@@ -2,7 +2,7 @@
 
 
 calculate.gate.2dsep <- function( gate.data, popul.name, gate.algorithm,
-    gate.param, gate.number, gate.name, fcs.population.gates, figure.dir )
+    gate.param, gate.number, gate.name, fcs.population.gates, figure.dir, agp )
 {
     stopifnot( length( gate.algorithm ) == 2 ||
         ( length( gate.algorithm ) == 1 &&
@@ -95,12 +95,12 @@ calculate.gate.2dsep <- function( gate.data, popul.name, gate.algorithm,
             paste0( "calculate.threshold.", gate.algorithm[[ 2 ]] ) )
 
         gate.ythr <- calculate.threshold.function.y( gate.data.calc[ , 2 ],
-            threshold.param )
+            threshold.param, agp )
 
         # plot densities and thresholds
 
         png( filename = file.path( figure.dir, sprintf(
-                "%0*d - %s - calculation.png", fcs.gate.number.width,
+                "%0*d - %s - calculation.png", agp$fcs.gate.number.width,
                 gate.number, gate.name ) ),
             width = 1024, height = 1536 )
         par( mfrow = c( 2, 1 ), mar = c( 5, 5, 1, 1 ), oma = c( 0, 0, 3, 0 ) )
@@ -123,7 +123,7 @@ calculate.gate.2dsep <- function( gate.data, popul.name, gate.algorithm,
 
         if ( is.null( join.boundary ) )
         {
-            if ( popul.name[ 1 ] != fcs.gate.parameter.ignore )
+            if ( popul.name[ 1 ] != agp$fcs.gate.parameter.ignore )
             {
                 # double negative population
 
@@ -143,7 +143,7 @@ calculate.gate.2dsep <- function( gate.data, popul.name, gate.algorithm,
                 gate.boundary.list[[ popul.name[ 1 ] ]] <- gate.boundary
             }
 
-            if ( popul.name[ 2 ] != fcs.gate.parameter.ignore )
+            if ( popul.name[ 2 ] != agp$fcs.gate.parameter.ignore )
             {
                 # x-positive population
 
@@ -163,7 +163,7 @@ calculate.gate.2dsep <- function( gate.data, popul.name, gate.algorithm,
                 gate.boundary.list[[ popul.name[ 2 ] ]] <- gate.boundary
             }
 
-            if ( popul.name[ 3 ] != fcs.gate.parameter.ignore )
+            if ( popul.name[ 3 ] != agp$fcs.gate.parameter.ignore )
             {
                 # y-positive population
 
@@ -183,7 +183,7 @@ calculate.gate.2dsep <- function( gate.data, popul.name, gate.algorithm,
                 gate.boundary.list[[ popul.name[ 3 ] ]] <- gate.boundary
             }
 
-            if ( popul.name[ 4 ] != fcs.gate.parameter.ignore )
+            if ( popul.name[ 4 ] != agp$fcs.gate.parameter.ignore )
             {
                 # double positive population
 

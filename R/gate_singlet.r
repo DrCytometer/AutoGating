@@ -18,6 +18,7 @@ gate.singlet <- function( x, area = "FSC-A", height = "FSC-H",
     }
 
     # filter out extrema points
+
     x <- data.frame( x[
         x[ , area ] > gate.skip.low * max( x[ , area ] ) +
             ( 1 - gate.skip.low ) * min( x[ , area ] ) &
@@ -41,24 +42,10 @@ gate.singlet <- function( x, area = "FSC-A", height = "FSC-H",
             sep = " + ")
     }
     rlm_formula <- as.formula(rlm_formula)
-    rlm_fit <- rlm(rlm_formula, data = x, maxit = maxit, ...)
+    rlm_fit <- MASS::rlm(rlm_formula, data = x, maxit = maxit, ...)
     if (!rlm_fit$converged) {
         warning("The IRLS algorithm employed in 'rlm' did not converge.")
     }
-
-    # which_min <- which.min(x[[area]])
-    # which_max <- which.max(x[[area]])
-    # x_extrema <- x[c(which_min, which_max), ]
-    # prediction_weights <- c(1, 1)
-    # if (wider_gate) {
-    #     prediction_weights <- rlm_fit$w[c(which_min, which_max)]
-    # }
-    # predictions <- predict(rlm_fit, x_extrema, interval = "prediction",
-    #     level = prediction_level, weights = prediction_weights)
-    # gate_vertices <- rbind(cbind(x_extrema[[area]][1], predictions[1,
-    #     "lwr"]), cbind(x_extrema[[area]][1], predictions[1, "upr"]),
-    #     cbind(x_extrema[[area]][2], predictions[2, "upr"]), cbind(x_extrema[[area]][2],
-    #         predictions[2, "lwr"]))
 
     x.delta <- ( max( x[[ area ]] ) - min( x[[ area ]] ) ) / ( gate.grid.n - 1 )
     x.grid <- seq( min( x[[ area ]] ), max( x[[ area ]] ), by = x.delta )
@@ -68,18 +55,29 @@ gate.singlet <- function( x, area = "FSC-A", height = "FSC-H",
 
     predictions <- predict(rlm_fit, x.predict, interval = "none" )
 
-    x.spread <- sapply( 1 : gate.grid.n, function( idx ) {
+    x.spread <- vapply( 1 : gate.grid.n, function( idx ) {
         x.range.idx <- which(
             abs( x[[ area ]] - x.grid[ idx ] ) < x.delta * spread.span )
-        x.pred <- x[ x.range.idx, ]
-        pred <- predict( rlm_fit, x.pred, interval = "none" )
 
-        x.range.pos.bol <- x[[ height ]][ x.range.idx ] > pred
-        x.range.pos.idx <- x.range.idx[ x.range.pos.bol ]
-        pred.pos <- pred[ x.range.pos.bol ]
+        # Check if x.range.idx is empty
+        if (length(x.range.idx) > 20 ) {
+          x.pred <- x[ x.range.idx, ]
+          pred <- predict( rlm_fit, x.pred, interval = "none" )
+          x.range.pos.bol <- x[[ height ]][ x.range.idx ] > pred
+          x.range.pos.idx <- x.range.idx[ x.range.pos.bol ]
+          pred.pos <- pred[ x.range.pos.bol ]
 
-        quantile( x[[ height ]][ x.range.pos.idx ] - pred.pos, 0.5 )
-    } )
+          spread_value <- quantile( x[[ height ]][ x.range.pos.idx ] - pred.pos,
+                                    0.5, na.rm = TRUE )
+
+          return( spread_value )
+        } else {
+          return( NA_real_ )
+        }
+    }, numeric(1) )
+
+    x.spread[ is.na( x.spread )] <- min( x.spread[ !is.null(x.spread) ], na.rm = TRUE )
+    x.spread[ is.null( x.spread ) ] <- min(x.spread[ !is.null(x.spread) ], na.rm = TRUE )
 
     x.spread <- x.spread *
         splinefun( spread.spline.x, spread.spline.y, method = "natural" )(
@@ -95,6 +93,6 @@ gate.singlet <- function( x, area = "FSC-A", height = "FSC-H",
                 predictions[ idx ] + spread.factor * x.spread[ idx ] ) ) ) )
 
     colnames(gate_vertices) <- channel_names
-    polygonGate(gate_vertices, filterId = filterId)
+    flowCore::polygonGate(gate_vertices, filterId = filterId)
 }
 

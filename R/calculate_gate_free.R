@@ -1,7 +1,8 @@
 # calculate_gate_free.r
 
 calculate.gate.free <- function( gate.data, popul.name, gate.algorithm,
-                                 gate.param, gate.number, gate.name, fcs.population.gates, figure.dir )
+                                 gate.param, gate.number, gate.name,
+                                 fcs.population.gates, figure.dir, agp )
 {
   stopifnot( length( gate.algorithm ) == 1 && length( popul.name ) == 1 )
 

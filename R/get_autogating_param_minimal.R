@@ -49,8 +49,8 @@ get.autogating.param.minimal <- function() {
     # set configuration parameters for graphics
 
     # fcs.histogram.bin.n = 256,
-
-    fcs.density.grid.n = 100,
+    fcs.bandwidth.factor = 20,
+    fcs.density.grid.n = 200,
     fcs.density.barheight = 30,
 
     fcs.palette.n = 1000,

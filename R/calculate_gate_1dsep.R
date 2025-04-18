@@ -1,7 +1,8 @@
 # calculate_gate_1dsep.r
 
 calculate.gate.1dsep <- function( gate.data, popul.name, gate.algorithm,
-                                  gate.param, gate.number, gate.name, fcs.population.gates, figure.dir )
+                                  gate.param, gate.number, gate.name,
+                                  fcs.population.gates, figure.dir, agp )
 {
   stopifnot( length( gate.algorithm ) == 1 )
 
@@ -83,7 +84,7 @@ calculate.gate.1dsep <- function( gate.data, popul.name, gate.algorithm,
     # plot density and threshold
 
     png( filename = file.path( figure.dir, sprintf(
-      "%0*d - %s - calculation.png", fcs.gate.number.width,
+      "%0*d - %s - calculation.png", agp$fcs.gate.number.width,
       gate.number, gate.name ) ),
       width = 1024, height = 768 )
     par( mar = c( 5, 5, 4, 1 ) )
@@ -97,7 +98,7 @@ calculate.gate.1dsep <- function( gate.data, popul.name, gate.algorithm,
 
     # calculate boundaries
 
-    if ( popul.name[ 1 ] != fcs.gate.parameter.ignore )
+    if ( popul.name[ 1 ] != agp$fcs.gate.parameter.ignore )
     {
       # negative population
 
@@ -121,7 +122,7 @@ calculate.gate.1dsep <- function( gate.data, popul.name, gate.algorithm,
       gate.boundary.list[[ popul.name[ 1 ] ]] <- gate.boundary
     }
 
-    if ( popul.name[ 2 ] != fcs.gate.parameter.ignore )
+    if ( popul.name[ 2 ] != agp$fcs.gate.parameter.ignore )
     {
       # positive population
 

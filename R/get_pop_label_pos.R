@@ -1,7 +1,7 @@
 # get_pop_label_pos.r
 
 get.pop.label.pos <- function( label.pos, pop.boundary, limit.x, limit.y,
-                               pop.label )
+                               pop.label, agp )
 {
   pop.xmax <- max( pop.boundary[ , 1 ] )
   pop.ymax <- max( pop.boundary[ , 2 ] )
@@ -16,48 +16,48 @@ get.pop.label.pos <- function( label.pos, pop.boundary, limit.x, limit.y,
   if ( label.pos == 1 ) {
     label.pos.x <- pop.xmin
     label.pos.y <- pop.ymin -
-      fcs.figure.label.height.factor * label.height *
+      agp$fcs.figure.label.height.factor * label.height *
       ( limit.y[ 2 ] - limit.y[ 1 ] )
   }
   else if ( label.pos == 2 ) {
     label.pos.x <- pop.xmax
     label.pos.y <- pop.ymin -
-      fcs.figure.label.height.factor * label.height *
+      agp$fcs.figure.label.height.factor * label.height *
       ( limit.y[ 2 ] - limit.y[ 1 ] )
   }
   else if ( label.pos == 3 ) {
     label.pos.x <- pop.xmin
     label.pos.y <- pop.ymax +
-      fcs.figure.label.height.factor * label.height *
+      agp$fcs.figure.label.height.factor * label.height *
       ( limit.y[ 2 ] - limit.y[ 1 ] )
   }
   else if ( label.pos == 4 ) {
     label.pos.x <- pop.xmax
     label.pos.y <- pop.ymax +
-      fcs.figure.label.height.factor * label.height *
+      agp$fcs.figure.label.height.factor * label.height *
       ( limit.y[ 2 ] - limit.y[ 1 ] )
   }
   else if ( label.pos == 5 ) {
     label.pos.x <- pop.xmin -
-      fcs.figure.label.width.factor * label.width *
+      agp$fcs.figure.label.width.factor * label.width *
       ( limit.x[ 2 ] - limit.x[ 1 ] )
     label.pos.y <- pop.ymin
   }
   else if ( label.pos == 6 ) {
     label.pos.x <- pop.xmax +
-      fcs.figure.label.width.factor * label.width *
+      agp$fcs.figure.label.width.factor * label.width *
       ( limit.x[ 2 ] - limit.x[ 1 ] )
     label.pos.y <- pop.ymin
   }
   else if ( label.pos == 7 ) {
     label.pos.x <- pop.xmin -
-      fcs.figure.label.width.factor * label.width *
+      agp$fcs.figure.label.width.factor * label.width *
       ( limit.x[ 2 ] - limit.x[ 1 ] )
     label.pos.y <- pop.ymax
   }
   else if ( label.pos == 8 ) {
     label.pos.x <- pop.xmax +
-      fcs.figure.label.width.factor * label.width *
+      agp$fcs.figure.label.width.factor * label.width *
       ( limit.x[ 2 ] - limit.x[ 1 ] )
     label.pos.y <- pop.ymax
   }

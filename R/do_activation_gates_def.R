@@ -9,14 +9,18 @@
 #' @param fcs.gates.data Data used for generating? gates.
 #' @param fcs.activ.gates.def Definitions of the activation marker gates.
 #' @param calculate.gates Logical
-#' @param figure.actgate.dir Directory for output?
+#' @param figure.actgate.dir Directory for output
+#' @param agp The AutoGating parameter list.
+#' @param fcs.transform The biexponential transformation list.
+#' @param fcs.panel Description of the cytometry panel. Produced by read.panel.design().
 #' @return fcs.gates
 #' @export
 #'
 
 do.activation.gates.def <- function( fcs.gates, fcs.gates.data,
                                  fcs.activ.gates.def, calculate.gates,
-                                 figure.actgate.dir )
+                                 figure.actgate.dir, agp, fcs.transform,
+                                 fcs.panel )
 {
   for ( activ.gate.def in fcs.activ.gates.def )
   {
@@ -86,7 +90,8 @@ do.activation.gates.def <- function( fcs.gates, fcs.gates.data,
 
         fcs.gates <- do.gate.generic( fcs.gates,
                                       fcs.gates.data[ , gate.marker ], activ.gate.def,
-                                      calculate.gates, figure.actgate.dir )
+                                      calculate.gates, figure.actgate.dir, agp,
+                                      fcs.transform, fcs.panel )
 
         str( fcs.gates[[ gate.name ]] )
         cat( "\n" )
