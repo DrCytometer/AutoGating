@@ -2,31 +2,55 @@
 % Please edit documentation in R/do_gate_generic.R
 \name{do.gate.generic}
 \alias{do.gate.generic}
-\title{do.gate.generic}
+\title{Generic Gate Orchestrator}
 \usage{
-do.gate.generic(
-  fcs.gates,
-  fcs.gate.data,
-  fcs.gate.def,
-  calculate.gate,
-  figure.dir
-)
+do.gate.generic(fcs.gates, fcs.gate.data, gd, ap, calculate.gate, figure.dir)
 }
 \arguments{
-\item{fcs.gates}{The gates for flow cytometry data.}
+\item{fcs.gates}{Named list.  Accumulator for gate results.}
 
-\item{fcs.gate.def}{Definitions of the gates.}
+\item{fcs.gate.data}{Numeric matrix with exactly two columns corresponding
+to \code{gd$gate.marker.x} and \code{gd$gate.marker.y}.}
 
-\item{figure.dir}{Directory for output?}
+\item{gd}{Named list.  Gate definition.  Required fields:
+\code{gate.number}, \code{gate.name}, \code{gate.type},
+\code{gate.marker.x}, \code{gate.marker.y}, \code{parent.gate},
+\code{parent.popul}, \code{populations}, \code{algorithm},
+\code{gate.param}.}
 
-\item{fcs.gates.data}{Data used for generating? gates.}
+\item{ap}{Autogating parameter object returned by
+\code{\link{get.autogating.param}}.}
 
-\item{calculate.gates}{Logical?}
+\item{calculate.gate}{Logical.  If \code{TRUE}, compute gate boundaries;
+if \code{FALSE}, reuse boundaries already stored in \code{fcs.gates}.}
+
+\item{figure.dir}{Character.  Output directory for diagnostic PNG figures.}
 }
 \value{
-fcs.gates
+Updated \code{fcs.gates} list with boundary, event indices,
+fraction, and label populated for each non-ignored population of this
+gate.
 }
 \description{
-The generic gating function. Will generate flow cytometry gates based on the
-gate structure and data fed in. Outputs plots and returns gates.
+The central workhorse of the gating pipeline.  For a single gate defined by
+\code{gd}, it:
+\enumerate{
+\item Resolves the full parameter set via \code{\link{resolve.gate.param}}.
+\item Retrieves parent-population event indices from \code{fcs.gates} (or
+uses all events for gate number 0).
+\item Optionally calls the appropriate \code{calculate.gate.<type>()}
+function to compute and store polygon boundary matrices.
+\item Calls \code{\link{apply.gate}} to run point-in-polygon assignment.
+\item Calls \code{\link{gate.plot}} to generate and save a diagnostic PNG
+(skipped for gate number 0).
 }
+}
+\details{
+Orchestrate boundary calculation, event assignment, and plotting for one gate
+}
+\seealso{
+\code{\link{apply.gate}}, \code{\link{gate.plot}},
+\code{\link{resolve.gate.param}}, \code{\link{calculate.gate.free}},
+\code{\link{calculate.gate.1dsep}}, \code{\link{calculate.gate.2dsep}}
+}
+\keyword{internal}

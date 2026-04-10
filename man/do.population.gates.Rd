@@ -2,32 +2,54 @@
 % Please edit documentation in R/do_population_gates.R
 \name{do.population.gates}
 \alias{do.population.gates}
-\title{do.population.gates}
+\title{Execute Population Gating Pipeline}
 \usage{
 do.population.gates(
   fcs.gates,
   fcs.gates.data,
-  fcs.popul.gates.definition,
+  gate.defs,
+  ap,
   calculate.gates,
-  figure.popgate.dir
+  figure.dir
 )
 }
 \arguments{
-\item{fcs.gates}{The gates to be generated.}
+\item{fcs.gates}{Named list.  Accumulator for gate results; updated in
+place across iterations and returned on completion.}
 
-\item{fcs.gates.data}{Data to be used to generate the gates.}
+\item{fcs.gates.data}{Numeric matrix.  Full expression matrix (rows =
+events, columns = channels/antigens) for all samples in the current
+batch.}
 
-\item{fcs.popul.gates.definition}{Definitions of the gates, obtained from the
-gate parameter table.}
+\item{gate.defs}{List of gate definition lists, each following the
+standard gate definition schema (fields: \code{gate.number},
+\code{gate.name}, \code{gate.type}, \code{gate.marker.x},
+\code{gate.marker.y}, \code{parent.gate}, \code{parent.popul},
+\code{populations}, \code{algorithm}, \code{gate.param},
+\code{stats.parent}).}
 
-\item{calculate.gates}{Logical?}
+\item{ap}{Autogating parameter object returned by
+\code{\link{get.autogating.param}}.}
 
-\item{figure.popgate.dir}{The directory where the figures will be generated.}
+\item{calculate.gates}{Logical.  If \code{TRUE}, gate boundaries are
+(re-)calculated from data; if \code{FALSE}, previously stored boundaries
+in \code{fcs.gates} are used directly and only event assignment is
+repeated.}
+
+\item{figure.dir}{Character.  Output directory for diagnostic PNG figures.}
 }
 \value{
-fcs.gates
+Updated \code{fcs.gates} list with all population gates applied.
 }
 \description{
-A function to calculate and execute gating for population (cell type) gates
-in the panel.
+Iterates over a list of population gate definitions and calls
+\code{\link{do.gate.generic}} for each one, passing the appropriate
+two-column data slice from the full expression matrix.  Progress is logged
+to the console via \code{message()}.
+}
+\details{
+Run all population gates in sequence
+}
+\seealso{
+\code{\link{do.gate.generic}}, \code{\link{do.activation.gates}}
 }

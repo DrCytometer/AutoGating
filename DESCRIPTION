@@ -1,31 +1,68 @@
 Package: AutoGating
-Type: Package
-Title: An Automated Gating Workflow for Flow Cytometry Data
-Version: 0.1.0
+Title: Automated Flow Cytometry Gating Pipeline
+Version: 0.2.0
 Authors@R: c(
-    person(
-      "Carlos", "Roca",
-      email = "carlosproca@gmail.com",
-      role = c("aut", "cre")
-    ),
     person(
       "Oliver", "Burton",
       email = "olivertburton@gmail.com",
-      role = c("aut")
+      role = c("aut", "cre"),
+      comment = c( ORCID = "0000-0003-3884-7373" )
+    ),
+     person(
+      "Carlos P.", "Roca",
+      email = "carlosproca@gmail.com",
+      role = c("aut"),
+      comment = c( ORCID = "0000-0003-0230-1926" )
+    ),
+    person(
+      "Adrian", "Liston",
+      email = "adrian.liston.com",
+      role = c("aut"),
+      comment = c( ORCID = "0000-0002-6272-4085" )
     )
   )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
-License: GPL (>= 3)
+Description:
+    Provides an automated, reproducible pipeline for gating multi-colour flow
+    cytometry data stored in FCS files.  Starting from raw FCS data, the
+    package applies spectral compensation and biexponential transformation,
+    then executes a user-defined sequence of population gates (singlets,
+    leukocytes, lineage sub-populations) followed by activation marker gates.
+    Gate boundaries are calculated automatically from the data using one of
+    four threshold algorithms — symmetric tail probability, bimodal valley
+    detection, Gaussian mixture model crossover, or KDE local minimum — or
+    can be replicated from a previously calculated gate.  All gates are
+    visualised as density-coloured scatter plots with labelled population
+    boundaries, and population fractions together with activation marker
+    expression statistics (fraction positive, median, IQR) are exported as
+    tidy CSV files.  Instrument-specific parameter profiles are provided for
+    the BD FACSymphony, Cytek Aurora, and Sony ID7000 cytometers, and new
+    profiles can be added by implementing a single parameter-override function.
+License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.3.2
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends:
+    R (>= 4.1.0)
+Imports:
+    flowCore (>= 2.4.0),
+    flowStats (>= 4.4.0),
+    flowWorkspace (>= 4.4.0),
+    MASS (>= 7.3-55),
+    mclust (>= 5.4.10),
+    modeest (>= 2.4.0),
+    fields (>= 14.1),
+    ggplot2 (>= 3.4.0),
+    scattermore (>= 0.8),
+    sp (>= 1.5-0),
+    tools,
+    ragg
+Suggests:
+    AutoSpectralRcpp,
+    parallel,
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown
+Config/testthat/edition: 3
+VignetteBuilder: knitr
 URL: https://github.com/DrCytometer/AutoGating
 BugReports: https://github.com/DrCytometer/AutoGating/issues
-Imports:
-    KernSmooth,
-    flowCore,
-    flowWorkspace,
-    ggplot2,
-    scattermore,
-    sp
