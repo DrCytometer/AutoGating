@@ -46,8 +46,7 @@ get.autogating.param.id7000 <- function( ap ) {
 
     # ---- default transformation parameters ------------------------------------
     # All fluorescence channels use these unless overridden by a per-experiment
-    # transformation CSV.  The only channel that differs in practice for st1 is
-    # BYG790-A (CCR7): neg = 1, width = -20, pos = 4.418539922.
+    # transformation CSV.
 
     ap$transformation.defaults <- list(
         length    = 256,
@@ -76,7 +75,7 @@ get.autogating.param.id7000 <- function( ap ) {
     ap$gate.defaults$label.size <- 4
 
     ap$gate.defaults$algorithm.1dsep         <- "tail"
-    ap$gate.defaults$algorithm.2dsep         <- c( "bimodal", "bimodal" )
+    ap$gate.defaults$algorithm.2dsep         <- c( "mixture", "mixture" )
     ap$gate.defaults$default.tail.probability <- 0.99
 
     return(ap)

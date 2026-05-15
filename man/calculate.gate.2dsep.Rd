@@ -17,12 +17,11 @@ calculate.gate.2dsep(
 )
 }
 \arguments{
-\item{gate.data}{Numeric matrix (n x 2).  Events from the parent
-population.}
+\item{gate.data}{Numeric matrix (n x 2).  Events from the parent}
 
-\item{popul.names}{Character vector of length 4 (or 1 when \code{join} is
-set).  Names of the DN, x-pos, y-pos, and DP populations (in order);
-\code{"*"} skips the corresponding boundary.}
+\item{popul.names}{Character vector of length 4 (when \code{join} is
+\code{NULL}), length 1 (joined polygon only), or length 2 (joined polygon
+plus named complement population) when \code{join} is set.}
 
 \item{algorithm}{Character vector of length 2.  Threshold algorithm for the
 x-axis (\code{[1]}) and y-axis (\code{[2]}), or a length-1 vector

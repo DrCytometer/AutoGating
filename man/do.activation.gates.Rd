@@ -10,7 +10,8 @@ do.activation.gates(
   act.defs,
   ap,
   calculate.gates,
-  figure.dir
+  figure.dir,
+  plot.gates = TRUE
 )
 }
 \arguments{
@@ -35,6 +36,8 @@ strings).}
 from data.}
 
 \item{figure.dir}{Character.  Output directory for diagnostic PNG figures.}
+
+\item{plot.gates}{Logical.  Whether to produce figures for the gates.}
 }
 \value{
 Updated \code{fcs.gates} list with all activation gates applied.

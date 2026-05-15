@@ -34,6 +34,7 @@
 #' @param calculate.gate Logical.  If \code{TRUE}, compute gate boundaries;
 #'   if \code{FALSE}, reuse boundaries already stored in \code{fcs.gates}.
 #' @param figure.dir Character.  Output directory for diagnostic PNG figures.
+#' @param plot.gates Logical.  Whether to produce figures for the gates.
 #'
 #' @return Updated \code{fcs.gates} list with boundary, event indices,
 #'   fraction, and label populated for each non-ignored population of this
@@ -44,8 +45,15 @@
 #'   \code{\link{calculate.gate.1dsep}}, \code{\link{calculate.gate.2dsep}}
 #'
 #' @keywords internal
-do.gate.generic <- function( fcs.gates, fcs.gate.data, gd, ap,
-                             calculate.gate, figure.dir ) {
+do.gate.generic <- function(
+    fcs.gates,
+    fcs.gate.data,
+    gd,
+    ap,
+    calculate.gate,
+    figure.dir,
+    plot.gates = TRUE
+  ) {
 
   # ---- resolve full parameter set ------------------------------------------
 
@@ -110,8 +118,8 @@ do.gate.generic <- function( fcs.gates, fcs.gate.data, gd, ap,
                            gate.name, gd$populations, ap )
 
   # ---- plot ----------------------------------------------------------------
-
-  if ( gate.number > 0L )
+  is.replicate <- length( gd$algorithm ) == 1 & "replicate" %in% gd$algorithm
+  if ( gate.number > 0L && plot.gates && !is.replicate )
     gate.plot( fcs.gates, gate.data, gate.name, gate.number,
                gate.marker.x, gate.marker.y, gd$populations, p,
                figure.dir, ap )

@@ -31,14 +31,22 @@
 #' @param calculate.gates Logical.  Whether to (re-)calculate gate boundaries
 #'   from data.
 #' @param figure.dir Character.  Output directory for diagnostic PNG figures.
+#' @param plot.gates Logical.  Whether to produce figures for the gates.
 #'
 #' @return Updated \code{fcs.gates} list with all activation gates applied.
 #'
 #' @seealso \code{\link{do.gate.generic}}, \code{\link{do.population.gates}}
 #'
 #' @export
-do.activation.gates <- function( fcs.gates, fcs.gates.data, act.defs, ap,
-                                 calculate.gates, figure.dir ) {
+do.activation.gates <- function(
+    fcs.gates,
+    fcs.gates.data,
+    act.defs,
+    ap,
+    calculate.gates,
+    figure.dir,
+    plot.gates = TRUE
+  ) {
 
   for ( ad in act.defs ) {
 
@@ -100,7 +108,8 @@ do.activation.gates <- function( fcs.gates, fcs.gates.data, act.defs, ap,
         act.gd,
         ap,
         calculate.gate = calculate.gates,
-        figure.dir     = figure.dir
+        figure.dir     = figure.dir,
+        plot.gates     = plot.gates
       )
     }
   }

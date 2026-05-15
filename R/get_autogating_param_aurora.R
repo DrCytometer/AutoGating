@@ -45,8 +45,7 @@ get.autogating.param.aurora <- function( ap ) {
 
     # ---- default transformation parameters ------------------------------------
     # All fluorescence channels use these unless overridden by a per-experiment
-    # transformation CSV.  The only channel that differs in practice for st1 is
-    # BYG790-A (CCR7): neg = 1, width = -20, pos = 4.418539922.
+    # transformation CSV.
 
     ap$transformation.defaults <- list(
         length    = 256,
@@ -62,10 +61,10 @@ get.autogating.param.aurora <- function( ap ) {
     ap$gate.defaults$density.trimneg.x <- TRUE
     ap$gate.defaults$density.trimneg.y <- FALSE
 
-    ap$gate.defaults$break.x        <- c( -1, 0, 1, 10, 100 )
-    ap$gate.defaults$break.x.factor <- 1000
-    ap$gate.defaults$break.y        <- c( -1, 0, 1, 10, 100 )
-    ap$gate.defaults$break.y.factor <- 1000
+    ap$gate.defaults$break.x        <- c( -1, -0.1, 0, 0.1, 1, 10, 100 )
+    ap$gate.defaults$break.x.factor <- 1e4
+    ap$gate.defaults$break.y        <- c( -1, -0.1, 0, 0.1, 1, 10, 100 )
+    ap$gate.defaults$break.y.factor <- 1e4
 
     # Scatter-channel plot breaks (FSC / SSC axes)
     ap$gate.defaults$break.scatter        <- c( 0, 1000, 2000, 3000, 4000, 4500 )
@@ -75,7 +74,7 @@ get.autogating.param.aurora <- function( ap ) {
     ap$gate.defaults$label.size <- 4
 
     ap$gate.defaults$algorithm.1dsep         <- "tail"
-    ap$gate.defaults$algorithm.2dsep         <- c( "bimodal", "bimodal" )
+    ap$gate.defaults$algorithm.2dsep         <- c( "mixture", "mixture" )
     ap$gate.defaults$default.tail.probability <- 0.99
 
     ap

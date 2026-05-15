@@ -31,14 +31,22 @@
 #'   in \code{fcs.gates} are used directly and only event assignment is
 #'   repeated.
 #' @param figure.dir Character.  Output directory for diagnostic PNG figures.
+#' @param plot.gates Logical.  Whether to produce figures for the gates.
 #'
 #' @return Updated \code{fcs.gates} list with all population gates applied.
 #'
 #' @seealso \code{\link{do.gate.generic}}, \code{\link{do.activation.gates}}
 #'
 #' @export
-do.population.gates <- function( fcs.gates, fcs.gates.data, gate.defs, ap,
-                                 calculate.gates, figure.dir ) {
+do.population.gates <- function(
+    fcs.gates,
+    fcs.gates.data,
+    gate.defs,
+    ap,
+    calculate.gates,
+    figure.dir,
+    plot.gates = TRUE
+  ) {
 
   for ( gd in gate.defs ) {
     gate.marker <- c( gd$gate.marker.x, gd$gate.marker.y )
@@ -53,7 +61,8 @@ do.population.gates <- function( fcs.gates, fcs.gates.data, gate.defs, ap,
       gd,
       ap,
       calculate.gate = calculate.gates,
-      figure.dir     = figure.dir
+      figure.dir     = figure.dir,
+      plot.gates     = plot.gates
     )
   }
 

@@ -234,10 +234,9 @@ calculate.gate.1dsep <- function( gate.data, popul.names, algorithm, p,
 #' \code{figure.dir}.
 #'
 #' @param gate.data Numeric matrix (n x 2).  Events from the parent
-#'   population.
-#' @param popul.names Character vector of length 4 (or 1 when \code{join} is
-#'   set).  Names of the DN, x-pos, y-pos, and DP populations (in order);
-#'   \code{"*"} skips the corresponding boundary.
+#' @param popul.names Character vector of length 4 (when \code{join} is
+#'   \code{NULL}), length 1 (joined polygon only), or length 2 (joined polygon
+#'   plus named complement population) when \code{join} is set.
 #' @param algorithm Character vector of length 2.  Threshold algorithm for the
 #'   x-axis (\code{[1]}) and y-axis (\code{[2]}), or a length-1 vector
 #'   \code{"replicate"}.
@@ -287,7 +286,7 @@ calculate.gate.2dsep <- function( gate.data, popul.names, algorithm, p,
 
     stopifnot(
         ( is.null( join ) && length( popul.names ) == 4L ) ||
-        ( !is.null( join ) && length( popul.names ) == 1L )
+        ( !is.null( join ) && length( popul.names ) %in% c(1L, 2L) )
     )
 
     lim.xmin    <- p$limit.xmin
@@ -371,19 +370,66 @@ calculate.gate.2dsep <- function( gate.data, popul.names, algorithm, p,
 
     } else {
 
-        # Joined boundary: currently only "1:2:3" (L-shape: DN + Xpos + Ypos)
-        if ( join == "1:2:3" ) {
-            boundary.list[[ popul.names[ 1L ] ]] <- rbind(
-                c( xmin.full, ymin.full ),
-                c( xmax.full, ymin.full ),
-                c( xmax.full, y.thr     ),
-                c( x.thr,     y.thr     ),
-                c( x.thr,     ymax.full ),
-                c( xmin.full, ymax.full )
-            )
-        } else {
-            stop( sprintf( "Unknown join pattern: '%s'", join ) )
-        }
+      # ---- joined L-shaped boundary ----------------------------------------
+      #
+      # Quadrant index convention:
+      #   1 = DN   [xmin, xthr] x [ymin, ythr]
+      #   2 = Xpos [xthr, xmax] x [ymin, ythr]
+      #   3 = Ypos [xmin, xthr] x [ythr, ymax]
+      #   4 = DP   [xthr, xmax] x [ythr, ymax]
+      #
+      # join is a sorted integer vector of the three quadrant indices to merge.
+      # The complement quadrant (if popul.names[2] is given and not "*") gets
+      # a standard rectangular boundary.
+
+      complement <- setdiff( 1L:4L, join )   # single integer
+
+      # Rectangle lookup: list indexed 1..4 -> make.rect.boundary() args
+      quad.rect <- list(
+        make.rect.boundary( xmin.full, x.thr,     ymin.full, y.thr     ),  # 1 DN
+        make.rect.boundary( x.thr,     xmax.full, ymin.full, y.thr     ),  # 2 Xpos
+        make.rect.boundary( xmin.full, x.thr,     y.thr,     ymax.full ),  # 3 Ypos
+        make.rect.boundary( x.thr,     xmax.full, y.thr,     ymax.full )   # 4 DP
+      )
+
+      # L-shaped polygon vertices (clockwise) for every possible complement.
+      # Each shape is the full bounding box minus one corner rectangle.
+      l.shape <- switch( complement,
+                         # complement = 1 (DN missing): Xpos + Ypos + DP
+                         rbind( c( x.thr,     ymin.full ),
+                                c( xmax.full, ymin.full ),
+                                c( xmax.full, ymax.full ),
+                                c( xmin.full, ymax.full ),
+                                c( xmin.full, y.thr     ),
+                                c( x.thr,     y.thr     ) ),
+                         # complement = 2 (Xpos missing): DN + Ypos + DP
+                         rbind( c( xmin.full, ymin.full ),
+                                c( x.thr,     ymin.full ),
+                                c( x.thr,     y.thr     ),
+                                c( xmax.full, y.thr     ),
+                                c( xmax.full, ymax.full ),
+                                c( xmin.full, ymax.full ) ),
+                         # complement = 3 (Ypos missing): DN + Xpos + DP
+                         rbind( c( xmin.full, ymin.full ),
+                                c( xmax.full, ymin.full ),
+                                c( xmax.full, ymax.full ),
+                                c( x.thr,     ymax.full ),
+                                c( x.thr,     y.thr     ),
+                                c( xmin.full, y.thr     ) ),
+                         # complement = 4 (DP missing): DN + Xpos + Ypos
+                         rbind( c( xmin.full, ymin.full ),
+                                c( xmax.full, ymin.full ),
+                                c( xmax.full, y.thr     ),
+                                c( x.thr,     y.thr     ),
+                                c( x.thr,     ymax.full ),
+                                c( xmin.full, ymax.full ) )
+      )
+
+      if ( popul.names[ 1L ] != "*" )
+        boundary.list[[ popul.names[ 1L ] ]] <- l.shape
+
+      if ( length( popul.names ) == 2L && popul.names[ 2L ] != "*" )
+        boundary.list[[ popul.names[ 2L ] ]] <- quad.rect[[ complement ]]
     }
 
     return(boundary.list)

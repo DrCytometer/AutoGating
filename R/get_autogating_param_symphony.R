@@ -77,7 +77,7 @@ get.autogating.param.symphony <- function( ap ) {
     ap$gate.defaults$label.size <- 4
 
     ap$gate.defaults$algorithm.1dsep         <- "tail"
-    ap$gate.defaults$algorithm.2dsep         <- c( "bimodal", "bimodal" )
+    ap$gate.defaults$algorithm.2dsep         <- c( "mixture", "mixture" )
     ap$gate.defaults$default.tail.probability <- 0.99
 
     ap

@@ -106,6 +106,8 @@ calculate.population.statistics <- function( fcs.gates.sample,
         }
     }
 
+    stats[ is.na(stats) ] <- 0
+
     return(stats)
 }
 
@@ -188,6 +190,8 @@ calculate.activation.statistics <- function( fcs.gates.sample,
             }
         }
     }
+
+    stats[ is.na(stats) ] <- 0
 
     return(stats)
 }

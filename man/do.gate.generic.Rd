@@ -4,7 +4,15 @@
 \alias{do.gate.generic}
 \title{Generic Gate Orchestrator}
 \usage{
-do.gate.generic(fcs.gates, fcs.gate.data, gd, ap, calculate.gate, figure.dir)
+do.gate.generic(
+  fcs.gates,
+  fcs.gate.data,
+  gd,
+  ap,
+  calculate.gate,
+  figure.dir,
+  plot.gates = TRUE
+)
 }
 \arguments{
 \item{fcs.gates}{Named list.  Accumulator for gate results.}
@@ -25,6 +33,8 @@ to \code{gd$gate.marker.x} and \code{gd$gate.marker.y}.}
 if \code{FALSE}, reuse boundaries already stored in \code{fcs.gates}.}
 
 \item{figure.dir}{Character.  Output directory for diagnostic PNG figures.}
+
+\item{plot.gates}{Logical.  Whether to produce figures for the gates.}
 }
 \value{
 Updated \code{fcs.gates} list with boundary, event indices,

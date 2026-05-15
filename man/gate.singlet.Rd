@@ -12,7 +12,7 @@ gate.singlet(
   filterId = "singlet",
   maxit = 100,
   gate.grid.n = 20,
-  gate.skip.low = 0.015,
+  gate.skip.low = 0.01,
   gate.skip.high = 0.15,
   spread.span = 0.5,
   spread.factor = 10,
