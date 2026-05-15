@@ -301,4 +301,22 @@ write.table( activation.stats,
     sep   = ",", quote = FALSE, row.names = FALSE )
 
 message( "Done." )
-sessionInfo()
+
+## differential abundance analysis
+library( limma )
+library( pheatmap )
+
+diff.res <- calculate.differential.abundance(
+  population.stats,
+  activation.stats,
+  ap,
+  experiment.filename = "fcs_experiment_st1.csv"
+)
+
+
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 Package: AutoGating
 Title: Automated Flow Cytometry Gating Pipeline
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
     person(
       "Oliver", "Burton",
@@ -44,6 +44,7 @@ RoxygenNote: 7.3.3
 Depends:
     R (>= 4.1.0)
 Imports:
+    Biobase,
     flowCore (>= 2.4.0),
     flowStats (>= 4.4.0),
     flowWorkspace (>= 4.4.0),
@@ -52,12 +53,17 @@ Imports:
     modeest (>= 2.4.0),
     fields (>= 14.1),
     ggplot2 (>= 3.4.0),
+    ggrepel,
+    limma,
+    pheatmap,
+    ragg,
     scattermore (>= 0.8),
     sp (>= 1.5-0),
     tools,
-    ragg
+    xml2
 Suggests:
     AutoSpectralRcpp,
+    dplyr,
     parallel,
     testthat (>= 3.0.0),
     knitr,
