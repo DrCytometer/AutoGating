@@ -68,11 +68,13 @@ data.a <- read.events( "data_a.csv" )
 data.b <- read.events( "data_b.csv" )
 tf <- list( CD3 = list( id = 1, scale.t = 262144, logicle.w = 0.5, logicle.m = 4.5, logicle.a = 0 ) )
 
+# No display limits, as in engine_reference.py (axis.limits = list() turns
+# off the default 0 to 1 limits of the transformed channels).
 el <- system.time( {
-    train <- train.boundaries( gates, data.a, transforms = tf )
+    train <- train.boundaries( gates, data.a, axis.limits = list(), transforms = tf )
     applied <- run.gating( gates, data.b, reference = train$boundaries,
                            modes = list( cd3 = "recalculate", live = "recalculate" ),
-                           transforms = tf )
+                           axis.limits = list(), transforms = tf )
 } )[ "elapsed" ]
 
 py <- utils::read.csv( file.path( ref.dir, "gating.csv" ), stringsAsFactors = FALSE )
