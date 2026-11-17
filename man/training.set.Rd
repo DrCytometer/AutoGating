@@ -18,9 +18,11 @@ data (the pooled events) and messages.
 \description{
 The samples marked \code{gate.calculation} in the experiment file (every
 sample when none is marked) and \code{ap$events.per.sample} events drawn
-from each (\code{\link{training.events}}, seed \code{ap$seed}).
+from each (\code{\link{training.events}}, seed \code{ap$seed}): the
+events \code{\link{define.gates}} trains on.  Pass \code{data} to
+\code{\link{convert.imported.gates}} to convert imported gates on the
+same events.
 }
 \details{
 Training samples and events of an experiment
 }
-\keyword{internal}

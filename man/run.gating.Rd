@@ -32,10 +32,13 @@ run.gating(
 \item{drift.action}{"flag", or "reference" to use the reference boundary
 for flagged gates.}
 
-\item{axis.limits}{Named list of display limits, or \code{NULL}.}
+\item{axis.limits}{Named list channel -> \code{c(lo, hi)} display limits:
+polygons and ranges test off-scale events on these edges, and threshold
+rectangles are drawn to them.  \code{NULL} gives the display scale, 0 to
+1, for every channel in \code{transforms}.}
 
 \item{transforms}{Named list of transform parameters (for threshold
-factors).}
+factors and the default display limits).}
 }
 \value{
 Gating result (see the file header of \code{gate_application.R}).

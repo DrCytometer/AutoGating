@@ -79,7 +79,7 @@ then transforms every channel onto the 0 to 1 display scale.
 giving each event's sample.
 }
 
-Compensation follows the flowCore convention: the CSV holds the spillover
+Compensation follows the FCS \code{$SPILLOVER} convention: the CSV holds the spillover
 matrix (rows = fluorochromes, columns = detectors, diagonal 1), and the
 compensated values are \eqn{X S^{-1}} on the lineage and activation
 channels.

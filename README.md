@@ -15,14 +15,18 @@ drawn gates converted to calculated ones.
 ## Installation
 
 ```r
-remotes::install_github("DrCytometer/AutoSpectral")
-remotes::install_github("DrCytometer/AutoGating")
+install.packages("pak")
+pak::pak("DrCytometer/AutoGating")
 
 # for the app
-install.packages(c("shiny", "bslib", "DT", "shinyFiles"))
+pak::pak(c("shiny", "bslib", "DT", "shinyFiles"))
 ```
 
 ## Pipeline
+
+The FCS files are compensated or unmixed data: unmix spectral data first
+(AutoSpectral, Honeychrome or the instrument software). Compensation of
+conventional data can be done here with `compensation.filename`.
 
 ```r
 library(AutoGating)
@@ -47,9 +51,29 @@ stats <- differential.statistics(gating, "samples.csv", group.column = "group",
 ```
 
 `create.panel.file()` and `create.experiment.file()` draft the panel and
-experiment files from the FCS files. Figures of every gate on the training
-events are written by `define.gates()`; `figure.samples = TRUE` draws every gate
-on every sample as well.
+experiment files from the FCS files; check the draft panel and remove the
+channels that are not gated (for example an event ID or autofluorescence
+channel). Figures of every gate on the training events are written by
+`define.gates()` (`figure.training = FALSE` skips them); `figure.samples = TRUE`
+draws every gate on every sample as well.
+
+## From a FlowJo workspace
+
+```r
+imported  <- import.flowjo.workspace("template.wspt", fcs.setup, ap)
+imported$mapping                                    # FlowJo parameter -> panel channel
+converted <- convert.imported.gates(imported$gate.definitions,
+                                    training.set(fcs.setup, ap)$data,   # the events define.gates trains on
+                                    transforms = fcs.setup$ap$transform.params,
+                                    panel      = fcs.setup$fcs.panel)
+converted$proposals                                 # algorithm chosen for each gate, with its agreement
+model <- define.gates(fcs.setup, ap, model = new.agmodel(converted$gate.definitions))
+```
+
+Drawn gates are first applied as drawn; `convert.imported.gates()` replaces each
+with the calculated gate (type and threshold algorithm) that best reproduces it
+on the data. Gates with a low `agreement` are worth checking in the figures or
+the app.
 
 ## App
 

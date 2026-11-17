@@ -15,10 +15,12 @@
 #'
 #' The function:
 #' \enumerate{
-#'   \item Reads the FCS parameter block via
-#'     \code{\link[flowCore]{read.FCS}}.
-#'   \item Removes known autofluorescence channels (\code{AF},
-#'     \code{Autofluorescence}, \code{AF Index}).
+#'   \item Reads the FCS keywords with
+#'     \code{\link[AutoSpectral]{readFCS}}.
+#'   \item Removes autofluorescence channels: descriptions \code{AF} or
+#'     \code{AF Index}, or containing \code{Autofluorescence} (e.g.
+#'     Honeychrome's \code{Autofluorescence Abundance} and
+#'     \code{Autofluorescence Index}).
 #'   \item Fills missing marker descriptions (\code{NA}) with the channel
 #'     name so that every row has a non-empty \code{antigen} value.
 #'   \item Assigns a default \code{type} based on channel name:
@@ -64,7 +66,8 @@ create.panel.file <- function( fcs.file, filename = "panel_file" ) {
     }, character( 1L ) )
 
     # Remove autofluorescence channels - not used in any gate
-    non.af.idx <- which( !markers %in% c( "AF", "Autofluorescence", "AF Index" ) )
+    non.af.idx <- which( !( markers %in% c( "AF", "AF Index" ) |
+                            grepl( "Autofluorescence", markers, fixed = TRUE ) ) )
     channels <- channels[ non.af.idx ]
     markers  <- markers[  non.af.idx ]
 

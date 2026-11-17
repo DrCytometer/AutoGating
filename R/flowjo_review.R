@@ -25,13 +25,17 @@
 #
 # Agreement of a candidate is the mean over the drawn populations of the
 # events in both the drawn and the calculated population divided by the
-# events in the larger of the two.  At most 10,000 parent events are used
+# events in the larger of the two.  The agreement reported in the proposals
+# is NA when, on any threshold axis, less than 2% of the parent or fewer
+# than 50 events are drawn positive (nothing to agree on); it does not
+# affect the choice of candidate.  At most 10,000 parent events are used
 # per gate (seeded subsample).  Honeychrome's interactive split of 2dsep
 # gates into 1-D gates is not part of this conversion.
 
 
 fj.review <- list( centred.below.zero = 0.40, spans.zero.below = 0.05, replicate.positive = 0.40,
                    separates.min = 0.01, fit.max.events = 10000L, evidence.min.events = 50L,
+                   score.min.positive = 0.02,
                    overlap.limit = 0.5, overlap.min.events = 20L, overlap.same.as.ancestor = 0.9 )
 
 fj.fit.candidates <- list(
@@ -624,7 +628,9 @@ fj.overlapping.populations <- function( gate.defs, result, n, limit = fj.review$
 #'
 #' @return List with gate.definitions (converted), proposals (one row per
 #'   converted gate: type before and after, algorithm per axis, reason,
-#'   share below zero, share drawn positive, best agreement) and overlaps
+#'   share below zero, share drawn positive, best agreement, NA when less
+#'   than 2\% of the parent or fewer than 50 events are drawn positive on an
+#'   axis) and overlaps
 #'   (see \code{fj.overlapping.populations}, on the hierarchy as imported).
 #'
 #' @export
@@ -654,6 +660,9 @@ convert.imported.gates <- function( gate.defs, data, transforms = list(), panel 
             c( d$gate.param$algorithm.x %||% d$algorithm, d$gate.param$algorithm.y %||% d$algorithm )
             else c( d$algorithm, NA_character_ )
         num <- function( v ) if ( is.null( v ) ) NA_real_ else as.numeric( v )
+        pos <- unlist( ev$positive %||% list() )
+        scored <- length( ev$fit ) > 0L && length( pos ) > 0L &&
+            all( pos >= fj.review$score.min.positive & pos * ev$n >= fj.review$evidence.min.events )
         rows[[ length( rows ) + 1L ]] <- data.frame(
             gate = g$gate.name, imported.type = g$gate.type, type = d$gate.type,
             algorithm.x = axis.alg[ 1L ], algorithm.y = axis.alg[ 2L ],
@@ -662,7 +671,7 @@ convert.imported.gates <- function( gate.defs, data, transforms = list(), panel 
             dropped.axis = ev$drop.axis %||% NA_character_, n.parent = num( ev$n ),
             below.zero.x = num( ev$below.zero$x ), below.zero.y = num( ev$below.zero$y ),
             positive.x = num( ev$positive$x ), positive.y = num( ev$positive$y ),
-            agreement = if ( length( ev$fit ) ) max( ev$fit ) else NA_real_,
+            agreement = if ( scored ) max( ev$fit ) else NA_real_,
             stringsAsFactors = FALSE )
     }
     list( gate.definitions = out,

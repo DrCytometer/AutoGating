@@ -29,7 +29,9 @@ population.}
 \value{
 List with gate.definitions (converted), proposals (one row per
 converted gate: type before and after, algorithm per axis, reason,
-share below zero, share drawn positive, best agreement) and overlaps
+share below zero, share drawn positive, best agreement, NA when less
+than 2\\% of the parent or fewer than 50 events are drawn positive on an
+axis) and overlaps
 (see \code{fj.overlapping.populations}, on the hierarchy as imported).
 }
 \description{

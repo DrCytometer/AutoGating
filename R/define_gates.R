@@ -140,7 +140,10 @@ prepare.model <- function( model, fcs.setup ) {
 #' @description
 #' The samples marked \code{gate.calculation} in the experiment file (every
 #' sample when none is marked) and \code{ap$events.per.sample} events drawn
-#' from each (\code{\link{training.events}}, seed \code{ap$seed}).
+#' from each (\code{\link{training.events}}, seed \code{ap$seed}): the
+#' events \code{\link{define.gates}} trains on.  Pass \code{data} to
+#' \code{\link{convert.imported.gates}} to convert imported gates on the
+#' same events.
 #'
 #' @param fcs.setup Named list returned by \code{\link{setup.autogating}}.
 #' @param ap Autogating parameter object.
@@ -148,7 +151,7 @@ prepare.model <- function( model, fcs.setup ) {
 #' @return List with samples, events.per.sample, seed, rows, per.sample,
 #'   data (the pooled events) and messages.
 #'
-#' @keywords internal
+#' @export
 training.set <- function( fcs.setup, ap ) {
     messages <- character( 0 )
     samples <- fcs.setup$fcs.sample.gate.calc

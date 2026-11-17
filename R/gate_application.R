@@ -11,7 +11,7 @@
 #   parent.events  gate -> integer row indices the gate was applied to
 #   status         gate -> list(source, drift, flag, message); source is
 #                  "trained", "fixed", "recalculated" or "reference"; flag
-#                  is NA, "drift", "failed" or "skipped"
+#                  is NA, "drift", "failed", "skipped" or "not trained"
 #
 # Populations are stored as row indices rather than full-length logical
 # masks, to keep memory proportional to population sizes.
@@ -334,9 +334,12 @@ boundary.drift <- function( gate.def, boundary, reference ) {
 #' @param drift.limit Largest drift not flagged.
 #' @param drift.action "flag", or "reference" to use the reference boundary
 #'   for flagged gates.
-#' @param axis.limits Named list of display limits, or \code{NULL}.
+#' @param axis.limits Named list channel -> \code{c(lo, hi)} display limits:
+#'   polygons and ranges test off-scale events on these edges, and threshold
+#'   rectangles are drawn to them.  \code{NULL} gives the display scale, 0 to
+#'   1, for every channel in \code{transforms}.
 #' @param transforms Named list of transform parameters (for threshold
-#'   factors).
+#'   factors and the default display limits).
 #'
 #' @return Gating result (see the file header of \code{gate_application.R}).
 #'
@@ -346,6 +349,8 @@ run.gating <- function( gate.defs, data, reference = NULL, modes = list(),
                         drift.action = "flag", axis.limits = NULL, transforms = NULL ) {
     n <- nrow( data )
     by.name <- gates.by.name( gate.defs )
+    if ( is.null( axis.limits ) && length( transforms ) )
+        axis.limits <- lapply( transforms[ lengths( transforms ) > 0L ], function( p ) c( 0, 1 ) )
     ctx <- gate.context( axis.limits, transforms )
     result <- list( boundaries = list(), events = list(), parent.events = list(),
                     status = list() )
@@ -376,7 +381,7 @@ run.gating <- function( gate.defs, data, reference = NULL, modes = list(),
             boundary <- ref %||% list()
             status$source <- "fixed"
             if ( length( boundary ) == 0L ) {
-                status$flag <- "failed"
+                status$flag <- "not trained"
                 status$message <- "no stored boundary"
             }
         } else {

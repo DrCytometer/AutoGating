@@ -444,8 +444,12 @@ gate.figure <- function( gate.def, result, data, axes, ap, title = NULL, seed = 
         sub <- paste0( sub, "; flagged ", status$flag,
                        if ( nzchar( status$message %||% "" ) ) paste0( ": ", status$message ) else "" )
     text.size <- ap$figure.text.size %||% 11
-    fig <- fig + labs( title = if ( is.null( title ) ) name else paste0( title, ": ", name ),
-                       subtitle = sub ) +
+    wrap <- function( s, size ) paste( strwrap( s, width = max( 20L, floor( 0.8 * 72 * ( ap$figure.width %||% 6 ) /
+                                                                          ( 0.6 * size ) ) ) ),
+                                       collapse = "\n" )
+    fig <- fig + labs( title = wrap( if ( is.null( title ) ) name else paste0( title, ": ", name ),
+                                     1.2 * text.size ),
+                       subtitle = wrap( sub, 0.75 * text.size ) ) +
         theme_bw( base_size = text.size ) +
         theme( aspect.ratio = 1, panel.grid = element_blank(),
                plot.subtitle = element_text( size = 0.75 * text.size ) )

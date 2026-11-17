@@ -17,12 +17,15 @@ train.boundaries(
 
 \item{data}{Event matrix (transformed), columns named by channel.}
 
-\item{axis.limits}{Named list of display limits, or \code{NULL}.}
+\item{axis.limits}{Named list channel -> \code{c(lo, hi)} display limits:
+polygons and ranges test off-scale events on these edges, and threshold
+rectangles are drawn to them.  \code{NULL} gives the display scale, 0 to
+1, for every channel in \code{transforms}.}
 
 \item{done}{Named list gate -> boundary entries already trained.}
 
 \item{transforms}{Named list of transform parameters (for threshold
-factors).}
+factors and the default display limits).}
 }
 \value{
 Gating result; status source "trained" for every calculated gate.
