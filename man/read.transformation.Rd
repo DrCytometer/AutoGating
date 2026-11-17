@@ -2,7 +2,7 @@
 % Please edit documentation in R/analyze_aux.r
 \name{read.transformation}
 \alias{read.transformation}
-\title{Build flowjo_biexp Transformation Lists}
+\title{Build Channel Transformations}
 \usage{
 read.transformation(
   transformation.filepath,
@@ -10,14 +10,13 @@ read.transformation(
   fcs.panel.scatter.idx,
   fcs.panel.lineage.idx,
   fcs.panel.activation.idx,
-  ap
+  ap,
+  fcs.panel.time.idx = integer(0)
 )
 }
 \arguments{
-\item{transformation.filepath}{Character or \code{NULL}.  Path to a CSV
-file with columns \code{dye} plus any of \code{length},
-\code{max.range}, \code{pos}, \code{neg}, \code{width} for per-channel
-override.  \code{NULL} uses cytometer defaults throughout.}
+\item{transformation.filepath}{Character or \code{NULL}.  Path to the
+override CSV.  \code{NULL} uses cytometer defaults throughout.}
 
 \item{fcs.panel}{\code{data.frame}.  Panel definition with columns
 \code{dye} and \code{antigen}.}
@@ -29,29 +28,41 @@ override.  \code{NULL} uses cytometer defaults throughout.}
 \item{fcs.panel.activation.idx}{Integer vector.  Activation-channel row
 indices.}
 
-\item{ap}{Autogating parameter object; uses
-\code{ap$transformation.defaults}.}
+\item{ap}{Autogating parameter object; uses \code{ap$transform.defaults}.}
+
+\item{fcs.panel.time.idx}{Integer vector.  Time-channel row indices
+(identity transform).  Default none.}
 }
 \value{
-A length-2 list:
+A list:
 \describe{
-\item{\code{[[1]]}}{Named list of forward transform functions (one per
-antigen), keyed by antigen name.}
-\item{\code{[[2]]}}{Named list of inverse transform functions (one per
-antigen), keyed by antigen name.}
+\item{\code{[[1]]}}{Named list of forward functions (raw to display),
+keyed by antigen name.}
+\item{\code{[[2]]}}{Named list of inverse functions, keyed by antigen.}
+\item{\code{[[3]]}}{Named list of transform parameter lists, keyed by
+antigen.}
 }
 }
 \description{
-Constructs named lists of forward and inverse
-\code{\link[flowWorkspace]{flowjo_biexp}} transform functions for all
-fluorescence channels, optionally applying per-experiment parameter
-overrides from a CSV file.  Scatter channels receive a linear
-(identity) transform.  The resulting lists are keyed by antigen name.
+Builds the Gating-ML 2.0 transform (see \code{\link{make.transform}}) for
+every panel channel: logicle for fluorescence channels, linear for
+scatter channels and the identity for the time channel, starting from the
+cytometer defaults in \code{ap$transform.defaults}. A per-experiment CSV
+can override fluorescence or scatter channels. Two CSV layouts are
+accepted, keyed by the \code{dye} column:
+\itemize{
+\item Gating-ML parameters: any of \code{id}, \code{scale.t},
+\code{linear.a}, \code{logicle.w}, \code{logicle.m},
+\code{logicle.a}, \code{log.m}.
+\item FlowJo biex settings (\code{max.range}, \code{pos}, \code{neg},
+\code{width}; \code{length} is ignored), converted with
+\code{\link{flowjo.biex.to.logicle}}.
+}
 }
 \details{
-Build forward and inverse biexponential transform lists
+Build forward and inverse transform lists for all panel channels
 }
 \seealso{
-\code{\link{get.autogating.param}}
+\code{\link{get.autogating.param}}, \code{\link{make.transform}}
 }
 \keyword{internal}

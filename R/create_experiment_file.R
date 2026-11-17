@@ -27,8 +27,9 @@
 #' corrected before running the pipeline.
 #'
 #' All samples are initialised with \code{gate.calculation = TRUE}.  Set
-#' individual rows to \code{FALSE} in the saved CSV to reuse boundaries
-#' calculated from other samples (see \code{CLAUDE.md} for details).
+#' individual rows to \code{FALSE} in the saved CSV to leave those samples
+#' out of the pooled training events of \code{\link{define.gates}}; every
+#' sample is still gated by \code{\link{run.autogating}}.
 #'
 #' @param metadata data.frame.  Sample metadata table.  Must contain at least
 #'   a column of sample identifiers (named by \code{sample.col}).

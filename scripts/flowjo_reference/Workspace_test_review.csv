@@ -1,0 +1,7 @@
+gate,imported_type,type,algorithm_x,algorithm_y,drop_axis,n,below_zero_x,below_zero_y,positive_x,positive_y,agreement,gate_param
+Single Cells,singlets,singlets,singlets,,,30000,,,,,,{}
+Cells,free,free,cells,,,21098,,,,,,"{""cell_side"": ""cells"", ""debris_axis"": ""x""}"
+viable,1dsep,1dsep,mixture,,,20094,0.2796,,0.42689999999999995,,0.9626592217763044,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD3+ T cells & CD19 B cells,2dsep,2dsep,mixture,mixture,,11628,0.4073,0.4431,0.1041,0.0698,0.6860098694339979,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture"", ""mixture_components_x"": 2, ""mixture_components_y"": 2, ""mixture_cut_x"": ""outer"", ""mixture_cut_y"": ""outer""}"
+CD4 & CD8,2dsep,2dsep,mixture,tail,,1220,0.380327868852459,0.31721311475409836,0.07049180327868852,0.2983606557377049,0.6858391608391609,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""tail"", ""mixture_components_x"": 2, ""mixture_cut_x"": ""outer""}"
+Treg,2dsep,2dsep,mixture,mixture,,86,0.38372093023255816,0.20930232558139536,0.16279069767441862,0.16279069767441862,0.875,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture"", ""mixture_components_x"": 2, ""mixture_components_y"": 2, ""mixture_cut_x"": ""outer"", ""mixture_cut_y"": ""outer""}"

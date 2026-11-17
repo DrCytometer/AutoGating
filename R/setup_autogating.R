@@ -12,18 +12,24 @@
 #' @description
 #' Orchestrates the input stage of the AutoGating pipeline:
 #' \enumerate{
-#'   \item Sets the random seed from \code{ap$seed}.
 #'   \item Reads and validates the experiment manifest CSV.
 #'   \item Reads and validates the panel CSV; drops the \code{AutoF}
 #'     autofluorescence channel if present.
-#'   \item Builds forward and inverse biexponential transform lists via
-#'     \code{\link{read.transformation}}.
-#'   \item Reads all FCS files into a \code{flowSet}, subsets and renames
-#'     channels to antigen names, then applies spectral compensation (if a
-#'     compensation matrix is supplied) and biexponential transformation.
-#'   \item Concatenates all per-sample expression matrices into a single
-#'     event-labelled numeric matrix.
+#'   \item Builds the Gating-ML transforms for every panel channel via
+#'     \code{\link{read.transformation}} (logicle for fluorescence, linear
+#'     for scatter, identity for time).
+#'   \item Reads each FCS file with \code{\link[AutoSpectral]{readFCS}},
+#'     keeping only the panel channels (raw values, no truncation at
+#'     \code{$PnR}), applies compensation if a spillover matrix is supplied,
+#'     then transforms every channel onto the 0 to 1 display scale.
+#'   \item Stacks the per-sample matrices into one matrix, with a factor
+#'     giving each event's sample.
 #' }
+#'
+#' Compensation follows the flowCore convention: the CSV holds the spillover
+#' matrix (rows = fluorochromes, columns = detectors, diagonal 1), and the
+#' compensated values are \eqn{X S^{-1}} on the lineage and activation
+#' channels.
 #'
 #' The function returns a named list (\code{fcs.setup}) that bundles the
 #' expression matrix with all derived metadata vectors and panel indices
@@ -36,14 +42,15 @@
 #' @param ap Autogating parameter object returned by
 #'   \code{\link{get.autogating.param}}.  Must contain valid values for
 #'   \code{ap$experiment.filename}, \code{ap$panel.filename},
-#'   \code{ap$data.dir}, \code{ap$compensation.filename},
-#'   \code{ap$transformation.filename}, and \code{ap$seed}.
+#'   \code{ap$data.dir}, \code{ap$compensation.filename}
+#'   and \code{ap$transformation.filename}.
 #'
 #' @return A named list with the following elements:
 #'   \describe{
-#'     \item{\code{fcs.expr.data}}{Numeric matrix, all events × all markers.
-#'       Row names are \code{"<sample>.<event_number>"} strings.  Column order
-#'       matches \code{fcs.marker} (scatter, time, lineage, activation).}
+#'     \item{\code{fcs.expr.data}}{Numeric matrix, all events x all markers,
+#'       on the display scale, without row names.  Column order matches
+#'       \code{fcs.marker} (scatter, time, lineage, activation).  Events are
+#'       in sample order, then file order.}
 #'     \item{\code{fcs.sample}}{Character vector of unique sample identifiers
 #'       (one per FCS file), in manifest order.}
 #'     \item{\code{fcs.sample.n}}{Integer.  Total number of samples.}
@@ -51,14 +58,10 @@
 #'       (relative to \code{ap$data.dir}), in manifest order.}
 #'     \item{\code{fcs.sample.gate.calc}}{Character vector of sample names
 #'       for which \code{gate.calculation == TRUE} in the manifest.}
-#'     \item{\code{fcs.event}}{Character vector of all event identifiers
-#'       (row names of \code{fcs.expr.data}).}
 #'     \item{\code{fcs.event.n}}{Integer.  Total number of events.}
-#'     \item{\code{fcs.event.sample}}{Factor.  Per-event sample membership,
-#'       levels in manifest order.}
-#'     \item{\code{fcs.event.regexp}}{Character scalar.  Regular expression
-#'       matching the \code{".<event_number>"} suffix so event identifiers can
-#'       be stripped back to sample names.}
+#'     \item{\code{fcs.event.sample}}{Factor.  Per-event sample membership
+#'       (one entry per row of \code{fcs.expr.data}), levels in manifest
+#'       order.}
 #'     \item{\code{fcs.panel}}{data.frame.  Validated panel table (columns
 #'       \code{dye}, \code{antigen}, \code{type}) with \code{type} as a factor
 #'       and \code{AutoF} rows removed.}
@@ -68,6 +71,8 @@
 #'       lineage channels.}
 #'     \item{\code{fcs.panel.activation.idx}}{Integer vector.  Row indices of
 #'       activation channels.}
+#'     \item{\code{fcs.panel.time.idx}}{Integer vector.  Row indices of the
+#'       time channel (raw values, not rescaled).}
 #'     \item{\code{fcs.marker}}{Character vector.  All antigen names in
 #'       pipeline column order (scatter, time, lineage, activation).}
 #'     \item{\code{fcs.marker.scatter}}{Character vector.  Scatter antigen
@@ -82,21 +87,20 @@
 #'     \item{\code{fcs.marker.label.table}}{Named character vector.  Antigen
 #'       names as column labels for statistics tables, named by antigen.}
 #'     \item{\code{ap}}{The input \code{ap} list, augmented with
-#'       \code{ap$transform} and \code{ap$transform.inv} (the forward and
-#'       inverse transform function lists keyed by antigen name).}
+#'       \code{ap$transform} and \code{ap$transform.inv} (forward and
+#'       inverse transform functions keyed by antigen name) and
+#'       \code{ap$transform.params} (the transform parameters, keyed by
+#'       antigen).}
 #'   }
 #'
 #' @seealso \code{\link{get.autogating.param}}, \code{\link{define.gates}},
 #'   \code{\link{run.autogating}}, \code{\link{read.transformation}},
 #'   \code{\link{read.compensation.csv}}
 #'
-#' @importFrom flowCore read.flowSet compensate transform transformList exprs
-#'   compensation
+#' @importFrom AutoSpectral readFCS
 #'
 #' @export
 setup.autogating <- function( ap ) {
-
-    set.seed( ap$seed )
 
     # ==========================================================================
     # 1. Read and validate experiment manifest
@@ -131,7 +135,7 @@ setup.autogating <- function( ap ) {
 
     fcs.panel <- utils::read.csv( ap$panel.filename, stringsAsFactors = FALSE )
 
-    # Remove the spectral autofluorescence channel — it is not gated
+    # Remove the spectral autofluorescence channel - it is not gated
     fcs.panel <- fcs.panel[ fcs.panel$antigen != "AutoF", ]
 
     fcs.panel$type <- factor( fcs.panel$type,
@@ -176,101 +180,65 @@ setup.autogating <- function( ap ) {
 
 
     # ==========================================================================
-    # 3. Build transformation (and optionally read compensation matrix)
+    # 3. Build transformations; read compensation matrix
     # ==========================================================================
 
+    fcs.compensation <- NULL
     if ( !is.null( ap$compensation.filename ) ) {
         fcs.compensation <- read.compensation.csv(
             ap$compensation.filename, fcs.panel,
             fcs.panel.lineage.idx, fcs.panel.activation.idx )
+        fcs.compensation.inv <- solve( fcs.compensation )
     }
 
-    fcs.transform.both <- read.transformation(
+    fcs.transform.all <- read.transformation(
         ap$transformation.filename, fcs.panel,
         fcs.panel.scatter.idx, fcs.panel.lineage.idx,
-        fcs.panel.activation.idx, ap )
+        fcs.panel.activation.idx, ap, fcs.panel.time.idx )
 
-    fcs.transform     <- fcs.transform.both[[ 1 ]]
-    fcs.transform.inv <- fcs.transform.both[[ 2 ]]
-
-    # Attach transforms to ap so downstream functions (e.g.
-    # calculate.activation.statistics) can back-transform expression values
-    ap$transform     <- fcs.transform
-    ap$transform.inv <- fcs.transform.inv
+    # Attach transforms to ap so downstream functions can convert between
+    # raw and display values
+    ap$transform        <- fcs.transform.all[[ 1 ]]
+    ap$transform.inv    <- fcs.transform.all[[ 2 ]]
+    ap$transform.params <- fcs.transform.all[[ 3 ]]
 
 
     # ==========================================================================
-    # 4. Read FCS files; apply compensation and transformation
+    # 4. Read FCS files; compensate and transform
     # ==========================================================================
 
-    fcs.flow.set <- suppressWarnings(
-        flowCore::read.flowSet(
-            files               = fcs.sample.filename,
-            path                = ap$data.dir,
-            transformation      = NULL,
-            truncate_max_range  = TRUE
-        )
-    )
+    fcs.expr.list <- lapply( seq_len( fcs.sample.n ), function( i ) {
 
-    stopifnot( fcs.panel$dye %in% colnames( fcs.flow.set ) )
+        ed <- readFCS( file.path( ap$data.dir, fcs.sample.filename[ i ] ),
+                       columns = fcs.panel$dye )
+        colnames( ed ) <- fcs.panel$antigen
 
-    fcs.flow.set <- fcs.flow.set[ , fcs.panel$dye ]
-    colnames( fcs.flow.set ) <- fcs.panel$antigen
-
-    if ( !is.null( ap$compensation.filename ) ) {
-        fcs.flow.set <- flowCore::compensate(
-            fcs.flow.set,
-            flowCore::compensation( fcs.compensation )
-        )
-    }
-
-    fcs.flow.set <- flowCore::transform(
-        fcs.flow.set,
-        flowCore::transformList( names( fcs.transform ), fcs.transform )
-    )
-
-
-    # ==========================================================================
-    # 5. Extract and label expression matrix
-    # ==========================================================================
-
-    # Determine zero-padded event-ID width from the largest sample so that
-    # row names sort lexicographically
-    fcs.sample.event.n.max <- max( sapply(
-        seq_len( fcs.sample.n ),
-        function( i ) nrow( flowCore::exprs( fcs.flow.set[[ i ]] ) )
-    ) )
-    fcs.event.number.width <- floor( log10( fcs.sample.event.n.max ) ) + 1L
-    fcs.event.regexp       <- sprintf( "\\.[0-9]{%d}$",
-                                       fcs.event.number.width )
-
-    fcs.expr.data <- do.call( rbind, lapply(
-        seq_len( fcs.sample.n ),
-        function( i ) {
-            ed   <- flowCore::exprs( fcs.flow.set[[ i ]] )
-            samp <- fcs.sample[ i ]
-
-            rownames( ed ) <- sprintf(
-                "%s.%0*d", samp, fcs.event.number.width,
-                seq_len( nrow( ed ) )
-            )
-
-            stopifnot( sort( colnames( ed ) ) == sort( fcs.panel$antigen ) )
-
-            ed <- ed[ , fcs.marker ]
-            attr( ed, "ranges" )            <- NULL
-            attr( colnames( ed ), "names" ) <- NULL
-            ed
+        if ( !is.null( fcs.compensation ) ) {
+            comp.cols <- colnames( fcs.compensation )
+            ed[ , comp.cols ] <- ed[ , comp.cols, drop = FALSE ] %*%
+                fcs.compensation.inv
         }
-    ) )
 
-    # Rescale time channel from raw units to seconds (÷ 100)
-    fcs.expr.data[ , "Time" ] <- fcs.expr.data[ , "Time" ] / 100
+        for ( ant in fcs.panel$antigen )
+            ed[ , ant ] <- ap$transform[[ ant ]]( ed[ , ant ] )
 
-    fcs.event        <- rownames( fcs.expr.data )
-    fcs.event.n      <- length( fcs.event )
+        ed[ , fcs.marker, drop = FALSE ]
+    } )
+
+
+    # ==========================================================================
+    # 5. Stack per-sample matrices
+    # ==========================================================================
+
+    fcs.sample.event.n <- vapply( fcs.expr.list, nrow, integer( 1L ) )
+
+    fcs.expr.data <- do.call( rbind, fcs.expr.list )
+    rm( fcs.expr.list )
+    dimnames( fcs.expr.data ) <- list( NULL, fcs.marker )
+
+    fcs.event.n      <- nrow( fcs.expr.data )
     fcs.event.sample <- factor(
-        sub( fcs.event.regexp, "", fcs.event ),
+        rep( fcs.sample, times = fcs.sample.event.n ),
         levels = fcs.sample
     )
 
@@ -288,14 +256,13 @@ setup.autogating <- function( ap ) {
         fcs.sample.n             = fcs.sample.n,
         fcs.sample.filename      = fcs.sample.filename,
         fcs.sample.gate.calc     = fcs.sample.gate.calc,
-        fcs.event                = fcs.event,
         fcs.event.n              = fcs.event.n,
         fcs.event.sample         = fcs.event.sample,
-        fcs.event.regexp         = fcs.event.regexp,
         fcs.panel                = fcs.panel,
         fcs.panel.scatter.idx    = fcs.panel.scatter.idx,
         fcs.panel.lineage.idx    = fcs.panel.lineage.idx,
         fcs.panel.activation.idx = fcs.panel.activation.idx,
+        fcs.panel.time.idx       = fcs.panel.time.idx,
         fcs.marker               = fcs.marker,
         fcs.marker.scatter       = fcs.marker.scatter,
         fcs.marker.lineage       = fcs.marker.lineage,

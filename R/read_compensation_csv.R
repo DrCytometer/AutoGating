@@ -9,6 +9,12 @@
 #' column names.  The first column of the CSV (typically row labels) is
 #' discarded.
 #'
+#' The CSV holds the \emph{spillover} matrix, as exported by FlowJo or BD
+#' FACSDiva: rows are fluorochromes, columns are detectors, the diagonal is
+#' 1, and entry \eqn{(i, j)} is the fraction of fluorochrome \eqn{i}'s signal
+#' detected in detector \eqn{j}.  \code{\link{setup.autogating}} compensates
+#' with \eqn{X S^{-1}}.
+#'
 #' @param compensation.filepath Character.  Path to the compensation CSV file.
 #'   The CSV must contain a column for each dye listed in the panel for the
 #'   lineage and activation channels (column names are matched after applying

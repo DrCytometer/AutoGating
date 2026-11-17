@@ -65,8 +65,9 @@ warning is issued.  If no match is found, \code{NA} is stored in the
 corrected before running the pipeline.
 
 All samples are initialised with \code{gate.calculation = TRUE}.  Set
-individual rows to \code{FALSE} in the saved CSV to reuse boundaries
-calculated from other samples (see \code{CLAUDE.md} for details).
+individual rows to \code{FALSE} in the saved CSV to leave those samples
+out of the pooled training events of \code{\link{define.gates}}; every
+sample is still gated by \code{\link{run.autogating}}.
 }
 \seealso{
 \code{\link{create.panel.file}}, \code{\link{get.autogating.param}}

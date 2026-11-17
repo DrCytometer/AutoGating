@@ -1,0 +1,11 @@
+parameter,channel,antigen,method,label
+FSC-A,FSC-A,FSC-A,name,
+SSC-A,SSC-A,SSC-A,name,
+FSC-H,FSC-H,FSC-H,name,
+Comp-ViaKrome 808-A,ViaKrome 808,viability,fluorophore,viability
+Comp-Pacific Blue-A,Pacific Blue,CD3,fluorophore,CD3
+Comp-StarBright Violet 440-A,StarBright Violet 440,CD19,fluorophore,CD19
+Comp-BUV395-A,BUV395,CD4,fluorophore,CD4_IgM
+Comp-Spark UV 387-A,Spark UV 387,CD8,fluorophore,CD8_CD11b
+Comp-BB700-A,BB700,CD25,fluorophore,CD25_CD141
+Comp-Alexa Fluor 647-A,Alexa Fluor 647,FoxP3,fluorophore,FoxP3

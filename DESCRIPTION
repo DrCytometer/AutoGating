@@ -1,6 +1,6 @@
 Package: AutoGating
 Title: Automated Flow Cytometry Gating Pipeline
-Version: 0.2.1
+Version: 0.3.0
 Authors@R: c(
     person(
       "Oliver", "Burton",
@@ -24,51 +24,49 @@ Authors@R: c(
 Description:
     Provides an automated, reproducible pipeline for gating multi-colour flow
     cytometry data stored in FCS files.  Starting from raw FCS data, the
-    package applies spectral compensation and biexponential transformation,
-    then executes a user-defined sequence of population gates (singlets,
-    leukocytes, lineage sub-populations) followed by activation marker gates.
-    Gate boundaries are calculated automatically from the data using one of
-    four threshold algorithms — symmetric tail probability, bimodal valley
-    detection, Gaussian mixture model crossover, or KDE local minimum — or
-    can be replicated from a previously calculated gate.  All gates are
-    visualised as density-coloured scatter plots with labelled population
-    boundaries, and population fractions together with activation marker
-    expression statistics (fraction positive, median, IQR) are exported as
-    tidy CSV files.  Instrument-specific parameter profiles are provided for
-    the BD FACSymphony, Cytek Aurora, and Sony ID7000 cytometers, and new
-    profiles can be added by implementing a single parameter-override function.
+    package applies compensation and Gating-ML transformations, then trains
+    a hierarchy of gates (singlets, cells, threshold gates on one or two
+    channels, polygons) on pooled training samples and applies it to every
+    sample.  Thresholds are calculated from the data by a Gaussian mixture
+    crossover, a symmetric tail, a density valley, or Otsu's method, or are
+    replicated from another gate or a reference population.  Gating models
+    are read and written as Honeychrome '.agmodel' files, so models move
+    between this package and the Honeychrome application.  Population counts,
+    fractions and marker medians are exported as tidy CSV files, with figures
+    of every gate as applied and of the differences between groups.
+    Instrument-specific parameter profiles are provided for the BD
+    FACSymphony and LSRFortessa, Cytek Aurora, and Sony ID7000 cytometers.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 Depends:
     R (>= 4.1.0)
 Imports:
-    Biobase,
-    flowCore (>= 2.4.0),
-    flowStats (>= 4.4.0),
-    flowWorkspace (>= 4.4.0),
+    AutoSpectral,
+    jsonlite,
     MASS (>= 7.3-55),
-    mclust (>= 5.4.10),
-    modeest (>= 2.4.0),
-    fields (>= 14.1),
     ggplot2 (>= 3.4.0),
-    ggrepel,
+    grDevices,
     limma,
-    pheatmap,
     ragg,
     scattermore (>= 0.8),
-    sp (>= 1.5-0),
+    stats,
     tools,
+    utils,
     xml2
 Suggests:
-    AutoSpectralRcpp,
-    dplyr,
-    parallel,
+    bslib,
+    DT,
+    htmltools,
+    shiny,
+    shinyFiles,
     testthat (>= 3.0.0),
     knitr,
     rmarkdown
 Config/testthat/edition: 3
 VignetteBuilder: knitr
+Remotes:
+    DrCytometer/AutoSpectral
 URL: https://github.com/DrCytometer/AutoGating
 BugReports: https://github.com/DrCytometer/AutoGating/issues
+Config/roxygen2/version: 8.0.0

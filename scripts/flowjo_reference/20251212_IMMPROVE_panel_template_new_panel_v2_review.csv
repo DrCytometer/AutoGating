@@ -1,0 +1,1639 @@
+gate,imported_type,type,algorithm_x,algorithm_y,drop_axis,n,below_zero_x,below_zero_y,positive_x,positive_y,agreement,gate_param
+low viability,free,free,cells,,,30000,,,,,,"{""debris_axis"": ""x""}"
+Single Cells (Cells),singlets,singlets,singlets,,,30000,,,,,,{}
+Cells,free,free,cells,,,16482,,,,,,"{""cell_side"": ""debris"", ""debris_axis"": ""x""}"
+Single Cells (Single Cells),singlets,singlets,singlets,,,16378,,,,,,{}
+"FSC-A, viability subset",1dsep,1dsep,mixture,,,6256,0.35342071611253195,,0.23273657289002558,,0.9139583333333333,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD14+CD11b+ & CD14-,1dsep,1dsep,mixture,,,4800,0.25958333333333333,,0.32,,0.8158542565760857,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD3-CD19-,2dsep,2dsep,mixture,mixture,,1536,0.44921875,0.3717447916666667,0.267578125,0.267578125,0.8808888888888889,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture"", ""mixture_components_x"": 2, ""mixture_components_y"": 2, ""mixture_cut_x"": ""outer"", ""mixture_cut_y"": ""outer""}"
+CD14 Monocytes & CD14+CD16+ Monocytes,2dsep,2dsep,mixture,mixture,,1125,0.0,0.448,0.8728888888888889,0.104,0.7518545497792379,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture"", ""mixture_components_x"": 3, ""mixture_components_y"": 2, ""mixture_cut_x"": ""lower"", ""mixture_cut_y"": ""outer""}"
+CCR4+ (CD14 Monocytes),1dsep,1dsep,tail,,,982,0.40427698574338083,,0.1955193482688391,,,{}
+CCR6+ (CD14 Monocytes),1dsep,1dsep,tail,,,982,0.43075356415478616,,0.164969450101833,,,{}
+CD11b+ (CD14 Monocytes),1dsep,1dsep,mixture,,,982,0.10896130346232179,,0.5244399185336049,,0.8583333333333333,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD11c+ (CD14 Monocytes),1dsep,1dsep,tail,,,982,0.43279022403258655,,0.06720977596741344,,,{}
+CD14 Monocytes Act,2dsep,2dsep,tail,tail,,982,0.31873727087576376,0.3696537678207739,0.0,0.0,0.0,"{""algorithm_x"": ""tail"", ""algorithm_y"": ""tail""}"
+CD38+ (CD14 Monocytes),1dsep,1dsep,tail,,,982,0.43686354378818737,,0.14969450101832993,,,{}
+CD39+ (CD14 Monocytes),1dsep,1dsep,tail,,,982,0.34826883910386963,,0.3054989816700611,,0.9836065573770492,{}
+CD40+ (CD14 Monocytes),1dsep,1dsep,mixture,,,982,0.31873727087576376,,0.16395112016293278,,0.4938650306748466,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD45RA+ (CD14 Monocytes),1dsep,1dsep,tail,,,982,0.29633401221995925,,0.15784114052953158,,0.36904761904761907,{}
+CD71+ (CD14 Monocytes),1dsep,1dsep,tail,,,982,0.4175152749490835,,0.1690427698574338,,,{}
+CD80+ (CD14 Monocytes),1dsep,1dsep,mixture,,,982,0.32179226069246436,,0.3594704684317719,,0.9805555555555555,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD86+ (CD14 Monocytes),1dsep,1dsep,mixture,,,982,0.3543788187372709,,0.28716904276985744,,0.9185667752442996,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD95+ (CD14 Monocytes),1dsep,1dsep,mixture,,,982,0.34317718940936864,,0.32382892057026474,,0.9492537313432836,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+HLADR+ (CD14 Monocytes),1dsep,1dsep,tail,,,982,0.3696537678207739,,0.1446028513238289,,0.5843621399176955,{}
+CCR4+ (CD14+CD16+ Monocytes),1dsep,1dsep,mixture,,,117,0.37606837606837606,,0.19658119658119658,,1.0,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CCR6+ (CD14+CD16+ Monocytes),1dsep,1dsep,tail,,,117,0.49572649572649574,,0.06837606837606838,,,{}
+CD11b+ (CD14+CD16+ Monocytes),1dsep,1dsep,mixture,,,117,0.15384615384615385,,0.5128205128205128,,0.8955223880597015,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD11c+ (CD14+CD16+ Monocytes),1dsep,1dsep,tail,,,117,0.4358974358974359,,0.07692307692307693,,,{}
+CD14+CD16+ Monocytes Act,2dsep,2dsep,tail,tail,,117,0.3076923076923077,0.3504273504273504,0.0,0.0,0.0,"{""algorithm_x"": ""tail"", ""algorithm_y"": ""tail""}"
+CD38+ (CD14+CD16+ Monocytes),1dsep,1dsep,tail,,,117,0.38461538461538464,,0.10256410256410256,,0.8,{}
+CD39+ (CD14+CD16+ Monocytes),1dsep,1dsep,mixture,,,117,0.3418803418803419,,0.39316239316239315,,1.0,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD40+ (CD14+CD16+ Monocytes),1dsep,1dsep,mixture,,,117,0.3076923076923077,,0.1282051282051282,,0.6818181818181818,"{""mixture_components"": 3, ""mixture_cut"": ""upper""}"
+CD45RA+ (CD14+CD16+ Monocytes),1dsep,1dsep,mixture,,,117,0.26495726495726496,,0.1282051282051282,,0.3409090909090909,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD71+ (CD14+CD16+ Monocytes),1dsep,1dsep,tail,,,117,0.4017094017094017,,0.13675213675213677,,,{}
+CD80+ (CD14+CD16+ Monocytes),1dsep,1dsep,mixture,,,117,0.36752136752136755,,0.3162393162393162,,0.9487179487179487,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD86+ (CD14+CD16+ Monocytes),1dsep,1dsep,tail,,,117,0.3076923076923077,,0.3247863247863248,,0.8085106382978723,{}
+CD95+ (CD14+CD16+ Monocytes),1dsep,1dsep,tail,,,117,0.41025641025641024,,0.3333333333333333,,,{}
+HLADR+ (CD14+CD16+ Monocytes),1dsep,1dsep,mixture,,,117,0.3504273504273504,,0.1452991452991453,,0.5862068965517241,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+B cells (CD14-),2dsep,2dsep,mixture,tail,,2666,0.2576894223555889,0.3818454613653413,0.10202550637659415,0.10202550637659415,0.8859934853420195,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""tail"", ""mixture_components_x"": 2, ""mixture_cut_x"": ""outer""}"
+CD3,2dsep,1dsep,tail,,x,2666,0.4249812453113278,,0.009752438109527382,,,{}
+non-B non-T (CD14-),2dsep,2dsep,mixture,tail,,2666,0.4249812453113278,0.3818454613653413,0.31095273818454616,0.31095273818454616,0.9433859553620033,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""tail"", ""mixture_components_x"": 2, ""mixture_cut_x"": ""outer""}"
+B cells (B cells),2dsep,2dsep,tail,mixture,,272,0.41544117647058826,0.3125,0.4191176470588235,0.4191176470588235,0.9240506329113924,"{""algorithm_x"": ""tail"", ""algorithm_y"": ""mixture"", ""mixture_components_y"": 2, ""mixture_cut_y"": ""outer""}"
+non-Trans non-Plasma & Plasmablasts & Transitional B cells,2dsep,2dsep,tail,tail,,158,0.4430379746835443,0.310126582278481,0.0,0.0,0.2756410256410256,"{""algorithm_x"": ""tail"", ""algorithm_y"": ""tail""}"
+Plasma cells,2dsep,2dsep,tail,tail,,158,0.4430379746835443,0.3670886075949367,0.0,0.0,0.0,"{""algorithm_x"": ""tail"", ""algorithm_y"": ""tail""}"
+Activated & Atypical & Mature Naive & Memory,2dsep,2dsep,mixture,tail,,156,0.40384615384615385,0.36538461538461536,0.19871794871794873,0.21153846153846154,0.9265180191858958,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""tail"", ""mixture_components_x"": 2, ""mixture_cut_x"": ""outer""}"
+B cell DN & B cell Naive & B cell Non-switched & B cell switched memory,2dsep,2dsep,mixture,tail,,156,0.46794871794871795,0.36538461538461536,0.1217948717948718,0.22435897435897437,0.9698337262992436,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""tail"", ""mixture_components_x"": 2, ""mixture_cut_x"": ""outer""}"
+BAFFR+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.28205128205128205,,0.3974358974358974,,0.9393939393939394,{}
+Bcl6+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.3141025641025641,,0.14743589743589744,,0.4339622641509434,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CCR4+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.40384615384615385,,0.21153846153846154,,,{}
+CCR5+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.2692307692307692,,0.34615384615384615,,0.9152542372881356,{}
+CCR6+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.4166666666666667,,0.16666666666666666,,,{}
+CCR7+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.28846153846153844,,0.36538461538461536,,0.8028169014084507,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD10+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.2948717948717949,,0.1987179487179487,,0.7096774193548387,"{""mixture_components"": 3, ""mixture_cut"": ""upper""}"
+CD11b+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.22435897435897437,,0.3525641025641026,,1.0,"{""mixture_components"": 3, ""mixture_cut"": ""upper""}"
+CD11c+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.5128205128205128,,0.10897435897435898,,,{}
+CD16+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.42948717948717946,,0.038461538461538464,,,{}
+CD20+ (non-Trans non-Plasma),1dsep,1dsep,replicate,,,156,0.0,,0.6410256410256411,,,"{""replicate_x"": {""algorithm"": ""mixture"", ""default"": true, ""population"": ""Single Cells (Single Cells)/Single Cells""}}"
+CD21+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.40384615384615385,,0.19230769230769232,,,{}
+CD23+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.42948717948717946,,0.16025641025641027,,,{}
+CD24hi (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.3076923076923077,,0.01282051282051282,,0.08333333333333333,"{""mixture_components"": 3, ""mixture_cut"": ""upper""}"
+CD25+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.391025641025641,,0.15384615384615385,,0.8571428571428571,{}
+CD27+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.36538461538461536,,0.21153846153846154,,0.9166666666666666,{}
+CD38+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.44871794871794873,,0.17307692307692307,,,{}
+CD39+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.38461538461538464,,0.23717948717948717,,0.8409090909090909,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD40+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.3974358974358974,,0.25,,0.8125,{}
+CD45RA+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.3269230769230769,,0.25,,0.7358490566037735,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD62L+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.3333333333333333,,0.28846153846153844,,0.8490566037735849,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD69+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.38461538461538464,,0.10897435897435898,,0.8947368421052632,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD71+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.3269230769230769,,0.12179487179487179,,0.6129032258064516,{}
+CD80+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.40384615384615385,,0.3076923076923077,,,{}
+CD86+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.34615384615384615,,0.21794871794871795,,0.723404255319149,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD95+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.28846153846153844,,0.28846153846153844,,0.7758620689655172,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD138+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.358974358974359,,0.16666666666666666,,0.65,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD1c+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.46153846153846156,,0.1346153846153846,,,{}
+CXCR3+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.42948717948717946,,0.14102564102564102,,,{}
+CXCR4+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.3269230769230769,,0.30128205128205127,,0.94,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CXCR5+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.30128205128205127,,0.4166666666666667,,0.9420289855072463,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+FCRL5+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.3974358974358974,,0.20512820512820512,,0.8888888888888888,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+HLADR+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.358974358974359,,0.20512820512820512,,0.8648648648648649,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+IgA+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.30128205128205127,,0.3525641025641026,,0.873015873015873,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+IgD+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.46794871794871795,,0.11538461538461539,,,{}
+IgE+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.3525641025641026,,0.14102564102564102,,0.5641025641025641,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+IgG+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.38461538461538464,,0.16025641025641027,,0.6410256410256411,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+IgM+ (non-Trans non-Plasma),1dsep,1dsep,mixture,,,156,0.391025641025641,,0.22435897435897437,,0.813953488372093,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+Ki67+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.33974358974358976,,0.23717948717948717,,0.9487179487179487,{}
+Tbet+ (non-Trans non-Plasma),1dsep,1dsep,tail,,,156,0.44871794871794873,,0.11538461538461539,,,{}
+BAFFR+ (Atypical),1dsep,1dsep,mixture,,,91,0.3076923076923077,,0.38461538461538464,,0.9428571428571428,"{""mixture_components"": 3, ""mixture_cut"": ""upper""}"
+Bcl6+ (Atypical),1dsep,1dsep,mixture,,,91,0.26373626373626374,,0.17582417582417584,,0.5,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CCR4+ (Atypical),1dsep,1dsep,tail,,,91,0.42857142857142855,,0.17582417582417584,,,{}
+CCR5+ (Atypical),1dsep,1dsep,tail,,,91,0.3076923076923077,,0.34065934065934067,,0.9393939393939394,{}
+CCR6+ (Atypical),1dsep,1dsep,mixture,,,91,0.3956043956043956,,0.1978021978021978,,0.9,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CCR7+ (Atypical),1dsep,1dsep,mixture,,,91,0.2857142857142857,,0.37362637362637363,,0.7727272727272727,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD10+ (Atypical),1dsep,1dsep,mixture,,,91,0.27472527472527475,,0.2087912087912088,,0.7307692307692307,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD11b+ (Atypical),1dsep,1dsep,mixture,,,91,0.23076923076923078,,0.38461538461538464,,0.9722222222222222,"{""mixture_components"": 3, ""mixture_cut"": ""upper""}"
+CD11c+ (Atypical),1dsep,1dsep,tail,,,91,0.5164835164835165,,0.10989010989010989,,,{}
+CD16+ (Atypical),1dsep,1dsep,tail,,,91,0.38461538461538464,,0.04395604395604396,,0.4444444444444444,{}
+CD1c+ (Atypical),1dsep,1dsep,tail,,,91,0.4065934065934066,,0.14285714285714285,,,{}
+CD20+ (Atypical),1dsep,1dsep,replicate,,,91,0.0,,0.6263736263736264,,,"{""replicate_x"": {""algorithm"": ""mixture"", ""default"": true, ""population"": ""Single Cells (Single Cells)/Single Cells""}}"
+CD21+ (Atypical),1dsep,1dsep,tail,,,91,0.5384615384615384,,0.0,,,{}
+CD23+ (Atypical),1dsep,1dsep,tail,,,91,0.4725274725274725,,0.12087912087912088,,,{}
+CD24hi (Atypical),1dsep,1dsep,mixture,,,91,0.32967032967032966,,0.02197802197802198,,0.07407407407407407,"{""mixture_components"": 3, ""mixture_cut"": ""upper""}"
+CD25+ (Atypical),1dsep,1dsep,tail,,,91,0.38461538461538464,,0.14285714285714285,,0.7647058823529411,{}
+CD27+ (Atypical),1dsep,1dsep,tail,,,91,0.46153846153846156,,0.0,,,{}
+CD38+ (Atypical),1dsep,1dsep,mixture,,,91,0.38461538461538464,,0.18681318681318682,,1.0,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD39+ (Atypical),1dsep,1dsep,tail,,,91,0.4065934065934066,,0.18681318681318682,,,{}
+CD40+ (Atypical),1dsep,1dsep,tail,,,91,0.3626373626373626,,0.21978021978021978,,0.8333333333333334,{}
+CD45RA+ (Atypical),1dsep,1dsep,mixture,,,91,0.32967032967032966,,0.23076923076923078,,0.75,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD62L+ (Atypical),1dsep,1dsep,mixture,,,91,0.2857142857142857,,0.3076923076923077,,0.8235294117647058,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD69+ (Atypical),1dsep,1dsep,mixture,,,91,0.3626373626373626,,0.06593406593406594,,0.75,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD71+ (Atypical),1dsep,1dsep,tail,,,91,0.31868131868131866,,0.12087912087912088,,0.5789473684210527,{}
+CD80+ (Atypical),1dsep,1dsep,tail,,,91,0.3956043956043956,,0.2967032967032967,,1.0,{}
+CD86+ (Atypical),1dsep,1dsep,mixture,,,91,0.31868131868131866,,0.25274725274725274,,0.7666666666666667,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD95+ (Atypical),1dsep,1dsep,mixture,,,91,0.2857142857142857,,0.32967032967032966,,0.7692307692307693,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD138+ (Atypical),1dsep,1dsep,mixture,,,91,0.3516483516483517,,0.18681318681318682,,0.7083333333333334,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CXCR3+ (Atypical),1dsep,1dsep,mixture,,,91,0.34065934065934067,,0.15384615384615385,,0.9333333333333333,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CXCR4+ (Atypical),1dsep,1dsep,mixture,,,91,0.34065934065934067,,0.34065934065934067,,0.96875,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CXCR5+ (Atypical),1dsep,1dsep,mixture,,,91,0.2967032967032967,,0.43956043956043955,,0.975609756097561,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+FCRL5+ (Atypical),1dsep,1dsep,mixture,,,91,0.3626373626373626,,0.23076923076923078,,0.9545454545454546,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+HLADR+ (Atypical),1dsep,1dsep,mixture,,,91,0.3076923076923077,,0.23076923076923078,,0.875,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+IgA+ (Atypical),1dsep,1dsep,mixture,,,91,0.3076923076923077,,0.34065934065934067,,0.8857142857142857,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+IgD+ (Atypical),1dsep,1dsep,tail,,,91,0.43956043956043955,,0.08791208791208792,,,{}
+IgE+ (Atypical),1dsep,1dsep,tail,,,91,0.38461538461538464,,0.14285714285714285,,0.5909090909090909,{}
+IgG+ (Atypical),1dsep,1dsep,mixture,,,91,0.38461538461538464,,0.16483516483516483,,0.6,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+IgM+ (Atypical),1dsep,1dsep,mixture,,,91,0.3956043956043956,,0.17582417582417584,,0.8,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+Ki67+ (Atypical),1dsep,1dsep,tail,,,91,0.37362637362637363,,0.18681318681318682,,0.9444444444444444,{}
+Tbet+ (Atypical),1dsep,1dsep,tail,,,91,0.43956043956043955,,0.08791208791208792,,,{}
+BAFFR+ (B cell DN),1dsep,1dsep,tail,,,108,0.28703703703703703,,0.4166666666666667,,0.9183673469387755,{}
+Bcl6+ (B cell DN),1dsep,1dsep,mixture,,,108,0.3055555555555556,,0.1574074074074074,,0.425,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CCR4+ (B cell DN),1dsep,1dsep,tail,,,108,0.4444444444444444,,0.2222222222222222,,,{}
+CCR5+ (B cell DN),1dsep,1dsep,tail,,,108,0.26851851851851855,,0.3333333333333333,,0.9,{}
+CCR6+ (B cell DN),1dsep,1dsep,mixture,,,108,0.39814814814814814,,0.16666666666666666,,0.8571428571428571,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CCR7+ (B cell DN),1dsep,1dsep,mixture,,,108,0.32407407407407407,,0.3611111111111111,,0.8863636363636364,"{""mixture_components"": 3, ""mixture_cut"": ""upper""}"
+CD10+ (B cell DN),1dsep,1dsep,mixture,,,108,0.28703703703703703,,0.23148148148148148,,0.7575757575757576,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD11b+ (B cell DN),1dsep,1dsep,mixture,,,108,0.25,,0.3333333333333333,,0.9166666666666666,"{""mixture_components"": 3, ""mixture_cut"": ""upper""}"
+CD11c+ (B cell DN),1dsep,1dsep,tail,,,108,0.5092592592592593,,0.12037037037037036,,,{}
+CD16+ (B cell DN),1dsep,1dsep,tail,,,108,0.4074074074074074,,0.037037037037037035,,,{}
+CD1c+ (B cell DN),1dsep,1dsep,tail,,,108,0.4537037037037037,,0.12962962962962962,,,{}
+CD20+ (B cell DN),1dsep,1dsep,replicate,,,108,0.0,,0.6296296296296297,,,"{""replicate_x"": {""algorithm"": ""mixture"", ""default"": true, ""population"": ""Single Cells (Single Cells)/Single Cells""}}"
+CD21+ (B cell DN),1dsep,1dsep,tail,,,108,0.4074074074074074,,0.21296296296296297,,,{}
+CD23+ (B cell DN),1dsep,1dsep,tail,,,108,0.42592592592592593,,0.12962962962962962,,,{}
+CD24hi (B cell DN),1dsep,1dsep,mixture,,,108,0.28703703703703703,,0.018518518518518517,,0.14285714285714285,"{""mixture_components"": 3, ""mixture_cut"": ""upper""}"
+CD25+ (B cell DN),1dsep,1dsep,tail,,,108,0.3888888888888889,,0.14814814814814814,,0.8,{}
+CD27+ (B cell DN),1dsep,1dsep,tail,,,108,0.4722222222222222,,0.0,,,{}
+CD38+ (B cell DN),1dsep,1dsep,tail,,,108,0.3611111111111111,,0.21296296296296297,,1.0,{}
+CD39+ (B cell DN),1dsep,1dsep,mixture,,,108,0.37037037037037035,,0.18518518518518517,,0.8,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD40+ (B cell DN),1dsep,1dsep,mixture,,,108,0.3425925925925926,,0.24074074074074073,,0.9629629629629629,"{""mixture_components"": 3, ""mixture_cut"": ""upper""}"
+CD45RA+ (B cell DN),1dsep,1dsep,mixture,,,108,0.3425925925925926,,0.2222222222222222,,0.7058823529411765,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD62L+ (B cell DN),1dsep,1dsep,tail,,,108,0.2962962962962963,,0.3055555555555556,,0.8461538461538461,{}
+CD69+ (B cell DN),1dsep,1dsep,mixture,,,108,0.3888888888888889,,0.06481481481481481,,0.7777777777777778,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD71+ (B cell DN),1dsep,1dsep,mixture,,,108,0.35185185185185186,,0.1111111111111111,,0.5714285714285714,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD80+ (B cell DN),1dsep,1dsep,tail,,,108,0.4537037037037037,,0.2777777777777778,,,{}
+CD86+ (B cell DN),1dsep,1dsep,mixture,,,108,0.3148148148148148,,0.25925925925925924,,0.7777777777777778,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD95+ (B cell DN),1dsep,1dsep,mixture,,,108,0.2962962962962963,,0.3148148148148148,,0.7906976744186046,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD138+ (B cell DN),1dsep,1dsep,mixture,,,108,0.37962962962962965,,0.19444444444444445,,0.7,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CXCR3+ (B cell DN),1dsep,1dsep,tail,,,108,0.42592592592592593,,0.12962962962962962,,,{}
+CXCR4+ (B cell DN),1dsep,1dsep,mixture,,,108,0.3055555555555556,,0.3333333333333333,,0.9230769230769231,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CXCR5+ (B cell DN),1dsep,1dsep,mixture,,,108,0.32407407407407407,,0.4074074074074074,,1.0,"{""mixture_components"": 3, ""mixture_cut"": ""upper""}"
+FCRL5+ (B cell DN),1dsep,1dsep,mixture,,,108,0.3888888888888889,,0.21296296296296297,,0.9583333333333334,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+HLADR+ (B cell DN),1dsep,1dsep,mixture,,,108,0.3611111111111111,,0.21296296296296297,,0.92,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+IgA+ (B cell DN),1dsep,1dsep,mixture,,,108,0.32407407407407407,,0.32407407407407407,,0.875,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+IgD+ (B cell DN),1dsep,1dsep,tail,,,108,0.5092592592592593,,0.0,,,{}
+IgE+ (B cell DN),1dsep,1dsep,mixture,,,108,0.3425925925925926,,0.12962962962962962,,0.5,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+IgG+ (B cell DN),1dsep,1dsep,mixture,,,108,0.35185185185185186,,0.19444444444444445,,0.6774193548387096,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+IgM+ (B cell DN),1dsep,1dsep,mixture,,,108,0.3611111111111111,,0.23148148148148148,,0.8333333333333334,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+Ki67+ (B cell DN),1dsep,1dsep,mixture,,,108,0.3888888888888889,,0.21296296296296297,,0.9583333333333334,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+Tbet+ (B cell DN),1dsep,1dsep,tail,,,108,0.4444444444444444,,0.10185185185185185,,,{}
+BAFFR+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD10+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD1c+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD20+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD21+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD23+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD24hi (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD40+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD80+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD86+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD138+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+FCRL5+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+IgA+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+IgD+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+IgE+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+IgG+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+IgM+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (B cell Naive),1dsep,1dsep,tail,,,,,,,,,{}
+BAFFR+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+Bcl6+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR7+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+CD10+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CD1c+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+CD20+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+CD21+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+CD23+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+CD24hi (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+CD25+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+CD38+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+CD39+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CD40+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+CD45RA+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+CD62L+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+CD69+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CD80+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+CD86+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CD138+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR5+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+FCRL5+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+IgA+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+IgD+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+IgE+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+IgG+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+IgM+ (B cell Non-switched),1dsep,1dsep,mixture,,,,,,,,,{}
+Ki67+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (B cell Non-switched),1dsep,1dsep,tail,,,,,,,,,{}
+BAFFR+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (B cell switched memory),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR7+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD10+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD1c+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD20+ (B cell switched memory),1dsep,1dsep,mixture,,,,,,,,,{}
+CD21+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD23+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD24hi (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD40+ (B cell switched memory),1dsep,1dsep,mixture,,,,,,,,,{}
+CD45RA+ (B cell switched memory),1dsep,1dsep,mixture,,,,,,,,,{}
+CD62L+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD80+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD86+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD138+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (B cell switched memory),1dsep,1dsep,mixture,,,,,,,,,{}
+FCRL5+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (B cell switched memory),1dsep,1dsep,mixture,,,,,,,,,{}
+IgA+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+IgD+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+IgE+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+IgG+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+IgM+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (B cell switched memory),1dsep,1dsep,tail,,,,,,,,,{}
+BAFFR+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD10+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD1c+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD20+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD21+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD23+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD24hi (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD40+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD80+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD86+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD138+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+FCRL5+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+IgA+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+IgD+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+IgE+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+IgG+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+IgM+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (Mature Naive),1dsep,1dsep,tail,,,,,,,,,{}
+BAFFR+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD10+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD1c+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD20+ (Memory),1dsep,1dsep,mixture,,,,,,,,,{}
+CD21+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD23+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD24hi (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD40+ (Memory),1dsep,1dsep,mixture,,,,,,,,,{}
+CD45RA+ (Memory),1dsep,1dsep,mixture,,,,,,,,,{}
+CD62L+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD80+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD86+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CD138+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (Memory),1dsep,1dsep,mixture,,,,,,,,,{}
+FCRL5+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (Memory),1dsep,1dsep,mixture,,,,,,,,,{}
+IgA+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+IgD+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+IgE+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+IgG+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+IgM+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (Memory),1dsep,1dsep,tail,,,,,,,,,{}
+BAFFR+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+Bcl6+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR4+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR5+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR6+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR7+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD10+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD11b+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD11c+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD16+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD1c+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD20+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD21+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD23+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD24hi (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD25+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD27+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD38+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD39+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD40+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD45RA+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD62L+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD69+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD71+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD80+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD86+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD95+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD138+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR3+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR4+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR5+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+FCRL5+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+HLADR+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+IgA+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+IgD+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+IgE+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+IgG+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+IgM+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+Ki67+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+Tbet+ (Plasma cells),1dsep,1dsep,mixture,,,,,,,,,{}
+BAFFR+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+Bcl6+ (Plasmablasts),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (Plasmablasts),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR6+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR7+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD10+ (Plasmablasts),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (Plasmablasts),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD16+ (Plasmablasts),1dsep,1dsep,tail,,,,,,,,,{}
+CD1c+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD20+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD21+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD23+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD24hi (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD25+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD27+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD38+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD39+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD40+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD45RA+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD62L+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD69+ (Plasmablasts),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD80+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD86+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD95+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CD138+ (Plasmablasts),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR4+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR5+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+FCRL5+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+HLADR+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+IgA+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+IgD+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+IgE+ (Plasmablasts),1dsep,1dsep,tail,,,,,,,,,{}
+IgG+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+IgM+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+Ki67+ (Plasmablasts),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (Plasmablasts),1dsep,1dsep,mixture,,,,,,,,,{}
+BAFFR+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+Bcl6+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR7+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD10+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD16+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+CD1c+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD20+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD21+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD23+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD24hi (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD25+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD38+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD39+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD40+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD45RA+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD62L+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD69+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+CD80+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CD86+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+CD138+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR4+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR5+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+FCRL5+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+IgA+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+IgD+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+IgE+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+IgG+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+IgM+ (Transitional B cells),1dsep,1dsep,mixture,,,,,,,,,{}
+Ki67+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (Transitional B cells),1dsep,1dsep,tail,,,,,,,,,{}
+T cells,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+abTC & gdTC,1dsep,1dsep,mixture,,,,,,,,,{}
+MAIT & non-MAIT,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+Bcl6+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD4 MAIT & CD8 MAIT & DN MAIT,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+CD11b+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+IgG+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+MAIT AIM,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+NKp46+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (MAIT),1dsep,1dsep,tail,,,,,,,,,{}
+CD4 & CD8 & DN TC,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+CD4 Tconv & CD4 Treg,1dsep,1dsep,mixture,,,,,,,,,{}
+CD4 TCR Va7.2 & CD4 TCR Va24,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+Bcl6+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD4 AIM,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+CD4 Granzyme Perforin,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+CD4 Ki67,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+CD4 Naive & CD4 TCM & CD4 TEM & CD4 TEMRA,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+CD11c+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+Tconv Exhausted,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+Tfh,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+Th1 & Th17 & Th17-Th1,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+Th1 (CXCR3 Tbet),2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+Th2 (CCR4 GATA3),2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+TIGIT+ (CD4 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (CD4 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (CD4 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (CD4 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR5+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR6+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+CD11c+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+CD28+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+CD38+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+CD39+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+CD49a+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+CD62L+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+CD95+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+CD103+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR4+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+HLADR+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+ICOS+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+LAG3+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+Tbet+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+TCF1+ (CD4 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (CD4 TEMRA),1dsep,1dsep,mixture,,,,,,,,,{}
+Bcl6+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (CD4 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR5+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR6+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CD11c+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CD25+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CD28+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CD38+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CD39+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CD49a+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CD57+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CD62L+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CD69+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CD95+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CD103+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CD134+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CTLA4+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR4+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR5+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+GATA3+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+HLADR+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+ICOS+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+Ki67+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+LAG3+ (CD4 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+PD1+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+Perforin+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+Tbet+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+TCF1+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+TIGIT+ (CD4 TCR Va24),1dsep,1dsep,mixture,,,,,,,,,{}
+Bcl6+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+Tfr,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+TIGIT+ (CD4 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+Treg AIM,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+Treg Th1 & Treg Th17 & Treg Th17-Th1,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+Treg Th2,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+CD8 Tconv & CD8 Treg,1dsep,1dsep,mixture,,,,,,,,,{}
+CD8 TCR Va7.2 & CD8 TCR Va24,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+Bcl6+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD8 AIM,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+CD8 Exhausted,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+CD8 Granzyme Perforin,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+CD8 Naive & CD8 TCM & CD8 TEM & CD8 TEMRA,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+CD11c+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+MPECs & SLECs,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+NKp46+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (CD8 Tconv),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (CD8 Naive),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (CD8 TCM),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (CD8 TEM),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (CD8 TEMRA),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (MPECs),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (SLECs),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (CD8 TCR Va7.2),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (CD8 TCR Va24),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (CD8 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR5+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR6+ (CD8 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CD11c+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CD16+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CD25+ (CD8 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CD28+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CD38+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CD39+ (CD8 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CD49a+ (CD8 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CD57+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CD62L+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CD69+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CD71+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CD95+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CD103+ (CD8 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CD134+ (CD8 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD8 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD8 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CTLA4+ (CD8 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR4+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR5+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+GATA3+ (CD8 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+HLADR+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+ICOS+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+Ki67+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+KLRG1+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+LAG3+ (CD8 Treg),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+PD1+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+Perforin+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+Tbet+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+TCF1+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+TIGIT+ (CD8 Treg),1dsep,1dsep,mixture,,,,,,,,,{}
+Bcl6+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (DN TC),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR5+ (DN TC),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR6+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (DN TC),1dsep,1dsep,mixture,,,,,,,,,{}
+CD11c+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (DN TC),1dsep,1dsep,mixture,,,,,,,,,{}
+CD28+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (DN TC),1dsep,1dsep,mixture,,,,,,,,,{}
+CD39+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (DN TC),1dsep,1dsep,mixture,,,,,,,,,{}
+CD49a+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (DN TC),1dsep,1dsep,mixture,,,,,,,,,{}
+CD103+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (DN TC),1dsep,1dsep,mixture,,,,,,,,,{}
+CD134+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (DN TC),1dsep,1dsep,mixture,,,,,,,,,{}
+CTLA4+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (DN TC),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR4+ (DN TC),1dsep,1dsep,mixture,,,,,,,,,{}
+CXCR5+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (DN TC),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+gdTC Vg9,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+GranzymeB+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+IgG+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (gdTC),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD28+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD56+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+ICOS+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+IgG+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (gdTC Vg9),1dsep,1dsep,tail,,,,,,,,,{}
+non-B non-T (non-B non-T),2dsep,2dsep,mixture,mixture,,1837,0.25694066412629285,0.36309199782253676,0.43168209036472505,0.43168209036472505,0.7461685823754789,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture"", ""mixture_components_x"": 3, ""mixture_components_y"": 2, ""mixture_cut_x"": ""upper"", ""mixture_cut_y"": ""outer""}"
+NK & non-NK,2dsep,2dsep,mixture,mixture,,1044,0.3773946360153257,0.37452107279693486,0.4377394636015326,0.4377394636015326,0.9268380611732772,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture"", ""mixture_components_x"": 2, ""mixture_components_y"": 2, ""mixture_cut_x"": ""outer"", ""mixture_cut_y"": ""outer""}"
+CD56bright NK & CD56dim NK,1dsep,1dsep,tail,,,432,0.2199074074074074,,0.011574074074074073,,0.2847222222222222,{}
+Bcl6+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CCR5+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CCR7+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD103+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD16+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD25+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD27+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD49a+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD57+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD62L+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD69+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD127+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD134+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD137+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD154+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CD161+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CTLA4+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR3+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR4+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+CXCR5+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+GATA3+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+GranzymeB+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+IgG+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+Ki67+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+KLRG1+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+LAG3+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+NKp46+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+PD1+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+Perforin+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+Tbet+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+TCF1+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+TIGIT+ (CD56bright NK),1dsep,1dsep,tail,,,,,,,,,{}
+Bcl6+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.3048780487804878,,0.3617886178861789,,0.967391304347826,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CCR4+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.4105691056910569,,0.2032520325203252,,,{}
+CCR5+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.3089430894308943,,0.3252032520325203,,0.9302325581395349,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CCR6+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.5203252032520326,,0.16666666666666666,,,{}
+CCR7+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.24390243902439024,,0.2764227642276423,,1.0,"{""mixture_components"": 3, ""mixture_cut"": ""upper""}"
+CD11b+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.3130081300813008,,0.45934959349593496,,0.9658119658119658,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD11c+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.44308943089430897,,0.13821138211382114,,,{}
+CD103+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.4146341463414634,,0.21138211382113822,,,{}
+CD16+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.4065040650406504,,0.11788617886178862,,,{}
+CD25+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.4186991869918699,,0.2073170731707317,,,{}
+CD27+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.4349593495934959,,0.15040650406504066,,,{}
+CD38+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.45528455284552843,,0.07317073170731707,,,{}
+CD39+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.34146341463414637,,0.32926829268292684,,0.9642857142857143,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD45RA+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.3130081300813008,,0.2804878048780488,,0.8985507246376812,"{""mixture_components"": 3, ""mixture_cut"": ""upper""}"
+CD49a+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.3699186991869919,,0.2886178861788618,,0.9861111111111112,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD57+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.35772357723577236,,0.17886178861788618,,0.6376811594202898,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD62L+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.3902439024390244,,0.15040650406504066,,0.5,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD69+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.43902439024390244,,0.13008130081300814,,,{}
+CD71+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.4349593495934959,,0.16260162601626016,,,{}
+CD95+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.35365853658536583,,0.23577235772357724,,0.7733333333333333,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD127+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.35365853658536583,,0.24796747967479674,,0.9384615384615385,{}
+CD134+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.34552845528455284,,0.3008130081300813,,0.9367088607594937,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD137+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.3983739837398374,,0.23170731707317074,,0.9047619047619048,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD154+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.33739837398373984,,0.1991869918699187,,0.6805555555555556,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CD161+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.34552845528455284,,0.26422764227642276,,0.9154929577464789,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CTLA4+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.3252032520325203,,0.3943089430894309,,0.9797979797979798,{}
+CXCR3+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.4146341463414634,,0.17073170731707318,,,{}
+CXCR4+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.3089430894308943,,0.3333333333333333,,0.9647058823529412,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+CXCR5+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.3008130081300813,,0.4268292682926829,,1.0,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+GATA3+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.4024390243902439,,0.13008130081300814,,,{}
+GranzymeB+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.4186991869918699,,0.11788617886178862,,,{}
+HLADR+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.33739837398373984,,0.21951219512195122,,0.9473684210526315,{}
+IgG+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.3861788617886179,,0.21951219512195122,,0.8709677419354839,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+Ki67+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.3780487804878049,,0.24390243902439024,,0.9836065573770492,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+KLRG1+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.3821138211382114,,0.18292682926829268,,0.8823529411764706,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+LAG3+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.3983739837398374,,0.2682926829268293,,0.9705882352941176,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+NKp46+ (CD56dim NK),1dsep,1dsep,mixture,,,246,0.32926829268292684,,0.32926829268292684,,0.9759036144578314,"{""mixture_components"": 2, ""mixture_cut"": ""outer""}"
+PD1+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.45934959349593496,,0.12601626016260162,,,{}
+Perforin+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.2926829268292683,,0.2967479674796748,,0.8111111111111111,{}
+Tbet+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.4634146341463415,,0.10975609756097561,,,{}
+TCF1+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.4065040650406504,,0.18292682926829268,,,{}
+TIGIT+ (CD56dim NK),1dsep,1dsep,tail,,,246,0.3130081300813008,,0.3170731707317073,,0.9629629629629629,{}
+Basophils & non-Basophils,1dsep,1dsep,tail,,,587,0.3526405451448041,,0.0,,0.35093696763202725,{}
+CCR4+ (Basophils),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR6+ (Basophils),1dsep,1dsep,mixture,,,,,,,,,{}
+CD11b+ (Basophils),1dsep,1dsep,mixture,,,,,,,,,{}
+CD11c+ (Basophils),1dsep,1dsep,mixture,,,,,,,,,{}
+CD38+ (Basophils),1dsep,1dsep,mixture,,,,,,,,,{}
+CD39+ (Basophils),1dsep,1dsep,mixture,,,,,,,,,{}
+CD40+ (Basophils),1dsep,1dsep,mixture,,,,,,,,,{}
+CD45RA+ (Basophils),1dsep,1dsep,mixture,,,,,,,,,{}
+CD71+ (Basophils),1dsep,1dsep,mixture,,,,,,,,,{}
+CD80+ (Basophils),1dsep,1dsep,mixture,,,,,,,,,{}
+CD86+ (Basophils),1dsep,1dsep,mixture,,,,,,,,,{}
+CD95+ (Basophils),1dsep,1dsep,mixture,,,,,,,,,{}
+HLADR+ (Basophils),1dsep,1dsep,mixture,,,,,,,,,{}
+Ki67+ (Basophils),1dsep,1dsep,tail,,,,,,,,,{}
+CD16 Monocytes & DN & pDCs,2dsep,2dsep,mixture,tail,,587,0.41737649063032367,0.38160136286201024,0.017035775127768313,0.0,0.3294582308666816,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""tail"", ""mixture_components_x"": 2, ""mixture_cut_x"": ""outer""}"
+Ki67+ (non-Basophils),1dsep,1dsep,tail,,,587,0.3781942078364566,,0.27938671209540034,,0.9761904761904762,{}
+CCR4+ (CD16 Monocytes),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (CD16 Monocytes),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (CD16 Monocytes),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (CD16 Monocytes),1dsep,1dsep,tail,,,,,,,,,{}
+CD38+ (CD16 Monocytes),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (CD16 Monocytes),1dsep,1dsep,tail,,,,,,,,,{}
+CD40+ (CD16 Monocytes),1dsep,1dsep,tail,,,,,,,,,{}
+CD45RA+ (CD16 Monocytes),1dsep,1dsep,tail,,,,,,,,,{}
+CD71+ (CD16 Monocytes),1dsep,1dsep,tail,,,,,,,,,{}
+CD80+ (CD16 Monocytes),1dsep,1dsep,tail,,,,,,,,,{}
+CD86+ (CD16 Monocytes),1dsep,1dsep,tail,,,,,,,,,{}
+CD95+ (CD16 Monocytes),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (CD16 Monocytes),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c cDCs & Lin neg-,2dsep,2dsep,mixture,mixture,,497,0.45875251509054327,0.3843058350100604,0.002012072434607646,0.002012072434607646,0.4259012016021362,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture"", ""mixture_components_x"": 2, ""mixture_components_y"": 2, ""mixture_cut_x"": ""outer"", ""mixture_cut_y"": ""outer""}"
+cDC1s & cDC2s & DN cDCs,2dsep,2dsep,mixture,mixture,,,,,,,,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""mixture""}"
+CCR4+ (cDC1s),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR6+ (cDC1s),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (cDC1s),1dsep,1dsep,mixture,,,,,,,,,{}
+CD11c+ (cDC1s),1dsep,1dsep,mixture,,,,,,,,,{}
+CD38+ (cDC1s),1dsep,1dsep,mixture,,,,,,,,,{}
+CD39+ (cDC1s),1dsep,1dsep,mixture,,,,,,,,,{}
+CD40+ (cDC1s),1dsep,1dsep,mixture,,,,,,,,,{}
+CD45RA+ (cDC1s),1dsep,1dsep,mixture,,,,,,,,,{}
+CD71+ (cDC1s),1dsep,1dsep,mixture,,,,,,,,,{}
+CD80+ (cDC1s),1dsep,1dsep,mixture,,,,,,,,,{}
+CD86+ (cDC1s),1dsep,1dsep,mixture,,,,,,,,,{}
+CD95+ (cDC1s),1dsep,1dsep,mixture,,,,,,,,,{}
+HLADR+ (cDC1s),1dsep,1dsep,mixture,,,,,,,,,{}
+CCR4+ (cDC2s),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (cDC2s),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (cDC2s),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (cDC2s),1dsep,1dsep,mixture,,,,,,,,,{}
+CD38+ (cDC2s),1dsep,1dsep,tail,,,,,,,,,{}
+CD39+ (cDC2s),1dsep,1dsep,tail,,,,,,,,,{}
+CD40+ (cDC2s),1dsep,1dsep,mixture,,,,,,,,,{}
+CD45RA+ (cDC2s),1dsep,1dsep,mixture,,,,,,,,,{}
+CD71+ (cDC2s),1dsep,1dsep,tail,,,,,,,,,{}
+CD80+ (cDC2s),1dsep,1dsep,tail,,,,,,,,,{}
+CD86+ (cDC2s),1dsep,1dsep,mixture,,,,,,,,,{}
+CD95+ (cDC2s),1dsep,1dsep,tail,,,,,,,,,{}
+HLADR+ (cDC2s),1dsep,1dsep,tail,,,,,,,,,{}
+CCR4+ (DN cDCs),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (DN cDCs),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (DN cDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+CD11c+ (DN cDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+CD38+ (DN cDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+CD39+ (DN cDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+CD40+ (DN cDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+CD45RA+ (DN cDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+CD71+ (DN cDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+CD80+ (DN cDCs),1dsep,1dsep,tail,,,,,,,,,{}
+CD86+ (DN cDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+CD95+ (DN cDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+HLADR+ (DN cDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+ILCs,2dsep,1dsep,tail,,y,428,0.4205607476635514,,0.14018691588785046,,,{}
+ILC1 & ILC2,2dsep,2dsep,mixture,tail,,60,0.45,0.4166666666666667,0.08333333333333333,0.13333333333333333,0.9166666666666667,"{""algorithm_x"": ""mixture"", ""algorithm_y"": ""tail"", ""mixture_components_x"": 2, ""mixture_cut_x"": ""outer""}"
+CCR4+ (pDCs),1dsep,1dsep,tail,,,,,,,,,{}
+CCR6+ (pDCs),1dsep,1dsep,tail,,,,,,,,,{}
+CD11b+ (pDCs),1dsep,1dsep,tail,,,,,,,,,{}
+CD11c+ (pDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+CD38+ (pDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+CD39+ (pDCs),1dsep,1dsep,tail,,,,,,,,,{}
+CD40+ (pDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+CD45RA+ (pDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+CD71+ (pDCs),1dsep,1dsep,tail,,,,,,,,,{}
+CD80+ (pDCs),1dsep,1dsep,tail,,,,,,,,,{}
+CD86+ (pDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+CD95+ (pDCs),1dsep,1dsep,mixture,,,,,,,,,{}
+HLADR+ (pDCs),1dsep,1dsep,mixture,,,,,,,,,{}

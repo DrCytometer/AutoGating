@@ -1,109 +1,78 @@
-# AutoGating GUI — Shiny App
+# AutoGating
 
-Interactive gate definition editor for the AutoGating R package.
+Automated, reproducible gating of flow cytometry data in R, compatible with the
+Automated Gating plugins of Honeychrome.
 
-## Quick start
+A gate hierarchy (singlets, cells, thresholds on one or two channels, polygons,
+gates copied from other gates) is trained on pooled events from a set of training
+samples and applied to every sample. Thresholds are calculated from the data: a
+Gaussian mixture crossover, a symmetric tail, a density valley or Otsu's method,
+or copied from another gate or a reference population. Models are read and
+written as Honeychrome `.agmodel` files, so a model built in R opens in
+Honeychrome and the other way round. FlowJo workspaces can be imported and their
+drawn gates converted to calculated ones.
+
+## Installation
 
 ```r
-# Install dependencies (once)
-install.packages(c(
-  "shiny", "bslib", "shinyjs",
-  "flowCore", "ggplot2", "ggridges",
-  "dplyr", "DT"
-))
-BiocManager::install("flowCore")   # if not already installed
+remotes::install_github("DrCytometer/AutoSpectral")
+remotes::install_github("DrCytometer/AutoGating")
 
-# Source your AutoGating helpers, then run the app
-source("get_autogating_param.r")
-source("get_autogating_param_aurora.r")
-# ... etc.
-shiny::runApp("autogating_gui/")
+# for the app
+install.packages(c("shiny", "bslib", "DT", "shinyFiles"))
 ```
 
-## Tab overview
+## Pipeline
 
-### 1 · Setup
-- Upload one or more FCS files
-- Upload the panel CSV (`dye` / `antigen` / `type` columns)
-- Select the cytometer (initialises `ap` defaults)
-- Optionally load existing population-gate or activation-gate definitions (`.r` or `.rds`)
-- Click **Load & Initialise** to build the combined expression matrix and initialise
-  the transformation parameter table
+```r
+library(AutoGating)
 
-### 2 · Transformations
-- Ridgeline (ggridges) plot of all fluorescence channels, downsampled to ≤ 30k events
-- The highlighted channel (orange) matches the current selector on the left panel
-- Adjust **width basis**, **pos**, **neg** per-channel using the slider (draggable)
-  and the numeric input field (they stay in sync)
-- The population shown in the ridgeline can be switched to any already-defined gate
-  population (e.g. to assess transformation on live cells only)
-- **Apply to channel** stores the updated parameters without recalculating gates
-- **Save transformation CSV** exports `dye,pos,neg,width,length,max.range` — the
-  format expected by `read.transformation()` in `analyze_aux.r`
+ap <- get.autogating.param(
+    cytometer           = "aurora",            # or "symphony", "fortessa", "id7000"
+    data.dir            = "fcs",
+    panel.filename      = "panel.csv",         # dye, antigen, type
+    experiment.filename = "experiment.csv",    # filename, sample, gate.calculation
+    model.filename      = "model.agmodel",     # or population.gates.filename for R gate lists
+    statistics.dir      = "statistics",
+    figure.dir          = "figures"
+)
 
-### 3 · Gate Editor
-Left panel (gate definition fields):
-- Gate name, type (`free` / `1dsep` / `2dsep` / `replicate`)
-- Parent gate + parent population (cascade selector)
-- X and Y axis markers
-- Algorithm — for 1dsep: `tail`, `bimodal`, `kde.min`, `otsu`, `mixture`;
-  for 2dsep: x:y pair; for replicate: source gate
-- Sub-population names (1dsep: neg/pos; 2dsep: DN/Xpos/Ypos/DP; use `*` to ignore)
-- Reference/negative-control gate + population (used to prime the search region)
-- Lower / upper search bounds (`region.min` / `region.max`) with slider
-- Stats parent (immediate or explicit gate/popul)
+fcs.setup <- setup.autogating(ap)           # read, compensate, transform
+model     <- define.gates(fcs.setup, ap)    # train gates without a stored boundary
+write.agmodel(model, "model.agmodel", fcs.setup$fcs.panel)
+gating    <- run.autogating(fcs.setup, model, ap)   # counts, medians, gate status
 
-Centre panel (plot):
-- Scatter plot (hex-bin) for 2D or histogram for 1D / same-marker, downsampled to
-  the user-controlled maximum
-- **Single click** sets a gate-position hint (drawn as orange dashed line) that is
-  passed as `user.hint.x` / `user.hint.y` into the gate parameter list
-- **Double-click** clears the hint
-- **Calculate gate** calls `calculate.gate.<type>()` and overlays the resulting
-  boundary in green — the population is also indexed in `fcs_gates_temp` so that
-  downstream gates can use it immediately
-- **Add gate to definition** commits the gate to the `fcs.population.gates` list
-
-Right panel: live preview of the R list that will be written on export.
-
-### 4 · Gate Tree
-- Table of all defined gates (number, name, type, parent, markers, populations,
-  algorithm)
-- Select a row to see the full R list representation
-- **Delete selected gate** removes it (root gate `all` is protected)
-
-### 5 · Export
-- **Population gates** — download as `.r` (R source, `fcs.population.gates <- list(…)`)
-  or `.rds`; variable name is configurable
-- **Activation gates** — same, for `fcs.activation.gates`
-- **Transformation CSV** — table preview + download; matches the format read by
-  `read.transformation()` so it can be passed directly as `transformation.filename`
-  in `get.autogating.param()`
-
-## Gate definition format
-
-The exported R source files produce a list that is directly compatible with
-`load.gate.definitions()` in `analyze_aux.r`. Each element has the same fields
-documented in `fcs_population_gates_st1.r`:
-
-```
-gate.number, gate.name, gate.type, gate.marker.x, gate.marker.y,
-parent.gate, parent.popul, populations, algorithm, gate.param, stats.parent
+stats <- differential.statistics(gating, "samples.csv", group.column = "group",
+                                 output.dir = "differential")
 ```
 
-## Integration notes
+`create.panel.file()` and `create.experiment.file()` draft the panel and
+experiment files from the FCS files. Figures of every gate on the training
+events are written by `define.gates()`; `figure.samples = TRUE` draws every gate
+on every sample as well.
 
-- Source all AutoGating helpers **before** `shiny::runApp()`. The app will call
-  `calculate.gate.*()`, `apply.gate()`, etc. at runtime.
-- The app stores a running `fcs_gates_temp` index as gates are calculated, so that
-  child-gate plots immediately show only the parent population.
-- The `user.hint.x` / `user.hint.y` gate-param fields can optionally be used by a
-  custom `calculate.threshold.*()` function to bias the search toward the clicked
-  position. The built-in algorithms ignore them unless you modify them to use this
-  hint.
-  
+## App
+
+```r
+result <- autogating.app()                          # load an experiment in the app
+result <- autogating.app(fcs.setup, ap, model)      # or edit one read in R
+model  <- result$model
+```
+
+- **Data**: load an experiment and a model (empty, `.agmodel`, FlowJo workspace,
+  or the earlier R gate lists); every path has a Browse button.
+- **Transforms**: change the logicle, log or linear transform of each channel,
+  previewed on any population; save the transforms as a CSV.
+- **Gates**: the gate hierarchy with each population's share of its parent, the
+  figure of the selected gate and an editor for its parent, channels,
+  populations, algorithm and settings. Click the figure to set a manual
+  threshold. Every change is recalculated at once and can be undone.
+- **Save and run**: save the model, write the training figures, run the model on
+  every sample, and return to R.
+
 ## Funding
+
 This work has received funding from the KU Leuven C1 program, the European Union’s
-Horizon 2020 research and innovation programme under grant agreement No 874707 
-(EXIMIOUS), Wellcome Investigator Award, 222442/A/21/Z and UKRI Proactive 
+Horizon 2020 research and innovation programme under grant agreement No 874707
+(EXIMIOUS), Wellcome Investigator Award, 222442/A/21/Z and UKRI Proactive
 Vaccinology Award, MR/Y004450/1 (IMMPROVE).

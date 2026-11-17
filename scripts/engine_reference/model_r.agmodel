@@ -1,0 +1,606 @@
+{
+  "format_version": 2,
+  "metadata": {
+    "created": "reference",
+    "n_gates": 10,
+    "n_populations": 16
+  },
+  "gate_definitions": [
+    {
+      "gate_name": "singlets",
+      "gate_number": 1,
+      "gate_type": "singlets",
+      "gate_marker_x": "FSC-A",
+      "gate_marker_y": "FSC-H",
+      "parent_gate": null,
+      "parent_popul": "root",
+      "populations": {
+        "singlets": {
+          "label": "Singlets",
+          "label_pos": 1,
+          "region": "inside"
+        }
+      },
+      "algorithm": "singlets",
+      "gate_param": {},
+      "stats_parent": {}
+    },
+    {
+      "gate_name": "cells",
+      "gate_number": 2,
+      "gate_type": "free",
+      "gate_marker_x": "FSC-A",
+      "gate_marker_y": "SSC-A",
+      "parent_gate": "singlets",
+      "parent_popul": "singlets",
+      "populations": {
+        "cells": {
+          "label": "Cells",
+          "label_pos": 1,
+          "region": "inside"
+        }
+      },
+      "algorithm": "cells",
+      "gate_param": {},
+      "stats_parent": {}
+    },
+    {
+      "gate_name": "live",
+      "gate_number": 3,
+      "gate_type": "1dsep",
+      "gate_marker_x": "Viab",
+      "gate_marker_y": null,
+      "parent_gate": "cells",
+      "parent_popul": "cells",
+      "populations": {
+        "live": {
+          "label": "Live",
+          "label_pos": 1,
+          "region": "below"
+        },
+        "dead": {
+          "label": "Dead",
+          "label_pos": 1,
+          "region": "above"
+        }
+      },
+      "algorithm": "mixture",
+      "gate_param": {},
+      "stats_parent": {}
+    },
+    {
+      "gate_name": "cd3",
+      "gate_number": 4,
+      "gate_type": "1dsep",
+      "gate_marker_x": "CD3",
+      "gate_marker_y": "SSC-A",
+      "sep_axis": "x",
+      "parent_gate": "live",
+      "parent_popul": "live",
+      "populations": {
+        "T": {
+          "label": "T cells",
+          "label_pos": 1,
+          "region": "above"
+        },
+        "nonT": {
+          "label": "Non-T",
+          "label_pos": 1,
+          "region": "below"
+        }
+      },
+      "algorithm": "tail",
+      "gate_param": {
+        "tail_fraction": 0.001,
+        "threshold_factor": 1.5
+      },
+      "stats_parent": {}
+    },
+    {
+      "gate_name": "cd4cd8",
+      "gate_number": 5,
+      "gate_type": "2dsep",
+      "gate_marker_x": "CD4",
+      "gate_marker_y": "CD8",
+      "parent_gate": "cd3",
+      "parent_popul": "T",
+      "populations": {
+        "CD4": {
+          "label": "CD4",
+          "label_pos": 1,
+          "region": "x+y-"
+        },
+        "CD8": {
+          "label": "CD8",
+          "label_pos": 1,
+          "region": "x-y+"
+        },
+        "DP": {
+          "label": "DP",
+          "label_pos": 1,
+          "region": "x+y+"
+        },
+        "DN": {
+          "label": "DN",
+          "label_pos": 1,
+          "region": "x-y-"
+        }
+      },
+      "algorithm": "mixture",
+      "gate_param": {
+        "algorithm_y": "tail"
+      },
+      "stats_parent": {
+        "CD4": "live/live"
+      }
+    },
+    {
+      "gate_name": "notcd4",
+      "gate_number": 6,
+      "gate_type": "2dsep",
+      "gate_marker_x": "CD4",
+      "gate_marker_y": "CD8",
+      "parent_gate": "cd3",
+      "parent_popul": "T",
+      "populations": {
+        "nonCD4": {
+          "label": "Non-CD4",
+          "label_pos": 1,
+          "region": "x-y-|x-y+|x+y+"
+        }
+      },
+      "algorithm": "replicate",
+      "gate_param": {
+        "replicate_x": {
+          "gate": "cd4cd8"
+        },
+        "replicate_y": {
+          "gate": "cd4cd8"
+        }
+      },
+      "stats_parent": {}
+    },
+    {
+      "gate_name": "cd4ref",
+      "gate_number": 7,
+      "gate_type": "1dsep",
+      "gate_marker_x": "CD4",
+      "gate_marker_y": null,
+      "parent_gate": "cd3",
+      "parent_popul": "nonT",
+      "populations": {
+        "CD4lo": {
+          "label": "CD4 low",
+          "label_pos": 1,
+          "region": "below"
+        },
+        "CD4hi": {
+          "label": "CD4 high",
+          "label_pos": 1,
+          "region": "above"
+        }
+      },
+      "algorithm": "replicate",
+      "gate_param": {
+        "replicate_x": {
+          "population": "live/live",
+          "algorithm": "kde_min"
+        }
+      },
+      "stats_parent": {}
+    },
+    {
+      "gate_name": "cd8otsu",
+      "gate_number": 8,
+      "gate_type": "1dsep",
+      "gate_marker_x": "CD8",
+      "gate_marker_y": null,
+      "parent_gate": "cd3",
+      "parent_popul": "T",
+      "populations": {
+        "lo": {
+          "label": "lo",
+          "label_pos": 1,
+          "region": "below"
+        },
+        "hi": {
+          "label": "hi",
+          "label_pos": 1,
+          "region": "above"
+        }
+      },
+      "algorithm": "otsu",
+      "gate_param": {},
+      "stats_parent": {}
+    },
+    {
+      "gate_name": "cd8rep",
+      "gate_number": 9,
+      "gate_type": "replicate",
+      "origin_gate": "cd8otsu",
+      "parent_gate": "live",
+      "parent_popul": "live",
+      "populations": {},
+      "gate_param": {},
+      "stats_parent": {}
+    },
+    {
+      "gate_name": "hull",
+      "gate_number": 10,
+      "gate_type": "free",
+      "gate_marker_x": "CD3",
+      "gate_marker_y": "CD4",
+      "parent_gate": "cd3",
+      "parent_popul": "T",
+      "populations": {
+        "in": {
+          "label": "All T",
+          "label_pos": 1,
+          "region": "inside"
+        }
+      },
+      "algorithm": "all",
+      "gate_param": {},
+      "stats_parent": {}
+    }
+  ],
+  "trained_boundaries": {
+    "singlets": {
+      "singlets": {
+        "boundary": [
+          [-0.026464149129938112, -0.051643866109291114],
+          [0.68601329265182831, 0.51937791323383375],
+          [0.68601329265182831, 0.57865699991883612],
+          [-0.026464149129938112, 0.0076352205757113101],
+          [-0.026464149129938112, -0.051643866109291114]
+        ],
+        "threshold_x": null,
+        "threshold_y": null,
+        "region": "inside",
+        "label": "Singlets",
+        "n_events": 19017,
+        "fraction": 0.95084999999999997
+      }
+    },
+    "cells": {
+      "cells": {
+        "boundary": [
+          [0.19490138955191696, 0.08379663921766442],
+          [0.64026279554075582, 0.08379663921766442],
+          [0.64026279554075582, 0.52152403087919119],
+          [0.19490138955191696, 0.52152403087919119],
+          [0.19490138955191696, 0.08379663921766442]
+        ],
+        "threshold_x": null,
+        "threshold_y": null,
+        "region": "inside",
+        "label": "Cells",
+        "n_events": 16983,
+        "fraction": 0.89304306672976808
+      }
+    },
+    "live": {
+      "live": {
+        "boundary": [
+          [0.032010259646467573, 0],
+          [0.43171115177444669, 0],
+          [0.43171115177444669, 1],
+          [0.032010259646467573, 1],
+          [0.032010259646467573, 0]
+        ],
+        "threshold_x": 0.43171115177444669,
+        "threshold_y": null,
+        "region": "below",
+        "label": "Live",
+        "n_events": 14471,
+        "fraction": 0.8520873814991462
+      },
+      "dead": {
+        "boundary": [
+          [0.43171115177444669, 0],
+          [0.89793839935486652, 0],
+          [0.89793839935486652, 1],
+          [0.43171115177444669, 1],
+          [0.43171115177444669, 0]
+        ],
+        "threshold_x": 0.43171115177444669,
+        "threshold_y": null,
+        "region": "above",
+        "label": "Dead",
+        "n_events": 2512,
+        "fraction": 0.1479126185008538
+      }
+    },
+    "cd3": {
+      "T": {
+        "boundary": [
+          [0.40476212054265381, 0],
+          [0.82077955600798558, 0],
+          [0.82077955600798558, 1],
+          [0.40476212054265381, 1],
+          [0.40476212054265381, 0]
+        ],
+        "threshold_x": 0.40476212054265381,
+        "threshold_y": null,
+        "region": "above",
+        "label": "T cells",
+        "n_events": 5054,
+        "fraction": 0.34925022458710525
+      },
+      "nonT": {
+        "boundary": [
+          [0.10732964433388364, 0],
+          [0.40476212054265381, 0],
+          [0.40476212054265381, 1],
+          [0.10732964433388364, 1],
+          [0.10732964433388364, 0]
+        ],
+        "threshold_x": 0.40476212054265381,
+        "threshold_y": null,
+        "region": "below",
+        "label": "Non-T",
+        "n_events": 9417,
+        "fraction": 0.6507497754128948
+      }
+    },
+    "cd4cd8": {
+      "CD4": {
+        "boundary": [
+          [0.38314154853176524, 0.085788287297848723],
+          [0.76172042521311001, 0.085788287297848723],
+          [0.76172042521311001, 0.33491578959226115],
+          [0.38314154853176524, 0.33491578959226115],
+          [0.38314154853176524, 0.085788287297848723]
+        ],
+        "threshold_x": 0.38314154853176524,
+        "threshold_y": 0.33491578959226115,
+        "region": "x+y-",
+        "label": "CD4",
+        "n_events": 3016,
+        "fraction": 0.59675504550850811
+      },
+      "CD8": {
+        "boundary": [
+          [0.099943824132663381, 0.33491578959226115],
+          [0.38314154853176524, 0.33491578959226115],
+          [0.38314154853176524, 0.82058620988799924],
+          [0.099943824132663381, 0.82058620988799924],
+          [0.099943824132663381, 0.33491578959226115]
+        ],
+        "threshold_x": 0.38314154853176524,
+        "threshold_y": 0.33491578959226115,
+        "region": "x-y+",
+        "label": "CD8",
+        "n_events": 1501,
+        "fraction": 0.29699248120300753
+      },
+      "DP": {
+        "boundary": [
+          [0.38314154853176524, 0.33491578959226115],
+          [0.76172042521311001, 0.33491578959226115],
+          [0.76172042521311001, 0.82058620988799924],
+          [0.38314154853176524, 0.82058620988799924],
+          [0.38314154853176524, 0.33491578959226115]
+        ],
+        "threshold_x": 0.38314154853176524,
+        "threshold_y": 0.33491578959226115,
+        "region": "x+y+",
+        "label": "DP",
+        "n_events": 283,
+        "fraction": 0.055995251286110014
+      },
+      "DN": {
+        "boundary": [
+          [0.099943824132663381, 0.085788287297848723],
+          [0.38314154853176524, 0.085788287297848723],
+          [0.38314154853176524, 0.33491578959226115],
+          [0.099943824132663381, 0.33491578959226115],
+          [0.099943824132663381, 0.085788287297848723]
+        ],
+        "threshold_x": 0.38314154853176524,
+        "threshold_y": 0.33491578959226115,
+        "region": "x-y-",
+        "label": "DN",
+        "n_events": 254,
+        "fraction": 0.050257222002374355
+      }
+    },
+    "notcd4": {
+      "nonCD4": {
+        "boundary": [
+          [0.38314154853176524, 0.085788287297848723],
+          [0.099943824132663381, 0.085788287297848723],
+          [0.099943824132663381, 0.82058620988799924],
+          [0.76172042521311001, 0.82058620988799924],
+          [0.76172042521311001, 0.33491578959226115],
+          [0.38314154853176524, 0.33491578959226115],
+          [0.38314154853176524, 0.085788287297848723]
+        ],
+        "threshold_x": 0.38314154853176524,
+        "threshold_y": 0.33491578959226115,
+        "region": "x-y-|x-y+|x+y+",
+        "label": "Non-CD4",
+        "n_events": 2038,
+        "fraction": 0.40324495449149189
+      }
+    },
+    "cd4ref": {
+      "CD4lo": {
+        "boundary": [
+          [0.068280460893191924, 0],
+          [0.40306715427854667, 0],
+          [0.40306715427854667, 1],
+          [0.068280460893191924, 1],
+          [0.068280460893191924, 0]
+        ],
+        "threshold_x": 0.40306715427854667,
+        "threshold_y": null,
+        "region": "below",
+        "label": "CD4 low",
+        "n_events": 9417,
+        "fraction": 1
+      },
+      "CD4hi": {
+        "boundary": [
+          [0.40306715427854667, 0],
+          [0.40306715427854667, 0],
+          [0.40306715427854667, 1],
+          [0.40306715427854667, 1],
+          [0.40306715427854667, 0]
+        ],
+        "threshold_x": 0.40306715427854667,
+        "threshold_y": null,
+        "region": "above",
+        "label": "CD4 high",
+        "n_events": 0,
+        "fraction": 0
+      }
+    },
+    "cd8otsu": {
+      "lo": {
+        "boundary": [
+          [0.085788287297848723, 0],
+          [0.41984094492389207, 0],
+          [0.41984094492389207, 1],
+          [0.085788287297848723, 1],
+          [0.085788287297848723, 0]
+        ],
+        "threshold_x": 0.41984094492389207,
+        "threshold_y": null,
+        "region": "below",
+        "label": "lo",
+        "n_events": 3283,
+        "fraction": 0.64958448753462605
+      },
+      "hi": {
+        "boundary": [
+          [0.41984094492389207, 0],
+          [0.82058620988799924, 0],
+          [0.82058620988799924, 1],
+          [0.41984094492389207, 1],
+          [0.41984094492389207, 0]
+        ],
+        "threshold_x": 0.41984094492389207,
+        "threshold_y": null,
+        "region": "above",
+        "label": "hi",
+        "n_events": 1771,
+        "fraction": 0.35041551246537395
+      }
+    },
+    "cd8rep": {
+      "lo": {
+        "boundary": [
+          [0.085788287297848723, 0],
+          [0.41984094492389207, 0],
+          [0.41984094492389207, 1],
+          [0.085788287297848723, 1],
+          [0.085788287297848723, 0]
+        ],
+        "threshold_x": 0.41984094492389207,
+        "threshold_y": null,
+        "region": "below",
+        "label": "lo",
+        "n_events": 12700,
+        "fraction": 0.87761730357266254
+      },
+      "hi": {
+        "boundary": [
+          [0.41984094492389207, 0],
+          [0.82058620988799924, 0],
+          [0.82058620988799924, 1],
+          [0.41984094492389207, 1],
+          [0.41984094492389207, 0]
+        ],
+        "threshold_x": 0.41984094492389207,
+        "threshold_y": null,
+        "region": "above",
+        "label": "hi",
+        "n_events": 1771,
+        "fraction": 0.12238269642733743
+      }
+    },
+    "hull": {
+      "in": {
+        "boundary": [
+          [0.49262622191883149, 0.56342067623765013],
+          [0.49255122757607589, 0.25146682759592187],
+          [0.52428399055932928, 0.15357128645733234],
+          [0.54171516486000282, 0.13522111400031747],
+          [0.54855977753762852, 0.12895881060936637],
+          [0.64335281602981054, 0.11853598020810362],
+          [0.68617804881381383, 0.11733982384041255],
+          [0.73529941187948922, 0.11757256298205206],
+          [0.75902080746685097, 0.12088783156266605],
+          [0.77670699075708138, 0.1561692615828319],
+          [0.78969632856324268, 0.19372294143514707],
+          [0.79818098426817041, 0.52196768203173183],
+          [0.79837719458632683, 0.59017939381854334],
+          [0.78589258155274078, 0.6753130699655856],
+          [0.78191950590666914, 0.68604465399204906],
+          [0.76445144482396221, 0.71440993139210573],
+          [0.71747085570919245, 0.72785509583513053],
+          [0.63524093003535431, 0.72924515420523361],
+          [0.54875982674967994, 0.72510868774067749],
+          [0.49672580070048938, 0.71966204362749564],
+          [0.49262622191883149, 0.56342067623765013]
+        ],
+        "threshold_x": null,
+        "threshold_y": null,
+        "region": "inside",
+        "label": "All T",
+        "n_events": 5029,
+        "fraction": 0.99505342303126232
+      }
+    }
+  },
+  "channel_map": {
+    "FSC-A": "FSC-A",
+    "FSC-H": "FSC-H",
+    "SSC-A": "SSC-A",
+    "Viab": "Viab",
+    "CD3": "CD3",
+    "CD4": "CD4",
+    "CD8": "CD8"
+  },
+  "transforms": {
+    "CD3": {
+      "id": 1,
+      "scale_t": 262144,
+      "logicle_w": 0.5,
+      "logicle_m": 4.5,
+      "logicle_a": 0
+    }
+  },
+  "training_summary": {
+    "training_sample_names": [
+      "A"
+    ],
+    "events_cap_per_sample": 50000
+  },
+  "af": {
+    "sample_af_profiles": {}
+  },
+  "qc": {
+    "enabled": false,
+    "settings": {},
+    "fingerprints": {}
+  },
+  "application": {
+    "mode_per_gate": {
+      "singlets": "fixed",
+      "cells": "fixed",
+      "live": "recalculate",
+      "cd3": "fixed",
+      "cd4cd8": "recalculate",
+      "notcd4": "fixed",
+      "cd4ref": "fixed",
+      "cd8otsu": "fixed",
+      "cd8rep": "fixed",
+      "hull": "fixed"
+    },
+    "default_mode": "fixed",
+    "drift_limit": 0.050000000000000003,
+    "drift_action": "flag"
+  }
+}

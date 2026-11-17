@@ -1,0 +1,125 @@
+[
+ {
+  "gate_name": "cells",
+  "gate_number": 1,
+  "gate_type": "free",
+  "gate_marker_x": "FSC-A",
+  "gate_marker_y": "SSC-A",
+  "parent_gate": null,
+  "parent_popul": "root",
+  "populations": {
+   "cells": {
+    "label": "Cells",
+    "label_pos": 1,
+    "region": "inside"
+   }
+  },
+  "algorithm": "cells",
+  "gate_param": {}
+ },
+ {
+  "gate_name": "cd3",
+  "gate_number": 2,
+  "gate_type": "1dsep",
+  "gate_marker_x": "CD3",
+  "gate_marker_y": null,
+  "parent_gate": "cells",
+  "parent_popul": "cells",
+  "populations": {
+   "T": {
+    "label": "T cells",
+    "label_pos": 1,
+    "region": "above"
+   },
+   "nonT": {
+    "label": "Non-T",
+    "label_pos": 1,
+    "region": "below"
+   }
+  },
+  "algorithm": "mixture",
+  "gate_param": {}
+ },
+ {
+  "gate_name": "cd4cd8",
+  "gate_number": 3,
+  "gate_type": "2dsep",
+  "gate_marker_x": "CD4",
+  "gate_marker_y": "CD8",
+  "parent_gate": "cd3",
+  "parent_popul": "T",
+  "populations": {
+   "CD4": {
+    "label": "CD4",
+    "label_pos": 1,
+    "region": "x+y-"
+   },
+   "CD8": {
+    "label": "CD8",
+    "label_pos": 1,
+    "region": "x-y+"
+   },
+   "DN": {
+    "label": "DN",
+    "label_pos": 1,
+    "region": "x-y-"
+   },
+   "DP": {
+    "label": "DP",
+    "label_pos": 1,
+    "region": "x+y+"
+   }
+  },
+  "algorithm": "mixture",
+  "gate_param": {},
+  "stats_parent": {
+   "DP": "cells/cells"
+  }
+ },
+ {
+  "gate_name": "cd69",
+  "gate_number": 4,
+  "gate_type": "1dsep",
+  "gate_marker_x": "CD69",
+  "gate_marker_y": null,
+  "parent_gate": "cd4cd8",
+  "parent_popul": "CD4",
+  "populations": {
+   "act": {
+    "label": "CD69+",
+    "label_pos": 1,
+    "region": "above"
+   },
+   "rest": {
+    "label": "CD69-",
+    "label_pos": 1,
+    "region": "below"
+   }
+  },
+  "algorithm": "tail",
+  "gate_param": {}
+ },
+ {
+  "gate_name": "rare",
+  "gate_number": 5,
+  "gate_type": "1dsep",
+  "gate_marker_x": "CD25",
+  "gate_marker_y": null,
+  "parent_gate": "cd4cd8",
+  "parent_popul": "DP",
+  "populations": {
+   "hi": {
+    "label": "CD25 hi",
+    "label_pos": 1,
+    "region": "above"
+   },
+   "lo": {
+    "label": "CD25 lo",
+    "label_pos": 1,
+    "region": "below"
+   }
+  },
+  "algorithm": "tail",
+  "gate_param": {}
+ }
+]

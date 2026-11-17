@@ -1,0 +1,187 @@
+---
+title: "Automated gating with AutoGating"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Automated gating with AutoGating}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set( collapse = TRUE, comment = "#>", eval = FALSE )
+```
+
+This vignette walks through the ST1 example: 25 human samples stained
+with a 31-channel T cell panel on a BD instrument, gated with the ST1 gate
+hierarchy (52 population gates and 363 activation gates). The ST1 inputs are
+in `scripts/ST1` of the source repository; the FCS files are not distributed
+with the package, so the code is not run here.
+
+## The idea
+
+Manual gating draws the same gates on every sample by eye. AutoGating
+describes each gate by *how* it should be placed rather than *where*: "the
+threshold on CD4 where the negative and positive populations cross", "the
+band of events where FSC-H follows FSC-A". The gates are first calculated on
+pooled events from a set of training samples, giving a model; the model is
+then applied to every sample, either at the trained positions ("fixed") or
+calculated again on each sample ("recalculate") with a warning when a gate
+moves further than expected.
+
+Models are Honeychrome `.agmodel` files, so a model built in R opens in
+Honeychrome's Automated Gating plugin, and a model built in Honeychrome runs
+here.
+
+## Inputs
+
+Three files describe an experiment.
+
+The **panel** (`fcs_panel_st1.csv`) lists each channel to read: its FCS name
+(`dye`), the name used for gating (`antigen`) and its `type`:
+
+- `scatter`: forward and side scatter, shown on linear axes;
+- `time`;
+- `lineage` and `activation`: fluorescence channels, shown on logicle axes.
+  Medians are reported for both.
+
+`create.panel.file()` drafts a panel from an FCS file.
+
+The **experiment file** (`fcs_experiment_st1.csv`) lists the FCS files, a
+sample name for each, and `gate.calculation`: `TRUE` for the samples whose
+events are pooled to train the gates. `create.experiment.file()` drafts it
+from a metadata table and a folder of FCS files.
+
+The **parameters** (`get.autogating.param()`) name these files and the
+cytometer, whose defaults set the display transforms and figure ranges.
+Optional files add a compensation (spillover) matrix for conventional data
+and per-channel transforms (`transformation.filename`, Gating-ML or FlowJo
+biex columns, keyed by dye).
+
+```{r}
+library( AutoGating )
+
+st1.dir <- "scripts/ST1"
+ap <- get.autogating.param(
+    cytometer                 = "symphony",
+    data.dir                  = "path/to/st1_fcs",
+    panel.filename            = file.path( st1.dir, "fcs_panel_st1.csv" ),
+    experiment.filename       = file.path( st1.dir, "fcs_experiment_st1.csv" ),
+    compensation.filename     = file.path( st1.dir, "fcs_compensation_st1.csv" ),
+    transformation.filename   = file.path( st1.dir, "fcs_transformation_st1.csv" ),
+    population.gates.filename = file.path( st1.dir, "fcs_population_gates_st1.r" ),
+    activation.gates.filename = file.path( st1.dir, "fcs_activation_gates_st1.r" ),
+    statistics.dir            = "st1_output/statistics",
+    figure.dir                = "st1_output/figures",
+    worker.n                  = 4L
+)
+```
+
+## Reading the data
+
+`setup.autogating()` reads each FCS file (`AutoSpectral::readFCS`), keeps the
+panel channels, applies the compensation, and puts every channel on the
+display scale used for gating: 0 to 1, with 1 the top of the instrument range.
+Fluorescence channels use the logicle transform (linear around zero, log for
+bright events), scatter channels a linear one. Thresholds and polygons are
+stored on this scale, the same scale Honeychrome and FlowKit use.
+
+```{r}
+fcs.setup <- setup.autogating( ap )
+```
+
+## Gates
+
+Each gate has a type, a parent population and an algorithm:
+
+- **singlets**: a band around the line of FSC-H against FSC-A; doublets fall
+  below it. The band is 3 robust standard deviations wide (`width.sd`).
+- **free**: "cells" draws a rectangle on FSC and SSC from the debris cut up
+  to where the cells' density fades; "all" is the outline of every event.
+- **1dsep**: one threshold on one channel, giving the populations below and
+  above it. It can be shown against a second channel.
+- **2dsep**: a threshold on each of two channels, giving four quadrants;
+  quadrants can be joined into one population (three quadrants make an L).
+- **replicate**: the same gate as another one, applied to a different parent.
+
+Thresholds come from the data of the parent population:
+
+- **mixture**: fits two bell curves (negative and positive) and puts the
+  threshold where they cross. Best when both populations are present.
+- **tail**: puts the threshold just above the negative population, so that
+  only a set small fraction (0.0001) of a symmetric negative would be called
+  positive. Best for a rare or dim positive population.
+- **kde_min**: the lowest point of the density between the two peaks.
+- **otsu**: the cut that best separates the events into two groups.
+- **replicate**: copies another gate's threshold on the same channel, or
+  calculates it on a reference population (for example the same marker on
+  all CD4 T cells, then used on each CD4 subset).
+
+The ST1 gates are R lists in the earlier AutoGating format;
+`define.gates()` converts them (`convert.gate.definitions()`) and trains
+every gate on the pooled training events (`ap$events.per.sample`, 50,000 per
+training sample). It also draws each gate on the training events in
+`figures/training`.
+
+```{r}
+model <- define.gates( fcs.setup, ap )
+write.agmodel( model, "st1_output/st1.agmodel", fcs.setup$fcs.panel )
+```
+
+A model saved from Honeychrome, or by `write.agmodel()`, is used instead of
+the gate lists with `model.filename`. A FlowJo workspace is imported with
+`import.flowjo.workspace()`; its drawn gates can then be turned into
+calculated gates with `convert.imported.gates()`.
+
+## Editing in the app
+
+`autogating.app()` opens the model in a browser: the gate hierarchy with each
+population's share of its parent, the figure of each gate, and an editor for
+its parent, channels, populations, algorithm and settings. Clicking a figure
+sets a manual threshold. Transforms can be changed with a live preview.
+Every change is recalculated at once and can be undone.
+
+```{r}
+edited <- autogating.app( fcs.setup, ap, model )
+model <- edited$model
+```
+
+## Gating every sample
+
+`run.autogating()` applies the model to each sample on its own (in parallel
+with `worker.n > 1`) and writes three tables to `statistics.dir`: the count
+and fraction of every population in every sample, the median of every
+fluorescence channel in every population, and the status of every gate in
+every sample (where its boundary came from, how far it moved, and any flag).
+
+```{r}
+gating <- run.autogating( fcs.setup, model, ap )
+subset( gating$status, !is.na( flag ) )
+```
+
+With `figure.samples = TRUE` in the parameters, every gate is also drawn on
+every sample.
+
+## Comparing groups
+
+`differential.statistics()` compares groups of samples. Each population's
+frequency is tested as the log odds of an event being in the population
+rather than elsewhere in its parent: this treats a change from 1% to 2% and
+from 49% to 66% alike (both double the odds) and keeps rare populations from
+being swamped by common ones. Marker medians are compared on the display
+scale. Both use limma's moderated t-tests, which borrow strength across
+populations, with an optional pairing (the same individual in several
+groups) and covariates. p-values are adjusted for the number of tests
+(Benjamini-Hochberg).
+
+```{r}
+samples <- data.frame( sample = gating$population.table$sample, stringsAsFactors = FALSE )
+samples <- unique( samples )
+samples$group <- c( "control", "treated" )[ 1 + ( seq_len( nrow( samples ) ) > 12 ) ]
+
+stats <- differential.statistics( gating, samples, group.column = "group",
+                                  output.dir = "st1_output/differential" )
+head( stats$frequencies[ stats$frequencies$significant, ] )
+```
+
+The output folder holds the test tables, the values per sample, volcano
+plots, maps of the significant differences and per-sample plots by group.

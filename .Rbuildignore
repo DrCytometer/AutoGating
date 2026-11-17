@@ -1,5 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^scripts$
+^dev$
+^\.DS_Store$
 ^LICENSE\.md$
-^\.positai$
-^\.claude$

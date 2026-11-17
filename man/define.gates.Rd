@@ -2,77 +2,52 @@
 % Please edit documentation in R/define_gates.R
 \name{define.gates}
 \alias{define.gates}
-\title{Define and Calculate Gate Boundaries}
+\title{Define and Train Gates}
 \usage{
-define.gates(fcs.setup, ap, plot.gates = TRUE)
+define.gates(fcs.setup, ap, model = NULL, retrain = FALSE)
 }
 \arguments{
-\item{fcs.setup}{Named list returned by \code{\link{setup.autogating}}.
-Required elements:
-\describe{
-\item{\code{fcs.expr.data}}{Numeric matrix. Full expression matrix for
-all events.}
-\item{\code{fcs.sample}}{Character vector of all sample identifiers.}
-\item{\code{fcs.sample.gate.calc}}{Character vector of sample
-identifiers used for boundary calculation.}
-\item{\code{fcs.event.sample}}{Factor of per-event sample membership.}
-}}
+\item{fcs.setup}{Named list returned by \code{\link{setup.autogating}}.}
 
 \item{ap}{Autogating parameter object returned by
-\code{\link{get.autogating.param}} (and augmented by
-\code{\link{setup.autogating}} with \code{ap$transform} and
-\code{ap$transform.inv}).  Required fields: \code{ap$figure.dir.basename},
-\code{ap$statistics.dir}, \code{ap$population.gates.filename},
-\code{ap$activation.gates.filename}.}
+\code{\link{get.autogating.param}}.}
 
-\item{plot.gates}{Logical.  If \code{TRUE} (default), diagnostic density
-scatter plots are saved to the \code{"all"} figure directories.  Set to
-\code{FALSE} to suppress plot generation (e.g. in automated testing).}
+\item{model}{Optional gating model to train or reuse.}
+
+\item{retrain}{Logical.  Recalculate every gate, including those with a
+stored boundary.  Default \code{FALSE}.}
 }
 \value{
-A named list with the following elements:
-\describe{
-\item{\code{fcs.gates.all}}{Nested gate results list (see
-\code{CLAUDE.md}) for the pooled gate-calculation data.  Contains
-\code{boundary}, \code{idx}, \code{fraction}, \code{label},
-\code{parent.gate}, and \code{parent.popul} for every non-ignored
-population in every gate.}
-\item{\code{fcs.population.gates}}{List of population gate definitions
-loaded from \code{ap$population.gates.filename}.}
-\item{\code{fcs.activation.gates}}{List of activation gate definitions
-loaded from \code{ap$activation.gates.filename}.}
-\item{\code{fcs.figure.popgate.dir}}{Named character vector of
-population-gate figure directory paths, one entry per sample plus an
-\code{"all"} entry for the pooled figures.}
-\item{\code{fcs.figure.actgate.dir}}{Named character vector of
-activation-gate figure directory paths, same structure as above.}
-}
+Gating model with trained boundaries.
 }
 \description{
-Performs the gate definition and boundary-calculation stage of the
-AutoGating pipeline:
+Builds the gating model (see \code{\link{read.agmodel}}) and trains its
+boundaries:
 \enumerate{
-\item Loads population and activation gate definition lists from the
-files referenced in \code{ap} via \code{\link{load.gate.definitions}}.
-\item Creates the figure and statistics output directories on disk.
-\item Pools the expression data from all samples that have
-\code{gate.calculation == TRUE} in the experiment manifest.
-\item Calls \code{\link{do.population.gates}} and
-\code{\link{do.activation.gates}} on the pooled data with
-\code{calculate.gates = TRUE} to compute shared gate boundaries.
+\item The gate definitions come from \code{model}, else from the
+\code{.agmodel} file \code{ap$model.filename}, else from the R gate
+files \code{ap$population.gates.filename} and
+\code{ap$activation.gates.filename}, converted by
+\code{\link{convert.gate.definitions}}.
+\item Stored boundaries are converted to the data's axis transforms
+(\code{\link{remap.model}}).
+\item Gates without a stored boundary (every gate when
+\code{retrain = TRUE}) are calculated on the pooled training events:
+\code{ap$events.per.sample} events drawn from each sample marked
+\code{gate.calculation} in the experiment file (every sample when none
+is marked).  Gates with a stored boundary are applied as they are.
 }
-
-The returned object (\code{fcs.gates.all}) is a nested named list whose
-structure is documented in \code{CLAUDE.md}.  It carries both the computed
-boundary polygons and the event-index assignments for the pooled data.
-Pass it, together with the gate definition lists, to
-\code{\link{run.autogating}} for per-sample application.
+The model's transforms are set to the data's, and its training summary
+records the samples and events used.  With \code{ap$figure.training},
+each gate is drawn on the pooled training events in
+\code{ap$figure.dir/training} (\code{\link{write.gate.figures}}).  Save
+the model for Honeychrome with \code{\link{write.agmodel}}, or edit it in
+\code{\link{autogating.app}}.
 }
 \details{
-Load gate definitions and calculate boundaries on pooled samples
+Build and train the gating model of an experiment
 }
 \seealso{
-\code{\link{setup.autogating}}, \code{\link{run.autogating}},
-\code{\link{load.gate.definitions}}, \code{\link{do.population.gates}},
-\code{\link{do.activation.gates}}
+\code{\link{run.autogating}}, \code{\link{write.agmodel}},
+\code{\link{convert.gate.definitions}}, \code{\link{train.boundaries}}
 }

@@ -1,0 +1,11 @@
+channel,antigen,type,id,scale_t,linear_a,logicle_w,logicle_m,logicle_a
+FSC-A,FSC-A,scatter,0,4194304,0,,,
+SSC-A,SSC-A,scatter,0,4194304,0,,,
+FSC-H,FSC-H,scatter,0,4194304,0,,,
+ViaKrome 808-A,ViaKrome 808-A,lineage,1,4194304,,1,5.6226599046,0
+Pacific Blue-A,Pacific Blue-A,lineage,1,4194304,,1,5.6226599046,0
+StarBright Violet 440-A,StarBright Violet 440-A,lineage,1,4194304,,1,5.6226599046,0
+BUV395-A,BUV395-A,lineage,1,4194304,,1,5.6226599046,0
+Spark UV 387-A,Spark UV 387-A,lineage,1,4194304,,1,5.6226599046,0
+BB700-A,BB700-A,lineage,1,4194304,,1,5.6226599046,0
+Alexa Fluor 647-A,Alexa Fluor 647-A,lineage,1,4194304,,1,5.6226599046,0

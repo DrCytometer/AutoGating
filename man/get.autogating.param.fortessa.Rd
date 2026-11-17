@@ -15,10 +15,10 @@ Updated \code{ap} list with Symphony-specific values applied.
 }
 \description{
 Applies BD Fortessa-specific values to the base autogating parameter
-list: scatter/fluorescence data ranges, figure axis limits, default
-\code{flowjo_biexp} transformation parameters, and gate algorithm defaults.
+list: the singlet scatter pair, figure axis limits and Gating-ML
+transformation parameters.
 Called automatically by \code{\link{get.autogating.param}} when
-\code{cytometer = "symphony"}.
+\code{cytometer = "fortessa"}.
 }
 \details{
 Instrument-specific parameter overrides for the BD Fortessa

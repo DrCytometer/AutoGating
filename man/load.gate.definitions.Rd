@@ -28,6 +28,6 @@ Load a gate definition list from an R file or RDS file
 }
 \seealso{
 \code{\link{get.autogating.param}},
-\code{\link{do.population.gates}}, \code{\link{do.activation.gates}}
+\code{\link{convert.gate.definitions}}, \code{\link{define.gates}}
 }
 \keyword{internal}

@@ -1,0 +1,230 @@
+[
+ {
+  "gate_name": "singlets",
+  "gate_number": 1,
+  "gate_type": "singlets",
+  "gate_marker_x": "FSC-A",
+  "gate_marker_y": "FSC-H",
+  "parent_gate": null,
+  "parent_popul": null,
+  "populations": {
+   "singlets": {
+    "label": "Singlets",
+    "label_pos": 1,
+    "region": "inside"
+   }
+  },
+  "algorithm": "singlets",
+  "gate_param": {}
+ },
+ {
+  "gate_name": "cells",
+  "gate_number": 2,
+  "gate_type": "free",
+  "gate_marker_x": "FSC-A",
+  "gate_marker_y": "SSC-A",
+  "parent_gate": "singlets",
+  "parent_popul": "singlets",
+  "populations": {
+   "cells": {
+    "label": "Cells",
+    "label_pos": 1,
+    "region": "inside"
+   }
+  },
+  "algorithm": "cells",
+  "gate_param": {}
+ },
+ {
+  "gate_name": "live",
+  "gate_number": 3,
+  "gate_type": "1dsep",
+  "gate_marker_x": "Viab",
+  "gate_marker_y": null,
+  "parent_gate": "cells",
+  "parent_popul": "cells",
+  "populations": {
+   "live": {
+    "label": "Live",
+    "label_pos": 1,
+    "region": "below"
+   },
+   "dead": {
+    "label": "Dead",
+    "label_pos": 1,
+    "region": "above"
+   }
+  },
+  "algorithm": "mixture",
+  "gate_param": {}
+ },
+ {
+  "gate_name": "cd3",
+  "gate_number": 4,
+  "gate_type": "1dsep",
+  "gate_marker_x": "CD3",
+  "gate_marker_y": "SSC-A",
+  "sep_axis": "x",
+  "parent_gate": "live",
+  "parent_popul": "live",
+  "populations": {
+   "T": {
+    "label": "T cells",
+    "label_pos": 1,
+    "region": "above"
+   },
+   "nonT": {
+    "label": "Non-T",
+    "label_pos": 1,
+    "region": "below"
+   }
+  },
+  "algorithm": "tail",
+  "gate_param": {
+   "tail_fraction": 0.001,
+   "threshold_factor": 1.5
+  }
+ },
+ {
+  "gate_name": "cd4cd8",
+  "gate_number": 5,
+  "gate_type": "2dsep",
+  "gate_marker_x": "CD4",
+  "gate_marker_y": "CD8",
+  "parent_gate": "cd3",
+  "parent_popul": "T",
+  "populations": {
+   "CD4": {
+    "label": "CD4",
+    "label_pos": 1,
+    "region": "x+y-"
+   },
+   "CD8": {
+    "label": "CD8",
+    "label_pos": 1,
+    "region": "x-y+"
+   },
+   "DP": {
+    "label": "DP",
+    "label_pos": 1,
+    "region": "x+y+"
+   },
+   "DN": {
+    "label": "DN",
+    "label_pos": 1,
+    "region": "x-y-"
+   }
+  },
+  "algorithm": "mixture",
+  "gate_param": {
+   "algorithm_y": "tail"
+  },
+  "stats_parent": {
+   "CD4": "live/live"
+  }
+ },
+ {
+  "gate_name": "notcd4",
+  "gate_number": 6,
+  "gate_type": "2dsep",
+  "gate_marker_x": "CD4",
+  "gate_marker_y": "CD8",
+  "parent_gate": "cd3",
+  "parent_popul": "T",
+  "populations": {
+   "nonCD4": {
+    "label": "Non-CD4",
+    "label_pos": 1,
+    "region": "x-y-|x-y+|x+y+"
+   }
+  },
+  "algorithm": "replicate",
+  "gate_param": {
+   "replicate_x": {
+    "gate": "cd4cd8"
+   },
+   "replicate_y": {
+    "gate": "cd4cd8"
+   }
+  }
+ },
+ {
+  "gate_name": "cd4ref",
+  "gate_number": 7,
+  "gate_type": "1dsep",
+  "gate_marker_x": "CD4",
+  "gate_marker_y": null,
+  "parent_gate": "cd3",
+  "parent_popul": "nonT",
+  "populations": {
+   "CD4lo": {
+    "label": "CD4 low",
+    "label_pos": 1,
+    "region": "below"
+   },
+   "CD4hi": {
+    "label": "CD4 high",
+    "label_pos": 1,
+    "region": "above"
+   }
+  },
+  "algorithm": "replicate",
+  "gate_param": {
+   "replicate_x": {
+    "population": "live/live",
+    "algorithm": "kde_min"
+   }
+  }
+ },
+ {
+  "gate_name": "cd8otsu",
+  "gate_number": 8,
+  "gate_type": "1dsep",
+  "gate_marker_x": "CD8",
+  "gate_marker_y": null,
+  "parent_gate": "cd3",
+  "parent_popul": "T",
+  "populations": {
+   "lo": {
+    "label": "lo",
+    "label_pos": 1,
+    "region": "below"
+   },
+   "hi": {
+    "label": "hi",
+    "label_pos": 1,
+    "region": "above"
+   }
+  },
+  "algorithm": "otsu",
+  "gate_param": {}
+ },
+ {
+  "gate_name": "cd8rep",
+  "gate_number": 9,
+  "gate_type": "replicate",
+  "origin_gate": "cd8otsu",
+  "parent_gate": "live",
+  "parent_popul": "live",
+  "populations": {},
+  "gate_param": {}
+ },
+ {
+  "gate_name": "hull",
+  "gate_number": 10,
+  "gate_type": "free",
+  "gate_marker_x": "CD3",
+  "gate_marker_y": "CD4",
+  "parent_gate": "cd3",
+  "parent_popul": "T",
+  "populations": {
+   "in": {
+    "label": "All T",
+    "label_pos": 1,
+    "region": "inside"
+   }
+  },
+  "algorithm": "all",
+  "gate_param": {}
+ }
+]

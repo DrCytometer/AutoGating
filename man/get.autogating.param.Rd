@@ -13,10 +13,15 @@ get.autogating.param(
   transformation.filename = NULL,
   population.gates.filename = NULL,
   activation.gates.filename = NULL,
-  figure.dir.basename = "figure",
+  model.filename = NULL,
+  events.per.sample = 50000L,
+  figure.dir = "figures",
+  figure.training = TRUE,
+  figure.samples = FALSE,
   statistics.dir = "statistics",
   population.statistics.filename = "population_statistics.csv",
-  activation.statistics.filename = "activation_statistics.csv",
+  median.statistics.filename = "population_medians.csv",
+  status.filename = "gating_status.csv",
   seed = 20180101L,
   worker.n = 1L
 )
@@ -39,11 +44,12 @@ columns \code{filename}, \code{sample}, and \code{gate.calculation}.}
 compensation matrix CSV.  \code{NULL} disables spectral compensation.}
 
 \item{transformation.filename}{Character or \code{NULL}.  Path to a
-per-experiment transformation override CSV whose columns
-(\code{dye}, \code{length}, \code{max.range}, \code{pos}, \code{neg},
-\code{width}) override the cytometer defaults in
-\code{ap$transformation.defaults}.  \code{NULL} uses cytometer defaults
-for every channel.}
+per-experiment transformation override CSV keyed by \code{dye}, with
+either Gating-ML columns (\code{id}, \code{scale.t}, \code{linear.a},
+\code{logicle.w}, \code{logicle.m}, \code{logicle.a}, \code{log.m}) or
+FlowJo biex columns (\code{max.range}, \code{pos}, \code{neg},
+\code{width}); see \code{\link{read.transformation}}.  \code{NULL}
+uses the cytometer defaults in \code{ap$transform.defaults}.}
 
 \item{population.gates.filename}{Character or \code{NULL}.  Path to an R
 source file or RDS file containing the population gate definition list.
@@ -53,8 +59,24 @@ source file or RDS file containing the population gate definition list.
 source file or RDS file containing the activation gate definition list.
 \code{NULL} uses an empty list (no activation gating).}
 
-\item{figure.dir.basename}{Character.  Base string used to construct
-per-gate figure directory names.  Default \code{"figure"}.}
+\item{model.filename}{Character or \code{NULL}.  Path to a gating model
+(\code{.agmodel}, e.g. saved by Honeychrome).  When set, it is used
+instead of the gate definition files; see \code{\link{define.gates}}.}
+
+\item{events.per.sample}{Integer.  Events drawn from each training
+sample for gate calculation (0 = all).  Default \code{50000L}, as in
+Honeychrome.}
+
+\item{figure.dir}{Character.  Directory of the gate figures.  Default
+\code{"figures"}.}
+
+\item{figure.training}{Logical.  Draw each gate on the pooled training
+events in \code{\link{define.gates}} (\code{figure.dir/training}).
+Default \code{TRUE}.}
+
+\item{figure.samples}{Logical.  Draw each gate on each sample in
+\code{\link{run.autogating}} (\code{figure.dir/<sample>}); one PNG
+per gate and sample.  Default \code{FALSE}.}
 
 \item{statistics.dir}{Character.  Directory where output CSV statistics are
 written.  Default \code{"statistics"}.}
@@ -63,30 +85,32 @@ written.  Default \code{"statistics"}.}
 \code{statistics.dir}) for population statistics output.
 Default \code{"population_statistics.csv"}.}
 
-\item{activation.statistics.filename}{Character.  Filename (within
-\code{statistics.dir}) for activation statistics output.
-Default \code{"activation_statistics.csv"}.}
+\item{median.statistics.filename}{Character.  Filename (within
+\code{statistics.dir}) for the median of each channel in each
+population.  Default \code{"population_medians.csv"}.}
 
-\item{seed}{Integer.  Random seed used for reproducible downsampling.
+\item{status.filename}{Character.  Filename (within
+\code{statistics.dir}) for the per-sample, per-gate gating status.
+Default \code{"gating_status.csv"}.}
+
+\item{seed}{Integer.  Random seed of the training subsample.
 Default \code{20180101L}.}
 
-\item{worker.n}{Integer.  Number of parallel workers passed to
-\code{mclapply}.  Default \code{1L}.}
+\item{worker.n}{Integer.  Number of samples gated in parallel (via
+\code{AutoSpectral::create.parallel.lapply}); 1 gates them one after
+another.  Default \code{1L}.}
 }
 \value{
 A named list (the \emph{autogating parameter object}, \code{ap})
-containing all pipeline configuration: file paths, cytometer-specific
-ranges, gate algorithm defaults, transformation defaults, figure
-aesthetics, sentinel values, and derived regular expressions.
+containing all pipeline configuration: file paths, the singlet scatter
+pair, transformation defaults, figure settings and output file names.
 }
 \description{
 Public entry point for the autogating parameter system.  Calls
 \code{get.autogating.param.minimal()} to establish universal defaults, then
 dispatches to the instrument-specific override function
 (e.g. \code{get.autogating.param.symphony()}) identified by the
-\code{cytometer} argument.  After the cytometer-specific function returns,
-derived regular-expression fields are appended and the completed list is
-returned.
+\code{cytometer} argument, and returns the completed list.
 }
 \details{
 Build the complete autogating parameter list for a given cytometer
@@ -95,5 +119,5 @@ Build the complete autogating parameter list for a given cytometer
 \code{\link{get.autogating.param.symphony}},
 \code{\link{get.autogating.param.aurora}},
 \code{\link{get.autogating.param.id7000}},
-\code{\link{do.population.gates}}, \code{\link{do.activation.gates}}
+\code{\link{define.gates}}, \code{\link{run.autogating}}
 }

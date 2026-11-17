@@ -46,18 +46,24 @@
 #' @seealso \code{\link{create.experiment.file}},
 #'   \code{\link{get.autogating.param}}
 #'
-#' @importFrom flowCore read.FCS
+#' @importFrom AutoSpectral readFCS
 #' @importFrom utils write.csv
 #'
 #' @export
 create.panel.file <- function( fcs.file, filename = "panel_file" ) {
 
-    ff      <- suppressWarnings( flowCore::read.FCS( fcs.file ) )
-    params  <- ff@parameters
-    channels <- params@data$name
-    markers  <- params@data$desc
+    # Only the keywords are needed; read a single event
+    fcs.kw   <- readFCS( fcs.file, return.keywords = TRUE,
+                         start.row = 1, end.row = 1 )$keywords
+    n.par    <- as.integer( fcs.kw[[ "$PAR" ]] )
+    channels <- vapply( seq_len( n.par ), function( i )
+        fcs.kw[[ paste0( "$P", i, "N" ) ]], character( 1L ) )
+    markers  <- vapply( seq_len( n.par ), function( i ) {
+        desc <- fcs.kw[[ paste0( "$P", i, "S" ) ]]
+        if ( is.null( desc ) || trimws( desc ) == "" ) NA_character_ else desc
+    }, character( 1L ) )
 
-    # Remove autofluorescence channels — not used in any gate
+    # Remove autofluorescence channels - not used in any gate
     non.af.idx <- which( !markers %in% c( "AF", "Autofluorescence", "AF Index" ) )
     channels <- channels[ non.af.idx ]
     markers  <- markers[  non.af.idx ]
@@ -67,7 +73,7 @@ create.panel.file <- function( fcs.file, filename = "panel_file" ) {
     markers[ missing.marker.idx ] <- channels[ missing.marker.idx ]
 
     # Assign default channel type using base R conditionals
-    # (ordered: time → scatter → lineage, so scatter doesn't subsume time)
+    # (ordered: time -> scatter -> lineage, so scatter doesn't subsume time)
     channel.type <- ifelse(
         grepl( "time", channels, ignore.case = TRUE ),
         "time",

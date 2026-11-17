@@ -10,15 +10,16 @@ setup.autogating(ap)
 \item{ap}{Autogating parameter object returned by
 \code{\link{get.autogating.param}}.  Must contain valid values for
 \code{ap$experiment.filename}, \code{ap$panel.filename},
-\code{ap$data.dir}, \code{ap$compensation.filename},
-\code{ap$transformation.filename}, and \code{ap$seed}.}
+\code{ap$data.dir}, \code{ap$compensation.filename}
+and \code{ap$transformation.filename}.}
 }
 \value{
 A named list with the following elements:
 \describe{
-\item{\code{fcs.expr.data}}{Numeric matrix, all events × all markers.
-Row names are \code{"<sample>.<event_number>"} strings.  Column order
-matches \code{fcs.marker} (scatter, time, lineage, activation).}
+\item{\code{fcs.expr.data}}{Numeric matrix, all events x all markers,
+on the display scale, without row names.  Column order matches
+\code{fcs.marker} (scatter, time, lineage, activation).  Events are
+in sample order, then file order.}
 \item{\code{fcs.sample}}{Character vector of unique sample identifiers
 (one per FCS file), in manifest order.}
 \item{\code{fcs.sample.n}}{Integer.  Total number of samples.}
@@ -26,14 +27,10 @@ matches \code{fcs.marker} (scatter, time, lineage, activation).}
 (relative to \code{ap$data.dir}), in manifest order.}
 \item{\code{fcs.sample.gate.calc}}{Character vector of sample names
 for which \code{gate.calculation == TRUE} in the manifest.}
-\item{\code{fcs.event}}{Character vector of all event identifiers
-(row names of \code{fcs.expr.data}).}
 \item{\code{fcs.event.n}}{Integer.  Total number of events.}
-\item{\code{fcs.event.sample}}{Factor.  Per-event sample membership,
-levels in manifest order.}
-\item{\code{fcs.event.regexp}}{Character scalar.  Regular expression
-matching the \code{".<event_number>"} suffix so event identifiers can
-be stripped back to sample names.}
+\item{\code{fcs.event.sample}}{Factor.  Per-event sample membership
+(one entry per row of \code{fcs.expr.data}), levels in manifest
+order.}
 \item{\code{fcs.panel}}{data.frame.  Validated panel table (columns
 \code{dye}, \code{antigen}, \code{type}) with \code{type} as a factor
 and \code{AutoF} rows removed.}
@@ -43,6 +40,8 @@ scatter channels in \code{fcs.panel}.}
 lineage channels.}
 \item{\code{fcs.panel.activation.idx}}{Integer vector.  Row indices of
 activation channels.}
+\item{\code{fcs.panel.time.idx}}{Integer vector.  Row indices of the
+time channel (raw values, not rescaled).}
 \item{\code{fcs.marker}}{Character vector.  All antigen names in
 pipeline column order (scatter, time, lineage, activation).}
 \item{\code{fcs.marker.scatter}}{Character vector.  Scatter antigen
@@ -57,25 +56,33 @@ fluorescence channels), named by antigen.}
 \item{\code{fcs.marker.label.table}}{Named character vector.  Antigen
 names as column labels for statistics tables, named by antigen.}
 \item{\code{ap}}{The input \code{ap} list, augmented with
-\code{ap$transform} and \code{ap$transform.inv} (the forward and
-inverse transform function lists keyed by antigen name).}
+\code{ap$transform} and \code{ap$transform.inv} (forward and
+inverse transform functions keyed by antigen name) and
+\code{ap$transform.params} (the transform parameters, keyed by
+antigen).}
 }
 }
 \description{
 Orchestrates the input stage of the AutoGating pipeline:
 \enumerate{
-\item Sets the random seed from \code{ap$seed}.
 \item Reads and validates the experiment manifest CSV.
 \item Reads and validates the panel CSV; drops the \code{AutoF}
 autofluorescence channel if present.
-\item Builds forward and inverse biexponential transform lists via
-\code{\link{read.transformation}}.
-\item Reads all FCS files into a \code{flowSet}, subsets and renames
-channels to antigen names, then applies spectral compensation (if a
-compensation matrix is supplied) and biexponential transformation.
-\item Concatenates all per-sample expression matrices into a single
-event-labelled numeric matrix.
+\item Builds the Gating-ML transforms for every panel channel via
+\code{\link{read.transformation}} (logicle for fluorescence, linear
+for scatter, identity for time).
+\item Reads each FCS file with \code{\link[AutoSpectral]{readFCS}},
+keeping only the panel channels (raw values, no truncation at
+\code{$PnR}), applies compensation if a spillover matrix is supplied,
+then transforms every channel onto the 0 to 1 display scale.
+\item Stacks the per-sample matrices into one matrix, with a factor
+giving each event's sample.
 }
+
+Compensation follows the flowCore convention: the CSV holds the spillover
+matrix (rows = fluorochromes, columns = detectors, diagonal 1), and the
+compensated values are \eqn{X S^{-1}} on the lineage and activation
+channels.
 
 The function returns a named list (\code{fcs.setup}) that bundles the
 expression matrix with all derived metadata vectors and panel indices

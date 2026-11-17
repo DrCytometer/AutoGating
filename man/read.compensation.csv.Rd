@@ -36,6 +36,12 @@ its rows and columns to match the lineage and activation antigens in the
 panel (ordered by dye name), and assigns antigen names to both row and
 column names.  The first column of the CSV (typically row labels) is
 discarded.
+
+The CSV holds the \emph{spillover} matrix, as exported by FlowJo or BD
+FACSDiva: rows are fluorochromes, columns are detectors, the diagonal is
+1, and entry \eqn{(i, j)} is the fraction of fluorochrome \eqn{i}'s signal
+detected in detector \eqn{j}.  \code{\link{setup.autogating}} compensates
+with \eqn{X S^{-1}}.
 }
 \details{
 Load and reorder a compensation matrix from a CSV file

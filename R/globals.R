@@ -1,19 +1,20 @@
 # globals.R
 #
-# Package-level global variable declarations.
+# Package-level declarations.
 #
-# Declares variables that appear as unbound symbols in ggplot2 aesthetics or
-# NSE calls so that R CMD check does not raise "no visible binding for global
-# variable" NOTEs.  No runtime state is stored here; all pipeline state flows
-# through the 'ap' parameter object and function arguments.
+# Names used as unbound symbols in ggplot2 aesthetics are declared so that
+# R CMD check does not report "no visible binding for global variable".  No
+# runtime state is stored here; pipeline state flows through the 'ap'
+# parameter object and function arguments.
 
 utils::globalVariables( c(
-    # ---- ggplot2 aesthetic variables used in build_gate_plot.R ---------------
-    "x",        # mapped in aes(x = x, ...)
-    "y",        # mapped in aes(... y = y, ...)
-    "z",         # mapped in aes(colour = z) for density colouring
-    "logFC",
-    "neglog10p",
-    "Significance",
-    "Feature"
+    # gate figures
+    "x", "y", "z", "at", "group", "text", "hjust", "vjust",
+    # statistics figures
+    "logFC", "neglog10p", "significance", "display", "comparison",
+    "value", "group.position", "star"
 ) )
+
+# Null default: a unless it is NULL, else b (the same as base R 4.4.0 and
+# later, defined here for earlier versions of R).
+`%||%` <- function( a, b ) if ( is.null( a ) ) b else a

@@ -1,0 +1,810 @@
+{
+ "gate_definitions": [
+  {
+   "gate_name": "Single Cells",
+   "gate_type": "singlets",
+   "gate_marker_x": "FSC-A",
+   "gate_marker_y": "FSC-H",
+   "sep_axis": "x",
+   "parent_gate": null,
+   "parent_popul": "root",
+   "algorithm": "imported",
+   "proposed_algorithm": "singlets",
+   "gate_param": {},
+   "stats_parent": {},
+   "origin_gate": null,
+   "populations": {
+    "Single Cells": {
+     "label": "Single Cells",
+     "label_pos": 1,
+     "region": "inside"
+    }
+   },
+   "template": {
+    "Single Cells": {
+     "shape_channels": [
+      "FSC-A",
+      "FSC-H"
+     ],
+     "boundary": [
+      [
+       0.8779527559055118,
+       0.6518218623481782
+      ],
+      [
+       0.2559055118110236,
+       0.12955465587044535
+      ],
+      [
+       0.2047244094488189,
+       0.29554655870445345
+      ],
+      [
+       0.905511811023622,
+       0.8866396761133604
+      ],
+      [
+       0.8779527559055118,
+       0.6518218623481782
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "inside",
+     "label": "Single Cells"
+    }
+   },
+   "gate_number": 1,
+   "template_original": {
+    "Single Cells": {
+     "shape_channels": [
+      "FSC-A",
+      "FSC-H"
+     ],
+     "boundary": [
+      [
+       0.8779527559055118,
+       0.6518218623481782
+      ],
+      [
+       0.2559055118110236,
+       0.12955465587044535
+      ],
+      [
+       0.2047244094488189,
+       0.29554655870445345
+      ],
+      [
+       0.905511811023622,
+       0.8866396761133604
+      ],
+      [
+       0.8779527559055118,
+       0.6518218623481782
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "inside",
+     "label": "Single Cells"
+    }
+   },
+   "source": {
+    "origin": "FlowJo",
+    "workspace": "Workspace_test.wsp",
+    "gating_source": "Group: All Samples (8 populations)",
+    "sample": "C4 IC_BuffyCoat_Donor_E_Plate 4.fcs",
+    "parent_count": null,
+    "populations": {
+     "Single Cells": "Cells/Single Cells"
+    },
+    "counts": {
+     "Single Cells": 232291
+    },
+    "parameters": {
+     "FSC-A": "FSC-A",
+     "FSC-H": "FSC-H"
+    }
+   },
+   "name_group": "Single Cells"
+  },
+  {
+   "gate_name": "Cells",
+   "gate_type": "free",
+   "gate_marker_x": "FSC-A",
+   "gate_marker_y": "SSC-A",
+   "sep_axis": "x",
+   "parent_gate": "Single Cells",
+   "parent_popul": "Single Cells",
+   "algorithm": "imported",
+   "proposed_algorithm": "cells",
+   "gate_param": {
+    "debris_axis": "x"
+   },
+   "stats_parent": {},
+   "origin_gate": null,
+   "populations": {
+    "Cells": {
+     "label": "Cells",
+     "label_pos": 1,
+     "region": "inside"
+    }
+   },
+   "template": {
+    "Cells": {
+     "shape_channels": [
+      "FSC-A",
+      "SSC-A"
+     ],
+     "boundary": [
+      [
+       0.3228346456692913,
+       0.03643724696356275
+      ],
+      [
+       0.8307086614173228,
+       0.03643724696356275
+      ],
+      [
+       0.8307086614173228,
+       0.8137651821862348
+      ],
+      [
+       0.3228346456692913,
+       0.8137651821862348
+      ],
+      [
+       0.3228346456692913,
+       0.03643724696356275
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "inside",
+     "label": "Cells"
+    }
+   },
+   "gate_number": 2,
+   "template_original": {
+    "Cells": {
+     "shape_channels": [
+      "FSC-A",
+      "SSC-A"
+     ],
+     "boundary": [
+      [
+       0.3228346456692913,
+       0.03643724696356275
+      ],
+      [
+       0.8307086614173228,
+       0.03643724696356275
+      ],
+      [
+       0.8307086614173228,
+       0.8137651821862348
+      ],
+      [
+       0.3228346456692913,
+       0.8137651821862348
+      ],
+      [
+       0.3228346456692913,
+       0.03643724696356275
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "inside",
+     "label": "Cells"
+    }
+   },
+   "source": {
+    "origin": "FlowJo",
+    "workspace": "Workspace_test.wsp",
+    "gating_source": "Group: All Samples (8 populations)",
+    "sample": "C4 IC_BuffyCoat_Donor_E_Plate 4.fcs",
+    "parent_count": null,
+    "populations": {
+     "Cells": "Cells"
+    },
+    "counts": {
+     "Cells": 235679
+    },
+    "parameters": {
+     "FSC-A": "FSC-A",
+     "SSC-A": "SSC-A"
+    }
+   },
+   "name_group": "Cells"
+  },
+  {
+   "gate_name": "viable",
+   "gate_type": "1dsep",
+   "gate_marker_x": "ViaKrome 808-A",
+   "gate_marker_y": "FSC-A",
+   "sep_axis": "y",
+   "parent_gate": "Cells",
+   "parent_popul": "Cells",
+   "algorithm": "imported",
+   "proposed_algorithm": "mixture",
+   "gate_param": {},
+   "stats_parent": {},
+   "origin_gate": null,
+   "populations": {
+    "viable": {
+     "label": "viable",
+     "label_pos": 1,
+     "region": "below"
+    }
+   },
+   "template": {
+    "viable": {
+     "shape_channels": [
+      "FSC-A",
+      "ViaKrome 808-A"
+     ],
+     "boundary": [
+      [
+       0.24803149606299213,
+       -0.23200915696391244
+      ],
+      [
+       0.8976377952755905,
+       -0.23200915696391244
+      ],
+      [
+       0.8976377952755905,
+       0.44530006976701847
+      ],
+      [
+       0.24803149606299213,
+       0.44530006976701847
+      ],
+      [
+       0.24803149606299213,
+       -0.23200915696391244
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "below",
+     "label": "viable"
+    }
+   },
+   "gate_number": 3,
+   "template_original": {
+    "viable": {
+     "shape_channels": [
+      "FSC-A",
+      "ViaKrome 808-A"
+     ],
+     "boundary": [
+      [
+       0.24803149606299213,
+       -0.23200915696391244
+      ],
+      [
+       0.8976377952755905,
+       -0.23200915696391244
+      ],
+      [
+       0.8976377952755905,
+       0.44530006976701847
+      ],
+      [
+       0.24803149606299213,
+       0.44530006976701847
+      ],
+      [
+       0.24803149606299213,
+       -0.23200915696391244
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "below",
+     "label": "viable"
+    }
+   },
+   "proposal_rule": "fraction",
+   "source": {
+    "origin": "FlowJo",
+    "workspace": "Workspace_test.wsp",
+    "gating_source": "Group: All Samples (8 populations)",
+    "sample": "C4 IC_BuffyCoat_Donor_E_Plate 4.fcs",
+    "parent_count": 232291,
+    "populations": {
+     "viable": "Cells/Single Cells/viable"
+    },
+    "counts": {
+     "viable": 230506
+    },
+    "parameters": {
+     "FSC-A": "FSC-A",
+     "ViaKrome 808-A": "Comp-ViaKrome 808-A"
+    }
+   },
+   "name_group": "viable"
+  },
+  {
+   "gate_name": "CD3+ T cells & CD19 B cells",
+   "gate_type": "2dsep",
+   "gate_marker_x": "Pacific Blue-A",
+   "gate_marker_y": "StarBright Violet 440-A",
+   "sep_axis": "x",
+   "parent_gate": "viable",
+   "parent_popul": "viable",
+   "algorithm": "imported",
+   "proposed_algorithm": "mixture",
+   "gate_param": {},
+   "stats_parent": {},
+   "origin_gate": null,
+   "populations": {
+    "CD3+ T cells": {
+     "label": "CD3+ T cells",
+     "label_pos": 4,
+     "region": "x+y-"
+    },
+    "CD19 B cells": {
+     "label": "CD19 B cells",
+     "label_pos": 1,
+     "region": "x-y+"
+    }
+   },
+   "template": {
+    "CD3+ T cells": {
+     "shape_channels": [
+      "Pacific Blue-A",
+      "StarBright Violet 440-A"
+     ],
+     "boundary": [
+      [
+       0.5180618705784207,
+       -0.1613695217750316
+      ],
+      [
+       0.7996161496151688,
+       -0.1613695217750316
+      ],
+      [
+       0.7996161496151688,
+       0.5127636434576505
+      ],
+      [
+       0.5180618705784207,
+       0.5127636434576505
+      ],
+      [
+       0.5180618705784207,
+       -0.1613695217750316
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "x+y-",
+     "label": "CD3+ T cells"
+    },
+    "CD19 B cells": {
+     "shape_channels": [
+      "Pacific Blue-A",
+      "StarBright Violet 440-A"
+     ],
+     "boundary": [
+      [
+       -0.16971622496082983,
+       0.4801882608030351
+      ],
+      [
+       0.49327211238772184,
+       0.4801882608030351
+      ],
+      [
+       0.49327211238772184,
+       0.8504236943353435
+      ],
+      [
+       -0.16971622496082983,
+       0.8504236943353435
+      ],
+      [
+       -0.16971622496082983,
+       0.4801882608030351
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "x-y+",
+     "label": "CD19 B cells"
+    }
+   },
+   "gate_number": 4,
+   "template_original": {
+    "CD3+ T cells": {
+     "shape_channels": [
+      "Pacific Blue-A",
+      "StarBright Violet 440-A"
+     ],
+     "boundary": [
+      [
+       0.5180618705784207,
+       -0.1613695217750316
+      ],
+      [
+       0.7996161496151688,
+       -0.1613695217750316
+      ],
+      [
+       0.7996161496151688,
+       0.5127636434576505
+      ],
+      [
+       0.5180618705784207,
+       0.5127636434576505
+      ],
+      [
+       0.5180618705784207,
+       -0.1613695217750316
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "x+y-",
+     "label": "CD3+ T cells"
+    },
+    "CD19 B cells": {
+     "shape_channels": [
+      "Pacific Blue-A",
+      "StarBright Violet 440-A"
+     ],
+     "boundary": [
+      [
+       -0.16971622496082983,
+       0.4801882608030351
+      ],
+      [
+       0.49327211238772184,
+       0.4801882608030351
+      ],
+      [
+       0.49327211238772184,
+       0.8504236943353435
+      ],
+      [
+       -0.16971622496082983,
+       0.8504236943353435
+      ],
+      [
+       -0.16971622496082983,
+       0.4801882608030351
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "x-y+",
+     "label": "CD19 B cells"
+    }
+   },
+   "proposal_rule": "fraction",
+   "source": {
+    "origin": "FlowJo",
+    "workspace": "Workspace_test.wsp",
+    "gating_source": "Group: All Samples (8 populations)",
+    "sample": "C4 IC_BuffyCoat_Donor_E_Plate 4.fcs",
+    "parent_count": 230506,
+    "populations": {
+     "CD3+ T cells": "Cells/Single Cells/viable/CD3+ T cells",
+     "CD19 B cells": "Cells/Single Cells/viable/CD19 B cells"
+    },
+    "counts": {
+     "CD3+ T cells": 110219,
+     "CD19 B cells": 68217
+    },
+    "parameters": {
+     "Pacific Blue-A": "Comp-Pacific Blue-A",
+     "StarBright Violet 440-A": "Comp-StarBright Violet 440-A"
+    }
+   },
+   "name_group": "CD3+ T cells & CD19 B cells"
+  },
+  {
+   "gate_name": "CD4 & CD8",
+   "gate_type": "2dsep",
+   "gate_marker_x": "BUV395-A",
+   "gate_marker_y": "Spark UV 387-A",
+   "sep_axis": "x",
+   "parent_gate": "CD3+ T cells & CD19 B cells",
+   "parent_popul": "CD3+ T cells",
+   "algorithm": "imported",
+   "proposed_algorithm": "mixture",
+   "gate_param": {},
+   "stats_parent": {},
+   "origin_gate": null,
+   "populations": {
+    "CD4": {
+     "label": "CD4",
+     "label_pos": 1,
+     "region": "x+y-|x+y+"
+    },
+    "CD8": {
+     "label": "CD8",
+     "label_pos": 1,
+     "region": "x-y+"
+    }
+   },
+   "template": {
+    "CD4": {
+     "shape_channels": [
+      "BUV395-A",
+      "Spark UV 387-A"
+     ],
+     "boundary": [
+      [
+       0.5273550656512825,
+       -0.10184489123106333
+      ],
+      [
+       0.7177296110554057,
+       -0.10184489123106333
+      ],
+      [
+       0.7177296110554057,
+       0.5144529342407363
+      ],
+      [
+       0.5273550656512825,
+       0.5144529342407363
+      ],
+      [
+       0.5273550656512825,
+       -0.10184489123106333
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "x+y-|x+y+",
+     "label": "CD4"
+    },
+    "CD8": {
+     "shape_channels": [
+      "BUV395-A",
+      "Spark UV 387-A"
+     ],
+     "boundary": [
+      [
+       -0.1703508513863483,
+       0.40676377048623746
+      ],
+      [
+       0.4601030662636812,
+       0.40676377048623746
+      ],
+      [
+       0.4601030662636812,
+       0.7630529706036248
+      ],
+      [
+       -0.1703508513863483,
+       0.7630529706036248
+      ],
+      [
+       -0.1703508513863483,
+       0.40676377048623746
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "x-y+",
+     "label": "CD8"
+    }
+   },
+   "gate_number": 5,
+   "template_original": {
+    "CD4": {
+     "shape_channels": [
+      "BUV395-A",
+      "Spark UV 387-A"
+     ],
+     "boundary": [
+      [
+       0.5273550656512825,
+       -0.10184489123106333
+      ],
+      [
+       0.7177296110554057,
+       -0.10184489123106333
+      ],
+      [
+       0.7177296110554057,
+       0.5144529342407363
+      ],
+      [
+       0.5273550656512825,
+       0.5144529342407363
+      ],
+      [
+       0.5273550656512825,
+       -0.10184489123106333
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "x+y-|x+y+",
+     "label": "CD4"
+    },
+    "CD8": {
+     "shape_channels": [
+      "BUV395-A",
+      "Spark UV 387-A"
+     ],
+     "boundary": [
+      [
+       -0.1703508513863483,
+       0.40676377048623746
+      ],
+      [
+       0.4601030662636812,
+       0.40676377048623746
+      ],
+      [
+       0.4601030662636812,
+       0.7630529706036248
+      ],
+      [
+       -0.1703508513863483,
+       0.7630529706036248
+      ],
+      [
+       -0.1703508513863483,
+       0.40676377048623746
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "x-y+",
+     "label": "CD8"
+    }
+   },
+   "proposal_rule": "fraction",
+   "source": {
+    "origin": "FlowJo",
+    "workspace": "Workspace_test.wsp",
+    "gating_source": "Group: All Samples (8 populations)",
+    "sample": "C4 IC_BuffyCoat_Donor_E_Plate 4.fcs",
+    "parent_count": 110219,
+    "populations": {
+     "CD4": "Cells/Single Cells/viable/CD3+ T cells/CD4",
+     "CD8": "Cells/Single Cells/viable/CD3+ T cells/CD8"
+    },
+    "counts": {
+     "CD4": 58203,
+     "CD8": 46695
+    },
+    "parameters": {
+     "BUV395-A": "Comp-BUV395-A",
+     "Spark UV 387-A": "Comp-Spark UV 387-A"
+    }
+   },
+   "name_group": "CD4 & CD8"
+  },
+  {
+   "gate_name": "Treg",
+   "gate_type": "2dsep",
+   "gate_marker_x": "BB700-A",
+   "gate_marker_y": "Alexa Fluor 647-A",
+   "sep_axis": "x",
+   "parent_gate": "CD4 & CD8",
+   "parent_popul": "CD4",
+   "algorithm": "imported",
+   "proposed_algorithm": "mixture",
+   "gate_param": {},
+   "stats_parent": {},
+   "origin_gate": null,
+   "populations": {
+    "Treg": {
+     "label": "Treg",
+     "label_pos": 2,
+     "region": "x+y+"
+    }
+   },
+   "template": {
+    "Treg": {
+     "shape_channels": [
+      "BB700-A",
+      "Alexa Fluor 647-A"
+     ],
+     "boundary": [
+      [
+       0.40069118080409355,
+       0.4694667527245851
+      ],
+      [
+       0.8297969541780554,
+       0.4694667527245851
+      ],
+      [
+       0.8297969541780554,
+       0.7136857254075292
+      ],
+      [
+       0.40069118080409355,
+       0.7136857254075292
+      ],
+      [
+       0.40069118080409355,
+       0.4694667527245851
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "x+y+",
+     "label": "Treg"
+    }
+   },
+   "gate_number": 6,
+   "template_original": {
+    "Treg": {
+     "shape_channels": [
+      "BB700-A",
+      "Alexa Fluor 647-A"
+     ],
+     "boundary": [
+      [
+       0.40069118080409355,
+       0.4694667527245851
+      ],
+      [
+       0.8297969541780554,
+       0.4694667527245851
+      ],
+      [
+       0.8297969541780554,
+       0.7136857254075292
+      ],
+      [
+       0.40069118080409355,
+       0.7136857254075292
+      ],
+      [
+       0.40069118080409355,
+       0.4694667527245851
+      ]
+     ],
+     "threshold_x": null,
+     "threshold_y": null,
+     "region": "x+y+",
+     "label": "Treg"
+    }
+   },
+   "proposal_rule": "fraction",
+   "source": {
+    "origin": "FlowJo",
+    "workspace": "Workspace_test.wsp",
+    "gating_source": "Group: All Samples (8 populations)",
+    "sample": "C4 IC_BuffyCoat_Donor_E_Plate 4.fcs",
+    "parent_count": 58203,
+    "populations": {
+     "Treg": "Cells/Single Cells/viable/CD3+ T cells/CD4/Treg"
+    },
+    "counts": {
+     "Treg": 2219
+    },
+    "parameters": {
+     "BB700-A": "Comp-BB700-A",
+     "Alexa Fluor 647-A": "Comp-Alexa Fluor 647-A"
+    }
+   },
+   "name_group": "Treg"
+  }
+ ],
+ "dropped": [],
+ "populations": {
+  "Cells/Single Cells": "Cells/Cells",
+  "Cells/Single Cells/viable": "viable/viable",
+  "Cells/Single Cells/viable/CD3+ T cells": "CD3+ T cells & CD19 B cells/CD3+ T cells",
+  "Cells/Single Cells/viable/CD19 B cells": "CD3+ T cells & CD19 B cells/CD19 B cells",
+  "Cells/Single Cells/viable/CD3+ T cells/CD4": "CD4 & CD8/CD4",
+  "Cells/Single Cells/viable/CD3+ T cells/CD8": "CD4 & CD8/CD8",
+  "Cells/Single Cells/viable/CD3+ T cells/CD4/Treg": "Treg/Treg"
+ }
+}

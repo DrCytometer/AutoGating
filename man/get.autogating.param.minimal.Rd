@@ -10,30 +10,25 @@ get.autogating.param.minimal()
 A named list with the following top-level elements (among others):
 \describe{
 \item{\code{singlet.scatter.parameter}}{Character vector
-\code{c(area, height)} identifying the scatter channels used for
-singlet discrimination.  \code{NULL} until overridden.}
-\item{\code{leukocyte.scatter.parameter}}{Character vector
-\code{c(forward, side)} for the leukocyte gate.  \code{NULL} until
+\code{c(area, height)} of forward scatter, used to recognise the
+singlet gate of an imported FlowJo workspace.  \code{NULL} until
 overridden.}
-\item{\code{ignore}}{Sentinel string (\code{"*"}) marking a population
-slot or gate field that should be skipped.}
-\item{\code{gate.defaults}}{Named list of per-gate algorithm defaults
-(quantile trimming, region fractions, axis break vectors, threshold
-algorithm names, and the default tail probability).}
-\item{\code{transformation.defaults}}{Named list of
-\code{flowjo_biexp} parameter defaults (\code{length},
-\code{max.range}, \code{pos}, \code{neg}, \code{width}).}
-\item{\code{figure.limits}}{Named list of scatter and expression axis
-limits for plot generation.}
+\item{\code{transform.defaults}}{Named list with elements
+\code{fluorescence} and \code{scatter}, each a Gating-ML transform
+parameter list (see \code{\link{make.transform}}).}
+\item{\code{figure.limits}}{Raw-unit axis limits of gate figures:
+\code{scatter.min}/\code{scatter.max} for channels of panel type
+"scatter", \code{expr.min}/\code{expr.max} for fluorescence.}
+\item{\code{figure.*}}{Size, resolution, point and label sizes of
+gate figures (see \code{\link{gate.figure}}).}
 }
 }
 \description{
 Internal constructor that returns a named list of cytometer-agnostic
-defaults covering sentinel values, gate-numbering conventions, figure
-aesthetics, gate algorithm defaults, transformation defaults, and figure
-axis limits.  Every cytometer-specific parameter function receives this
-list as its starting point and overrides the fields that differ for that
-instrument.
+defaults: the singlet scatter pair, gate-numbering width, figure
+settings, transformation defaults and figure axis limits.  Every
+cytometer-specific parameter function receives this list as its starting
+point and overrides the fields that differ for that instrument.
 }
 \details{
 Build the universal minimal autogating parameter defaults

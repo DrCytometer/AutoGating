@@ -1,4 +1,4 @@
-# get_autogating_param_symphony.r
+# get_autogating_param_fortessa.r
 #
 #' Instrument-specific parameter overrides for the BD Fortessa
 #'
@@ -6,10 +6,10 @@
 #'
 #' @description
 #' Applies BD Fortessa-specific values to the base autogating parameter
-#' list: scatter/fluorescence data ranges, figure axis limits, default
-#' \code{flowjo_biexp} transformation parameters, and gate algorithm defaults.
+#' list: the singlet scatter pair, figure axis limits and Gating-ML
+#' transformation parameters.
 #' Called automatically by \code{\link{get.autogating.param}} when
-#' \code{cytometer = "symphony"}.
+#' \code{cytometer = "fortessa"}.
 #'
 #' @param ap Named list.  The base parameter list returned by
 #'   \code{get.autogating.param.minimal()}.
@@ -24,17 +24,8 @@ get.autogating.param.fortessa <- function( ap ) {
 
     ap$cytometer <- "Fortessa"
 
-    # ---- raw data ranges (scatter channels) -----------------------------------
+    # ---- singlet scatter pair ------------------------------------------------
     ap$singlet.scatter.parameter <- c( "FSC-A", "FSC-H" )
-    ap$default.scatter.parameter <- c( "FSC-A", "SSC-A" )
-    ap$time.param <- c( "Time" )
-    ap$scatter.data.min <- 0
-    ap$scatter.data.max <- 262144
-
-    # ---- raw data ranges (fluorescence channels) ------------------------------
-
-    ap$expr.data.min <- -111
-    ap$expr.data.max <- 262144
 
     # ---- figure axis limits --------------------------------------------------
 
@@ -46,38 +37,16 @@ get.autogating.param.fortessa <- function( ap ) {
     )
 
     # ---- default transformation parameters ------------------------------------
-    # All fluorescence channels use these unless overridden by a per-experiment
-    # transformation CSV.
+    # Gating-ML logicle for fluorescence (W from FlowJo width basis -100),
+    # linear for scatter; both map the top of the range to 1.  A
+    # per-experiment transformation CSV overrides individual channels.
 
-    ap$transformation.defaults <- list(
-        length    = 256,
-        max.range = 262144,
-        pos       = 4.418539922,
-        neg       = 0,
-        width     = -100
+    ap$transform.defaults <- list(
+        fluorescence = list( id = 1L, scale.t = 262144,
+                             logicle.w = log10( 100 ) / 2,
+                             logicle.m = 4.418539922, logicle.a = 0 ),
+        scatter      = list( id = 0L, scale.t = 262144, linear.a = 0 )
     )
-
-    # ---- gate algorithm defaults ----------------------------------------------
-    # Override only what differs from the universal minimal defaults.
-
-    ap$gate.defaults$density.trimneg.x <- TRUE
-    ap$gate.defaults$density.trimneg.y <- FALSE
-
-    ap$gate.defaults$break.x        <- c( -1, 0, 1, 10, 100 )
-    ap$gate.defaults$break.x.factor <- 1000
-    ap$gate.defaults$break.y        <- c( -1, 0, 1, 10, 100 )
-    ap$gate.defaults$break.y.factor <- 1000
-
-    # Scatter-channel plot breaks (FSC / SSC axes)
-    ap$gate.defaults$break.scatter        <- c( 0, 50, 100, 150, 200, 250 )
-    ap$gate.defaults$break.scatter.factor <- 1000
-    ap$gate.defaults$break.fluor          <- c( -1e2, 0, 1e2, 1e3, 1e4, 1e5 )
-
-    ap$gate.defaults$label.size <- 4
-
-    ap$gate.defaults$algorithm.1dsep         <- "tail"
-    ap$gate.defaults$algorithm.2dsep         <- c( "mixture", "mixture" )
-    ap$gate.defaults$default.tail.probability <- 0.99
 
     ap
 }

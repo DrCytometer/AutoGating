@@ -1,8 +1,7 @@
 # get_autogating_param.r
 #
 # Public entry point: get.autogating.param()
-# Internal helpers:   get.autogating.param.minimal()
-#                     merge.gate.param()
+# Internal helper:    get.autogating.param.minimal()
 
 
 #' Build the complete autogating parameter list for a given cytometer
@@ -14,9 +13,7 @@
 #' \code{get.autogating.param.minimal()} to establish universal defaults, then
 #' dispatches to the instrument-specific override function
 #' (e.g. \code{get.autogating.param.symphony()}) identified by the
-#' \code{cytometer} argument.  After the cytometer-specific function returns,
-#' derived regular-expression fields are appended and the completed list is
-#' returned.
+#' \code{cytometer} argument, and returns the completed list.
 #'
 #' @param cytometer Character string identifying the cytometer (e.g.
 #'   \code{"symphony"}, \code{"aurora"}, \code{"id7000"}).  Must match a
@@ -30,41 +27,57 @@
 #' @param compensation.filename Character or \code{NULL}.  Path to a square
 #'   compensation matrix CSV.  \code{NULL} disables spectral compensation.
 #' @param transformation.filename Character or \code{NULL}.  Path to a
-#'   per-experiment transformation override CSV whose columns
-#'   (\code{dye}, \code{length}, \code{max.range}, \code{pos}, \code{neg},
-#'   \code{width}) override the cytometer defaults in
-#'   \code{ap$transformation.defaults}.  \code{NULL} uses cytometer defaults
-#'   for every channel.
+#'   per-experiment transformation override CSV keyed by \code{dye}, with
+#'   either Gating-ML columns (\code{id}, \code{scale.t}, \code{linear.a},
+#'   \code{logicle.w}, \code{logicle.m}, \code{logicle.a}, \code{log.m}) or
+#'   FlowJo biex columns (\code{max.range}, \code{pos}, \code{neg},
+#'   \code{width}); see \code{\link{read.transformation}}.  \code{NULL}
+#'   uses the cytometer defaults in \code{ap$transform.defaults}.
 #' @param population.gates.filename Character or \code{NULL}.  Path to an R
 #'   source file or RDS file containing the population gate definition list.
 #'   \code{NULL} uses an empty list (no population gating).
 #' @param activation.gates.filename Character or \code{NULL}.  Path to an R
 #'   source file or RDS file containing the activation gate definition list.
 #'   \code{NULL} uses an empty list (no activation gating).
-#' @param figure.dir.basename Character.  Base string used to construct
-#'   per-gate figure directory names.  Default \code{"figure"}.
+#' @param model.filename Character or \code{NULL}.  Path to a gating model
+#'   (\code{.agmodel}, e.g. saved by Honeychrome).  When set, it is used
+#'   instead of the gate definition files; see \code{\link{define.gates}}.
+#' @param events.per.sample Integer.  Events drawn from each training
+#'   sample for gate calculation (0 = all).  Default \code{50000L}, as in
+#'   Honeychrome.
+#' @param figure.dir Character.  Directory of the gate figures.  Default
+#'   \code{"figures"}.
+#' @param figure.training Logical.  Draw each gate on the pooled training
+#'   events in \code{\link{define.gates}} (\code{figure.dir/training}).
+#'   Default \code{TRUE}.
+#' @param figure.samples Logical.  Draw each gate on each sample in
+#'   \code{\link{run.autogating}} (\code{figure.dir/<sample>}); one PNG
+#'   per gate and sample.  Default \code{FALSE}.
 #' @param statistics.dir Character.  Directory where output CSV statistics are
 #'   written.  Default \code{"statistics"}.
 #' @param population.statistics.filename Character.  Filename (within
 #'   \code{statistics.dir}) for population statistics output.
 #'   Default \code{"population_statistics.csv"}.
-#' @param activation.statistics.filename Character.  Filename (within
-#'   \code{statistics.dir}) for activation statistics output.
-#'   Default \code{"activation_statistics.csv"}.
-#' @param seed Integer.  Random seed used for reproducible downsampling.
+#' @param median.statistics.filename Character.  Filename (within
+#'   \code{statistics.dir}) for the median of each channel in each
+#'   population.  Default \code{"population_medians.csv"}.
+#' @param status.filename Character.  Filename (within
+#'   \code{statistics.dir}) for the per-sample, per-gate gating status.
+#'   Default \code{"gating_status.csv"}.
+#' @param seed Integer.  Random seed of the training subsample.
 #'   Default \code{20180101L}.
-#' @param worker.n Integer.  Number of parallel workers passed to
-#'   \code{mclapply}.  Default \code{1L}.
+#' @param worker.n Integer.  Number of samples gated in parallel (via
+#'   \code{AutoSpectral::create.parallel.lapply}); 1 gates them one after
+#'   another.  Default \code{1L}.
 #'
 #' @return A named list (the \emph{autogating parameter object}, \code{ap})
-#'   containing all pipeline configuration: file paths, cytometer-specific
-#'   ranges, gate algorithm defaults, transformation defaults, figure
-#'   aesthetics, sentinel values, and derived regular expressions.
+#'   containing all pipeline configuration: file paths, the singlet scatter
+#'   pair, transformation defaults, figure settings and output file names.
 #'
 #' @seealso \code{\link{get.autogating.param.symphony}},
 #'   \code{\link{get.autogating.param.aurora}},
 #'   \code{\link{get.autogating.param.id7000}},
-#'   \code{\link{do.population.gates}}, \code{\link{do.activation.gates}}
+#'   \code{\link{define.gates}}, \code{\link{run.autogating}}
 #'
 #' @export
 
@@ -77,10 +90,15 @@ get.autogating.param <- function(
     transformation.filename        = NULL,
     population.gates.filename      = NULL,
     activation.gates.filename      = NULL,
-    figure.dir.basename            = "figure",
+    model.filename                 = NULL,
+    events.per.sample              = 50000L,
+    figure.dir                     = "figures",
+    figure.training                = TRUE,
+    figure.samples                 = FALSE,
     statistics.dir                 = "statistics",
     population.statistics.filename = "population_statistics.csv",
-    activation.statistics.filename = "activation_statistics.csv",
+    median.statistics.filename     = "population_medians.csv",
+    status.filename                = "gating_status.csv",
     seed                           = 20180101L,
     worker.n                       = 1L
 ) {
@@ -95,10 +113,15 @@ get.autogating.param <- function(
     ap$transformation.filename         <- transformation.filename
     ap$population.gates.filename       <- population.gates.filename
     ap$activation.gates.filename       <- activation.gates.filename
-    ap$figure.dir.basename             <- figure.dir.basename
+    ap$model.filename                  <- model.filename
+    ap$events.per.sample               <- as.integer( events.per.sample )
+    ap$figure.dir                      <- figure.dir
+    ap$figure.training                 <- isTRUE( figure.training )
+    ap$figure.samples                  <- isTRUE( figure.samples )
     ap$statistics.dir                  <- statistics.dir
     ap$population.statistics.filename  <- population.statistics.filename
-    ap$activation.statistics.filename  <- activation.statistics.filename
+    ap$median.statistics.filename      <- median.statistics.filename
+    ap$status.filename                 <- status.filename
 
     # ---- execution ------------------------------------------------------------
 
@@ -111,14 +134,7 @@ get.autogating.param <- function(
     if ( is.null( fn ) )
         stop( sprintf( "No parameter function found for cytometer '%s'.", cytometer ) )
 
-    ap <- fn( ap )
-
-    # ---- derived regexp (requires fcs.parent.string to be set) ----------------
-
-    ap$parent.regexp     <- sprintf( "^%s\\.[0-9]+$",    ap$parent.string )
-    ap$parent.regexp.sub <- sprintf( "^%s\\.([0-9]+)$",  ap$parent.string )
-
-    ap
+    fn( ap )
 }
 
 
@@ -132,118 +148,64 @@ get.autogating.param <- function(
 #'
 #' @description
 #' Internal constructor that returns a named list of cytometer-agnostic
-#' defaults covering sentinel values, gate-numbering conventions, figure
-#' aesthetics, gate algorithm defaults, transformation defaults, and figure
-#' axis limits.  Every cytometer-specific parameter function receives this
-#' list as its starting point and overrides the fields that differ for that
-#' instrument.
+#' defaults: the singlet scatter pair, gate-numbering width, figure
+#' settings, transformation defaults and figure axis limits.  Every
+#' cytometer-specific parameter function receives this list as its starting
+#' point and overrides the fields that differ for that instrument.
 #'
 #' @return A named list with the following top-level elements (among others):
 #'   \describe{
 #'     \item{\code{singlet.scatter.parameter}}{Character vector
-#'       \code{c(area, height)} identifying the scatter channels used for
-#'       singlet discrimination.  \code{NULL} until overridden.}
-#'     \item{\code{leukocyte.scatter.parameter}}{Character vector
-#'       \code{c(forward, side)} for the leukocyte gate.  \code{NULL} until
+#'       \code{c(area, height)} of forward scatter, used to recognise the
+#'       singlet gate of an imported FlowJo workspace.  \code{NULL} until
 #'       overridden.}
-#'     \item{\code{ignore}}{Sentinel string (\code{"*"}) marking a population
-#'       slot or gate field that should be skipped.}
-#'     \item{\code{gate.defaults}}{Named list of per-gate algorithm defaults
-#'       (quantile trimming, region fractions, axis break vectors, threshold
-#'       algorithm names, and the default tail probability).}
-#'     \item{\code{transformation.defaults}}{Named list of
-#'       \code{flowjo_biexp} parameter defaults (\code{length},
-#'       \code{max.range}, \code{pos}, \code{neg}, \code{width}).}
-#'     \item{\code{figure.limits}}{Named list of scatter and expression axis
-#'       limits for plot generation.}
+#'     \item{\code{transform.defaults}}{Named list with elements
+#'       \code{fluorescence} and \code{scatter}, each a Gating-ML transform
+#'       parameter list (see \code{\link{make.transform}}).}
+#'     \item{\code{figure.limits}}{Raw-unit axis limits of gate figures:
+#'       \code{scatter.min}/\code{scatter.max} for channels of panel type
+#'       "scatter", \code{expr.min}/\code{expr.max} for fluorescence.}
+#'     \item{\code{figure.*}}{Size, resolution, point and label sizes of
+#'       gate figures (see \code{\link{gate.figure}}).}
 #'   }
 #'
 #' @keywords internal
 get.autogating.param.minimal <- function() {
 
     list(
-      # ---- scatter channel pairs --------------------------------------------
-      # Must be overridden by each cytometer-specific function.
-      # singlet.scatter.parameter:   c( area.channel, height.channel )
-      #   used by gate.singlet() — area vs height on the same detector
-      # leukocyte.scatter.parameter: c( forward.channel, side.channel )
-      #   used by the leukocyte gate — two orthogonal scatter detectors
+        # ---- singlet scatter pair (set per cytometer) --------------------------
+        # c( area, height ) of forward scatter, used to recognise the singlet
+        # gate of an imported FlowJo workspace.
 
-      singlet.scatter.parameter   = NULL,
-      leukocyte.scatter.parameter = NULL,
-
-        # ---- sentinel / delimiter values used throughout the pipeline ---------
-
-        ignore          = "*",        # population slot to skip
-        parent.string   = "parent",   # prefix for relative parent references
-        stats.separator = " :in: ",   # used when building statistic column names
+        singlet.scatter.parameter = NULL,
 
         # ---- gate numbering ---------------------------------------------------
 
         gate.number.width = 3L,       # zero-padded width for figure filenames
 
-        # ---- activation gating ------------------------------------------------
+        # ---- figures ----------------------------------------------------------
 
-        activation.marker.selected   = "X",        # value meaning "use default alg"
-        activation.population.label  = "activated",
-
-        # ---- figure defaults --------------------------------------------------
-
-        density.grid.n          = 100L,
-        density.barheight       = 30,
-        bandwidth.factor        = 1,
-        palette.n               = 1000L,
-        palette.base.n          = 1000000L,
-        figure.label.alpha      = 0.7,
-        figure.label.width.factor  = 0.010,
-        figure.label.height.factor = 0.026,
-        figure.width            = 7.5,
-        figure.height           = 7.0,
-        figure.margin           = c( up = 5, right = 2, down = 0, left = 10 ),
-        figure.point.size       = 0.1,
-        figure.axis.label.size  = 12,
-        figure.axis.title.size  = 12,
-
-        # ---- gate algorithm defaults (overridden per cytometer / per gate) ----
-
-        gate.defaults = list(
-            quantile.x         = 0,
-            quantile.y         = 0.0001,
-            sep.axis           = 2,
-            limit.xmin         = -0.01,
-            limit.xmax         =  1.01,
-            limit.ymin         = -0.01,
-            limit.ymax         =  1.01,
-            region.xmin        = 0.01,
-            region.xmax        = 0.99,
-            region.ymin        = 0.01,
-            region.ymax        = 0.99,
-            region.min         = 0.01,
-            region.max         = 0.99,
-            density.quantile.x = 0,
-            density.quantile.y = 0.0001,
-            density.trimneg.x  = TRUE,
-            density.trimneg.y  = FALSE,
-            break.x            = c( -0.1, 0, 1, 2, 3, 4 ),
-            break.x.factor     = 1e6,
-            break.y            = c( -0.1, 0, 1, 2, 3, 4 ),
-            break.y.factor     = 1e6,
-            label.size         = 4,
-            algorithm.1dsep    = "tail",
-            algorithm.2dsep    = c( "bimodal", "bimodal" ),
-            default.tail.probability = 0.99
-        ),
+        figure.max.events   = 100000L,  # events drawn per gate figure
+        figure.width        = 6,        # inches
+        figure.height       = 6,
+        figure.resolution   = 150,      # dots per inch
+        figure.point.size   = 1,        # scattermore point size (pixels)
+        figure.label.size   = 3.5,      # population labels (mm)
+        figure.label.alpha  = 0.7,      # label background opacity
+        figure.text.size    = 11,       # axis text and titles (pt)
+        density.grid.n      = 128L,     # density estimate grid per axis
+        bandwidth.factor    = 1,        # multiplies the normal-reference bandwidth
 
         # ---- transformation defaults (overridden per cytometer) ---------------
-        # These are applied to all fluorescence channels unless a per-experiment
-        # transformation CSV provides channel-level overrides.
+        # Gating-ML transform parameters (see transform.R) for fluorescence
+        # and scatter channels, used unless a per-experiment transformation
+        # CSV overrides a channel.
 
-        transformation.defaults = list(
-            length    = 256,
-            max.range = 262144,
-            pos       = 4.418539922,
-            neg       = 0,
-            width     = -100
+        transform.defaults = list(
+            fluorescence = list( id = 1L, scale.t = 262144,
+                                 logicle.w = 1, logicle.m = 4.418539922,
+                                 logicle.a = 0 ),
+            scatter      = list( id = 0L, scale.t = 262144, linear.a = 0 )
         ),
 
         # ---- figure axis limits (overridden per cytometer) --------------------
@@ -255,39 +217,4 @@ get.autogating.param.minimal <- function() {
             expr.max    = 265000
         )
     )
-}
-
-
-# ---------------------------------------------------------------------------
-# Helper: merge a gate's own param list with cytometer gate.defaults.
-# Returns a flat list with every key present; gate-level values win.
-# ---------------------------------------------------------------------------
-
-#' Merge per-gate parameter overrides with cytometer defaults
-#'
-#' @title Merge Gate Parameters with Cytometer Defaults
-#'
-#' @description
-#' Takes a gate definition's own \code{gate.param} list and applies each
-#' named element on top of the cytometer-level \code{ap$gate.defaults},
-#' returning a single flat list that contains every parameter key the gating
-#' pipeline requires.  Gate-level values take precedence over cytometer
-#' defaults.
-#'
-#' @param gate.param Named list of per-gate parameter overrides (may be
-#'   empty).
-#' @param ap Autogating parameter object (the \code{ap} list returned by
-#'   \code{\link{get.autogating.param}}).
-#'
-#' @return A named list equivalent to \code{ap$gate.defaults} with any
-#'   entries in \code{gate.param} overwritten.
-#'
-#' @seealso \code{\link{resolve.gate.param}}
-#'
-#' @keywords internal
-merge.gate.param <- function( gate.param, ap ) {
-    defaults <- ap$gate.defaults
-    for ( key in names( gate.param ) )
-        defaults[[ key ]] <- gate.param[[ key ]]
-    defaults
 }
